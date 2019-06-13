@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/p/create', 'PostController@create');
+Route::post('/p', 'PostController@store');
+
+Route::get('/profiles/{user}', 'ProfilesController@index')->name('profile.show');
