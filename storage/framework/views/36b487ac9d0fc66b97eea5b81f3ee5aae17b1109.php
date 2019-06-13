@@ -18,6 +18,11 @@
                     <div class="p-2"><?php echo e($user->profile->description); ?></div>
                     <div class="p-2"><?php echo e($user->profile->url ?? 'N/A'); ?></div>
                 </div>
+                <div>
+                    <a href="#">
+                        Add new
+                    </a>
+                </div>
             </div>
         </div>
     </div>

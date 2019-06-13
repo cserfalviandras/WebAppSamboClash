@@ -18,6 +18,11 @@
                     <div class="p-2">{{ $user->profile->title }}</div>
                     <div class="p-2">{{ $user->profile->description }}</div>
                     <div class="p-2">{{ $user->profile->url ?? 'N/A' }}</div>
+                    <div>
+                        <a href="">
+                            Add new
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
