@@ -41,6 +41,7 @@ return array(
     'App\\competition' => $baseDir . '/app/competition.php',
     'App\\competition_clashes' => $baseDir . '/app/competition_clashes.php',
     'App\\competitor' => $baseDir . '/app/competitor.php',
+    'App\\dress' => $baseDir . '/app/dress.php',
     'App\\organization' => $baseDir . '/app/organization.php',
     'App\\status' => $baseDir . '/app/status.php',
     'App\\weight_categorie' => $baseDir . '/app/weight_categorie.php',
