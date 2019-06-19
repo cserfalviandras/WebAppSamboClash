@@ -420,6 +420,7 @@ class ComposerStaticInit3d14d4bcef261cfd7c47fbf6c6a90c37
         'App\\competition_clashes' => __DIR__ . '/../..' . '/app/competition_clashes.php',
         'App\\competitor' => __DIR__ . '/../..' . '/app/competitor.php',
         'App\\organization' => __DIR__ . '/../..' . '/app/organization.php',
+        'App\\status' => __DIR__ . '/../..' . '/app/status.php',
         'App\\weight_categorie' => __DIR__ . '/../..' . '/app/weight_categorie.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

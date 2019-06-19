@@ -39,6 +39,7 @@ return array(
     'App\\competition_clashes' => $baseDir . '/app/competition_clashes.php',
     'App\\competitor' => $baseDir . '/app/competitor.php',
     'App\\organization' => $baseDir . '/app/organization.php',
+    'App\\status' => $baseDir . '/app/status.php',
     'App\\weight_categorie' => $baseDir . '/app/weight_categorie.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
