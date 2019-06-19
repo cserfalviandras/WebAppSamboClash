@@ -44,6 +44,7 @@ return array(
     'App\\dress' => $baseDir . '/app/dress.php',
     'App\\organization' => $baseDir . '/app/organization.php',
     'App\\point_table' => $baseDir . '/app/point_table.php',
+    'App\\squeeze_timing_head' => $baseDir . '/app/squeeze_timing_head.php',
     'App\\status' => $baseDir . '/app/status.php',
     'App\\weight_categorie' => $baseDir . '/app/weight_categorie.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',

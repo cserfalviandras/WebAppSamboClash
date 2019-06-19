@@ -425,6 +425,7 @@ class ComposerStaticInit3d14d4bcef261cfd7c47fbf6c6a90c37
         'App\\dress' => __DIR__ . '/../..' . '/app/dress.php',
         'App\\organization' => __DIR__ . '/../..' . '/app/organization.php',
         'App\\point_table' => __DIR__ . '/../..' . '/app/point_table.php',
+        'App\\squeeze_timing_head' => __DIR__ . '/../..' . '/app/squeeze_timing_head.php',
         'App\\status' => __DIR__ . '/../..' . '/app/status.php',
         'App\\weight_categorie' => __DIR__ . '/../..' . '/app/weight_categorie.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
