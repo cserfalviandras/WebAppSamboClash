@@ -43,6 +43,7 @@ return array(
     'App\\competitor' => $baseDir . '/app/competitor.php',
     'App\\dress' => $baseDir . '/app/dress.php',
     'App\\organization' => $baseDir . '/app/organization.php',
+    'App\\point_table' => $baseDir . '/app/point_table.php',
     'App\\status' => $baseDir . '/app/status.php',
     'App\\weight_categorie' => $baseDir . '/app/weight_categorie.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
