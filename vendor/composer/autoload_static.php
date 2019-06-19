@@ -414,6 +414,7 @@ class ComposerStaticInit3d14d4bcef261cfd7c47fbf6c6a90c37
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\age_group' => __DIR__ . '/../..' . '/app/age_group.php',
         'App\\clash' => __DIR__ . '/../..' . '/app/clash.php',
         'App\\competition' => __DIR__ . '/../..' . '/app/competition.php',
         'App\\competitor' => __DIR__ . '/../..' . '/app/competitor.php',
