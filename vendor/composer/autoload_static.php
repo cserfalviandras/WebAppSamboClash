@@ -418,6 +418,7 @@ class ComposerStaticInit3d14d4bcef261cfd7c47fbf6c6a90c37
         'App\\clash' => __DIR__ . '/../..' . '/app/clash.php',
         'App\\competition' => __DIR__ . '/../..' . '/app/competition.php',
         'App\\competitor' => __DIR__ . '/../..' . '/app/competitor.php',
+        'App\\weight_categorie' => __DIR__ . '/../..' . '/app/weight_categorie.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
