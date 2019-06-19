@@ -36,6 +36,7 @@ return array(
     'App\\age_group' => $baseDir . '/app/age_group.php',
     'App\\clash' => $baseDir . '/app/clash.php',
     'App\\competition' => $baseDir . '/app/competition.php',
+    'App\\competition_clashes' => $baseDir . '/app/competition_clashes.php',
     'App\\competitor' => $baseDir . '/app/competitor.php',
     'App\\organization' => $baseDir . '/app/organization.php',
     'App\\weight_categorie' => $baseDir . '/app/weight_categorie.php',

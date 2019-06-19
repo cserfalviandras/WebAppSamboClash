@@ -417,6 +417,7 @@ class ComposerStaticInit3d14d4bcef261cfd7c47fbf6c6a90c37
         'App\\age_group' => __DIR__ . '/../..' . '/app/age_group.php',
         'App\\clash' => __DIR__ . '/../..' . '/app/clash.php',
         'App\\competition' => __DIR__ . '/../..' . '/app/competition.php',
+        'App\\competition_clashes' => __DIR__ . '/../..' . '/app/competition_clashes.php',
         'App\\competitor' => __DIR__ . '/../..' . '/app/competitor.php',
         'App\\organization' => __DIR__ . '/../..' . '/app/organization.php',
         'App\\weight_categorie' => __DIR__ . '/../..' . '/app/weight_categorie.php',
