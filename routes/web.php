@@ -18,8 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
 Route::get('/spectator', 'SpectatorController@index');
+
 Route::get('/administrator', 'AdministratorController@index');
+Route::get('/competitions', 'CompetitionsController@index');
+Route::get('/competitors', 'CompetitorsController@index');
+Route::get('/clashes', 'ClashesController@index');
 
 
 // Deletable...
