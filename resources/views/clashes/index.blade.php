@@ -6,8 +6,8 @@
         <div class="col-sm">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Versenyek</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyek</h6>
+                    <h5 class="card-title">Mérkőzések</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Rögzített mérkőzések</h6>
                     <p class="card-text">lista..<p>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
@@ -17,19 +17,29 @@
         <div class="col-sm">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Új verseny</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Verseny rögzítése</h6>
+                    <h5 class="card-title">Új Mérkőzések</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Mérkőzés rögzítése</h6>
                     <form class="pt-3">
                         <div class="form-group">
-                            <label for="inputClashName">Megnevezés</label>
+                            <label for="inputClashName">Verseny</label>
                             <input type="text" class="form-control" id="inputClashName" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label for="inputDate">Dátum</label>
-                            <input type="text" class="form-control" id="inputDate" name="daterange" value="" />
+                            <label for="inputClashName">Korosztály</label>
+                            <input type="text" class="form-control" id="inputClashName" placeholder="">
                         </div>
-                        
+
+                        <div class="form-group">
+                            <label for="inputClashName">Súlycsoport</label>
+                            <input type="text" class="form-control" id="inputClashName" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputClashName">Kezdési időpont</label>
+                            <input type="text" class="form-control" id="inputClashName" placeholder="">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Mentés</button>
                     </form>
                 </div>
