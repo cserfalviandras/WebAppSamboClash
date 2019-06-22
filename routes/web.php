@@ -23,6 +23,7 @@ Route::get('/spectator', 'SpectatorController@index');
 
 Route::get('/administrator', 'AdministratorController@index');
 Route::get('/competitions', 'CompetitionsController@index');
+Route::post('/storeCompetition', 'CompetitionsController@store');
 Route::get('/competitors', 'CompetitorsController@index');
 Route::get('/clashes', 'ClashesController@index');
 

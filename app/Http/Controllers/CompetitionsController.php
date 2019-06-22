@@ -16,4 +16,19 @@ class CompetitionsController extends Controller
     {
         return view('competitions.index');
     }
+
+    public function store(){
+        $data = request()->validate([
+            'inputClashName' => 'required',
+            'inputClashStartDate' => 'required',
+            'inputClashEndDate' => 'required',
+        ]);
+
+        //auth()->user()->posts()->create($data);
+        //auth()->user()->competitions()->create($data);
+
+        //create($data);
+
+        dd(request()->all());
+    }
 }

@@ -19,17 +19,69 @@
                 <div class="card-body">
                     <h5 class="card-title">Új verseny</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Verseny rögzítése</h6>
-                    <form class="pt-3">
-                        <div class="form-group">
-                            <label for="inputClashName">Megnevezés</label>
-                            <input type="text" class="form-control" id="inputClashName" placeholder="">
-                        </div>
+                    <form class="pt-3" action="/storeCompetition" enctype="multipart/form-data" method="post">
+                        @csrf
 
                         <div class="form-group">
-                            <label for="inputDate">Dátum</label>
-                            <input type="text" class="form-control" id="inputDate" name="daterange" value="" />
+                            <label for="inputClashName">Megnevezés</label>
+                            <input 
+                                id="inputClashName" 
+                                type="text" 
+                                class="form-control"
+                                name="inputClashName" 
+                                value="{{ old('inputClashName') }}" 
+                                required
+                                autofocus>
+
+                            @error('inputClashName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="inputClashStartDate">Mettől</label>
+                                    <input 
+                                        id="inputClashStartDate" 
+                                        type="date" 
+                                        min="2019-01-01"
+                                        class="form-control"
+                                        name="inputClashStartDate" 
+                                        value="{{ old('inputClashStartDate') }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputClashStartDate')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="inputClashEndDate">Meddig</label>
+                                    <input 
+                                        id="inputClashEndDate" 
+                                        type="date" 
+                                        class="form-control"
+                                        name="inputClashEndDate" 
+                                        value="{{ old('inputClashEndDate') }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputClashEndDate')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Mentés</button>
                     </form>
                 </div>
