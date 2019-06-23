@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\competition;
 
 class CompetitionsController extends Controller
 {
@@ -24,11 +25,12 @@ class CompetitionsController extends Controller
             'inputClashEndDate' => 'required',
         ]);
 
-        //auth()->user()->posts()->create($data);
-        //auth()->user()->competitions()->create($data);
+        $competition = new competition();
+        $competition->name = request('inputClashName');
+        $competition->start_date = request('inputClashStartDate');
+        $competition->end_date = request('inputClashEndDate');
+        $competition->save();
 
-        //create($data);
-
-        dd(request()->all());
+        return redirect('success');
     }
 }

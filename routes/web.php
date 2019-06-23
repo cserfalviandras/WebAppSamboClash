@@ -27,6 +27,7 @@ Route::post('/storeCompetition', 'CompetitionsController@store');
 Route::get('/competitors', 'CompetitorsController@index');
 Route::get('/clashes', 'ClashesController@index');
 
+Route::get('/success', 'AdministratorController@success');
 
 // Deletable...
 Route::get('/p/create', 'PostController@create');
