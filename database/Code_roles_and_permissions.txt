@@ -1,0 +1,18 @@
+
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+$permission_read = Permission::create(['name' => 'read']);
+$permission_write = Permission::create(['name' => 'write']);
+
+$role_admin = Role::create(['name' => 'admin']);
+$role_spectator = Role::create(['name' => 'spectator']);
+
+$role_admin->givePermissionTo($permission_read);
+$role_admin->givePermissionTo($permission_write);
+
+$role_spectator->givePermissionTo($permission_read);
+
+
+$user_admin = App\User::find(1);
+$user_admin->assignRole('admin');

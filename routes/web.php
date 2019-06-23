@@ -25,6 +25,7 @@ Route::get('/administrator', 'AdministratorController@index');
 Route::get('/competitions', 'CompetitionsController@index');
 Route::post('/storeCompetition', 'CompetitionsController@store');
 Route::get('/competitors', 'CompetitorsController@index');
+Route::post('competitors/store', 'CompetitorsController@store');
 Route::get('/clashes', 'ClashesController@index');
 
 Route::get('/success', 'AdministratorController@success');
