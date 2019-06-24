@@ -12,9 +12,26 @@
                         $competitions = App\competition::all();
                     @endphp
 
-                    @foreach ($competitions as $competition)
-                        @include('components.competition_row', ['name' => $competition->name, 'start_date' => $competition->start_date])
-                    @endforeach
+                    <div class="pt-3 table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Megnevezés</th>
+                                <th>Kezdési dátum</th>
+                                <th>Befejezési dátum</th>
+                            </thead>
+    
+                            <tbody>
+                                @foreach ($competitions as $competition)
+                                    @include('components.competition_row', [
+                                        'name' => $competition->name, 
+                                        'start_date' => $competition->start_date,
+                                        'end_date' => $competition->end_date
+                                        ])
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>

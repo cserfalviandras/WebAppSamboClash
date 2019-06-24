@@ -1,12 +1,17 @@
-<div class="row">
-    <div class="col-sm">
+<tr>
+    <td>
         @php
             echo $name;
         @endphp
-    </div>
-    <div class="col-sm">
+    </td>
+    <td>
         @php
             echo $start_date;
         @endphp
-    </div>
-</div>
+    </td>
+    <td>
+        @php
+            echo $end_date;
+        @endphp
+    </td>
+</tr>
