@@ -16,4 +16,9 @@ class AdministratorController extends Controller
     {
         return view('administrator.index');
     }
+
+    public function success()
+    {
+        return view('success.index');
+    }
 }

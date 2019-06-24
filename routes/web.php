@@ -22,10 +22,17 @@ Route::get('/home', 'HomeController@index');
 Route::get('/spectator', 'SpectatorController@index');
 
 Route::get('/administrator', 'AdministratorController@index');
-Route::get('/competitions', 'CompetitionsController@index');
-Route::get('/competitors', 'CompetitorsController@index');
-Route::get('/clashes', 'ClashesController@index');
 
+Route::get('/competitions', 'CompetitionsController@index'); 
+Route::post('/competitions/store', 'CompetitionsController@store');
+
+Route::get('/competitors', 'CompetitorsController@index');
+Route::post('/competitors/store', 'CompetitorsController@store');
+
+Route::get('/clashes', 'ClashesController@index');
+Route::post('/clashes/store', 'ClashesController@store');
+
+Route::get('/success', 'AdministratorController@success');
 
 // Deletable...
 Route::get('/p/create', 'PostController@create');
