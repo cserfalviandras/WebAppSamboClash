@@ -19,21 +19,21 @@
                 <div class="card-body">
                     <h5 class="card-title">Új verseny</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Verseny rögzítése</h6>
-                    <form class="pt-3" action="/storeCompetition" enctype="multipart/form-data" method="post">
+                    <form class="pt-3" action="/competitions/store" enctype="multipart/form-data" method="post">
                         @csrf
 
                         <div class="form-group">
-                            <label for="inputClashName">Megnevezés</label>
+                            <label for="inputCompetitionName">Megnevezés</label>
                             <input 
-                                id="inputClashName" 
+                                id="inputCompetitionName" 
                                 type="text" 
                                 class="form-control"
-                                name="inputClashName" 
-                                value="{{ old('inputClashName') }}" 
+                                name="inputCompetitionName" 
+                                value="{{ old('inputCompetitionName') }}" 
                                 required
                                 autofocus>
 
-                            @error('inputClashName')
+                            @error('inputCompetitionName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -43,18 +43,18 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="inputClashStartDate">Mettől</label>
+                                    <label for="inputCompetitionStartDate">Mettől</label>
                                     <input 
-                                        id="inputClashStartDate" 
+                                        id="inputCompetitionStartDate" 
                                         type="date" 
                                         min="2019-01-01"
                                         class="form-control"
-                                        name="inputClashStartDate" 
-                                        value="{{ old('inputClashStartDate') }}" 
+                                        name="inputCompetitionStartDate" 
+                                        value="{{ old('inputCompetitionStartDate') }}" 
                                         required
                                         autofocus>
         
-                                    @error('inputClashStartDate')
+                                    @error('inputCompetitionStartDate')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -63,17 +63,17 @@
                             </div>
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="inputClashEndDate">Meddig</label>
+                                    <label for="inputCompetitionEndDate">Meddig</label>
                                     <input 
-                                        id="inputClashEndDate" 
+                                        id="inputCompetitionEndDate" 
                                         type="date" 
                                         class="form-control"
-                                        name="inputClashEndDate" 
-                                        value="{{ old('inputClashEndDate') }}" 
+                                        name="inputCompetitionEndDate" 
+                                        value="{{ old('inputCompetitionEndDate') }}" 
                                         required
                                         autofocus>
         
-                                    @error('inputClashEndDate')
+                                    @error('inputCompetitionEndDate')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

@@ -16,4 +16,9 @@ class ClashesController extends Controller
     {
         return view('clashes.index');
     }
+
+    public function store()
+    {
+        dd(request()->all());
+    }
 }

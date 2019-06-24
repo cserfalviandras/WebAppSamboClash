@@ -20,15 +20,15 @@ class CompetitionsController extends Controller
 
     public function store(){
         $data = request()->validate([
-            'inputClashName' => 'required',
-            'inputClashStartDate' => 'required',
-            'inputClashEndDate' => 'required',
+            'inputCompetitionName' => 'required',
+            'inputCompetitionStartDate' => 'required',
+            'inputCompetitionEndDate' => 'required',
         ]);
 
         $competition = new competition();
-        $competition->name = request('inputClashName');
-        $competition->start_date = request('inputClashStartDate');
-        $competition->end_date = request('inputClashEndDate');
+        $competition->name = request('inputCompetitionName');
+        $competition->start_date = request('inputCompetitionStartDate');
+        $competition->end_date = request('inputCompetitionEndDate');
         $competition->save();
 
         return redirect('success');

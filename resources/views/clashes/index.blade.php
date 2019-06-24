@@ -19,25 +19,84 @@
                 <div class="card-body">
                     <h5 class="card-title">Új Mérkőzések</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Mérkőzés rögzítése</h6>
-                    <form class="pt-3">
+                    <form class="pt-3" action="/clashes/store" enctype="multipart/form-data" method="post">
+                        @csrf
+
                         <div class="form-group">
-                            <label for="inputClashName">Verseny</label>
-                            <input type="text" class="form-control" id="inputClashName" placeholder="">
+                            <label for="inputAgeGroup">Korosztály</label>
+                            <input 
+                                id="inputAgeGroup" 
+                                type="text" 
+                                class="form-control"
+                                name="inputAgeGroup" 
+                                value="{{ old('inputAgeGroup') }}" 
+                                required
+                                autofocus>
+
+                            @error('inputAgeGroup')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="inputClashName">Korosztály</label>
-                            <input type="text" class="form-control" id="inputClashName" placeholder="">
+                            <label for="inputWeightCat">Súlycsoport</label>
+                            <input 
+                                id="inputWeightCat" 
+                                type="text" 
+                                class="form-control"
+                                name="inputWeightCat" 
+                                value="{{ old('inputWeightCat') }}" 
+                                required
+                                autofocus>
+
+                            @error('inputWeightCat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputClashName">Súlycsoport</label>
-                            <input type="text" class="form-control" id="inputClashName" placeholder="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputClashName">Kezdési időpont</label>
-                            <input type="text" class="form-control" id="inputClashName" placeholder="">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="inputStartTime">Kezdési idő</label>
+                                    <input 
+                                        id="inputStartTime" 
+                                        type="datetime-local" 
+                                        class="form-control"
+                                        name="inputStartTime" 
+                                        value="{{ old('inputStartTime') }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputStartTime')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="inputEndTime">Befejezési idő</label>
+                                    <input 
+                                        id="inputEndTime" 
+                                        type="datetime-local" 
+                                        class="form-control"
+                                        name="inputEndTime" 
+                                        value="{{ old('inputEndTime') }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputEndTime')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Mentés</button>
