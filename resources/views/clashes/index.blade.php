@@ -17,7 +17,7 @@
         <div class="col-sm">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Új Mérkőzések</h5>
+                    <h5 class="card-title">Új Mérkőzés</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Mérkőzés rögzítése</h6>
                     <form class="pt-3" action="/clashes/store" enctype="multipart/form-data" method="post">
                         @csrf
