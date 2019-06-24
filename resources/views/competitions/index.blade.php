@@ -8,7 +8,13 @@
                 <div class="card-body">
                     <h5 class="card-title">Versenyek</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyek</h6>
-                    <p class="card-text">lista..<p>
+                    @php
+                        $competitions = App\competition::all();
+                    @endphp
+
+                    @foreach ($competitions as $competition)
+                        @include('components.competition_row', ['name' => $competition->name, 'start_date' => $competition->start_date])
+                    @endforeach
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
