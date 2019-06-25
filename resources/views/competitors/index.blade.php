@@ -8,7 +8,31 @@
                 <div class="card-body">
                     <h5 class="card-title">Versenyzők</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyzők</h6>
-                    <p class="card-text">lista..<p>
+                    @php
+                        $competitors = App\competitor::all();
+                    @endphp
+
+                    <div class="pt-3 table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Név</th>
+                                <th>Korosztály</th>
+                                <th>Súlycsoport</th>
+                                <th>Szövetség</th>
+                            </thead>
+    
+                            <tbody>
+                                @foreach ($competitors as $competitor)
+                                    @include('components.competitor_row', [
+                                        'name' => $competitor->name, 
+                                        'age_group_id' => $competitor->age_group_id,
+                                        'weight_cat_id' => $competitor->weight_cat_id,
+                                        'organization_id' => $competitor->organization_id
+                                        ])
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
