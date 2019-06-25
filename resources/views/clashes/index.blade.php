@@ -8,7 +8,31 @@
                 <div class="card-body">
                     <h5 class="card-title">Mérkőzések</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített mérkőzések</h6>
-                    <p class="card-text">lista..<p>
+                    @php
+                        $clashes = App\clash::all();
+                    @endphp
+
+                    <div class="pt-3 table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Korosztály</th>
+                                <th>Kezdési idő</th>
+                                <th>Befejezési idő</th>
+                                <th>Állapot</th>
+                            </thead>
+    
+                            <tbody>
+                                @foreach ($clashes as $clash)
+                                    @include('components.clash_row', [
+                                        'age_group_id' => $clash->age_group_id, 
+                                        'weight_cat_id' => $clash->weight_cat_id,
+                                        'start_time' => $clash->start_time,
+                                        'clash_status_id' => $clash->clash_status_id
+                                        ])
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
