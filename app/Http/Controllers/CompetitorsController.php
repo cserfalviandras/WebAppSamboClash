@@ -33,7 +33,7 @@ class CompetitorsController extends Controller
         $competitor->age_group_id = request('inputAgeGroup');
         $competitor->weight_cat_id = request('inputWeightCategory');
         $competitor->organization_id = request('inputOrganization');
-        $competitor->name = request('inputAgeGroup');
+        $competitor->name = request('inputCompetitorName');
         $competitor->birth_date = request('inputBirthDate');
         $competitor->birth_place = request('inputBirthPlace');
         $competitor->mother_maiden_name = request('inputMothersMaidenName');
