@@ -24,6 +24,7 @@
                             <tbody>
                                 @foreach ($clashes as $clash)
                                     @include('components.clash_row', [
+                                        'clash_id' => $clash->clash_id,
                                         'age_group_id' => $clash->age_group_id, 
                                         'weight_cat_id' => $clash->weight_cat_id,
                                         'start_time' => $clash->start_time,
