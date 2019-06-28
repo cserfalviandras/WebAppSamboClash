@@ -13,7 +13,7 @@
                     @endphp
 
                     <div class="pt-3 table-responsive">
-                        <table class="table table-hover">
+                        <table id="clashes_table" class="table table-hover">
                             <thead>
                                 <th>Korosztály</th>
                                 <th>Kezdési idő</th>
