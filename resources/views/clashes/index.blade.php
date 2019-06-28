@@ -13,12 +13,13 @@
                     @endphp
 
                     <div class="pt-3 table-responsive">
-                        <table id="clashes_table" class="table table-hover">
+                        <table id="clashes_table" class="table">
                             <thead>
                                 <th>Korosztály</th>
+                                <th>Súlycsoport</th>
                                 <th>Kezdési idő</th>
-                                <th>Befejezési idő</th>
                                 <th>Állapot</th>
+                                <th></th>
                             </thead>
     
                             <tbody>
@@ -34,8 +35,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
         </div>

@@ -38,4 +38,12 @@ class ClashesController extends Controller
 
         return redirect('success');
     }
+
+    public function show($clash_id)
+    {
+        $finded_clash = clash::where('clash_id', $clash_id)->firstOrFail();
+        return view('clashes.index',[
+            'finded_clash' => $finded_clash,
+        ]);
+    }
 }

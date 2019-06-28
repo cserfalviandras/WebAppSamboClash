@@ -31,6 +31,9 @@ Route::post('/competitors/store', 'CompetitorsController@store');
 
 Route::get('/clashes', 'ClashesController@index');
 Route::post('/clashes/store', 'ClashesController@store');
+Route::get('/clashes/{clash_id}', 'ClashesController@show')->name('clashes');
+
+Route::get('/profiles/{user}', 'ProfilesController@index');
 
 Route::get('/success', 'AdministratorController@success');
 
