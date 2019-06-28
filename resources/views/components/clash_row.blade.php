@@ -19,4 +19,7 @@
             echo $clash_status_id;
         @endphp
     </td>
+    <td>
+        <a href="{{ !!$clash_id }}" class="card-link">Szerkesztés</a>
+    </td>
 </tr>

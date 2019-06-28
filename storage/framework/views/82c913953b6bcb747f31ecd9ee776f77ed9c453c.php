@@ -86,14 +86,6 @@
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
-    <script>
-        
-    window.addEventListener('load', function() {
-        $('#clashes_table tbody tr').click(function() {
-            $(this).addClass('bg-success').siblings().removeClass('bg-success');
-        });
-    })
-    </script>
 </body>
 </html>
 <?php /**PATH D:\Development\POC_laravel_sambo\WebAppSamboClash_versioned\resources\views/layouts/app.blade.php ENDPATH**/ ?>

@@ -85,13 +85,5 @@
             @yield('content')
         </main>
     </div>
-    <script>
-        
-    window.addEventListener('load', function() {
-        $('#clashes_table tbody tr').click(function() {
-            $(this).addClass('bg-success').siblings().removeClass('bg-success');
-        });
-    })
-    </script>
 </body>
 </html>
