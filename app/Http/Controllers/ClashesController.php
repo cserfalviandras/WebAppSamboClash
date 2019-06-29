@@ -30,6 +30,7 @@ class ClashesController extends Controller
         $clash->age_group_id = request('inputAgeGroup');
         $clash->weight_cat_id = request('inputWeightCat');
         $clash->start_time = request('inputStartTime');
+        $clash->end_time = request('inputEndTime');
         //$clash->scoreboard_id = NewScoreBoard();
         $clash->scoreboard_id = 0;
         $clash->winner_id = 0;   
