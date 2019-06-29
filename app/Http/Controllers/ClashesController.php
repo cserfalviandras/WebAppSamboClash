@@ -40,10 +40,18 @@ class ClashesController extends Controller
         return redirect('success');
     }
 
-    public function show($clash_id)
+    public function edit($clash_id)
     {
         return view('clashes.edit',[
             'clash' => clash::where('clash_id', $clash_id)->firstOrFail()
         ]);
+    }
+
+    public function update()
+    {
+        //$clash = 
+        //return redirect('success');
+
+        dd(request()->all());
     }
 }

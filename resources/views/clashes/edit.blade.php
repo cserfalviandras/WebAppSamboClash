@@ -12,6 +12,16 @@
 
                     <form class="pt-3" action="/clashes/update" enctype="multipart/form-data" method="post">
                         @csrf
+                        <div class="form-group">
+                            <input 
+                                id="inputClashId" 
+                                type="hidden" 
+                                class="form-control"
+                                name="inputClashId" 
+                                value="{{ old('inputClashId', $clash->clash_id) }}" 
+                                required
+                                >
+                        </div>
 
                         <div class="form-group">
                             <label for="inputAgeGroup">Korosztály</label>
@@ -40,7 +50,7 @@
                                 name="inputWeightCat" 
                                 value="{{ old('inputWeightCat', $clash->weight_cat_id) }}" 
                                 required
-                                autofocus>
+                                >
 
                             @error('inputWeightCat')
                                 <span class="invalid-feedback" role="alert">
@@ -60,7 +70,7 @@
                                         name="inputStartTime" 
                                         value="{{ old('inputStartTime', $clash->start_time) }}" 
                                         required
-                                        autofocus>
+                                        >
         
                                     @error('inputStartTime')
                                         <span class="invalid-feedback" role="alert">
@@ -79,7 +89,7 @@
                                         name="inputEndTime" 
                                         value="{{ old('inputEndTime', $clash->inputEndTime) }}" 
                                         required
-                                        autofocus>
+                                        >
         
                                     @error('inputEndTime')
                                         <span class="invalid-feedback" role="alert">
@@ -99,7 +109,7 @@
                                 name="inputStatus" 
                                 value="{{ old('inputStatus', $clash->clash_status_id) }}" 
                                 required
-                                autofocus>
+                                >
 
                             @error('inputStatus')
                                 <span class="invalid-feedback" role="alert">
