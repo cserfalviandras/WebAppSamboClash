@@ -20,6 +20,6 @@
         @endphp
     </td>
     <td>
-        <a href="{{ route('clashes', [$clash_id]) }}" class="card-link">Szerkesztés</a>
+        <a href="{{ route('clashes', [$clash_id], 'edit') }}" class="card-link">Szerkesztés</a>
     </td>
 </tr>
