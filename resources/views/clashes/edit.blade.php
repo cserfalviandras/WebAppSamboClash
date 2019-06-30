@@ -18,7 +18,7 @@
                                 type="hidden" 
                                 class="form-control"
                                 name="inputClashId" 
-                                value="{{ old('inputClashId', $clash->clash_id) }}" 
+                                value="{{ $clash->clash_id }}" 
                                 required
                                 >
                         </div>

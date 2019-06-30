@@ -31,7 +31,7 @@ class ClashesController extends Controller
         $clash->weight_cat_id = request('inputWeightCat');
         $clash->start_time = request('inputStartTime');
         $clash->end_time = request('inputEndTime');
-        //$clash->scoreboard_id = NewScoreBoard();
+        $clash->scoreboard_id = 0;
         $clash->scoreboard_id = 0;
         $clash->winner_id = 0;   
         $clash->clash_status_id = 0;
@@ -49,9 +49,15 @@ class ClashesController extends Controller
 
     public function update()
     {
-        //$clash = 
-        //return redirect('success');
-
-        dd(request()->all());
+        try {
+            clash::where('clash_id', request('inputClashId'))->update([
+                'age_group_id' => request('inputAgeGroup'),
+                'weight_cat_id' => request('inputWeightCat')
+            ]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    
+        return redirect('success');
     }
 }
