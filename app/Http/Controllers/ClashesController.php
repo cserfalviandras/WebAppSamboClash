@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\clash;
+use App\competitor;
+use App\clash_competitors;
 
 class ClashesController extends Controller
 {
@@ -42,7 +44,8 @@ class ClashesController extends Controller
     public function edit($clash_id)
     {
         return view('clashes.edit',[
-            'clash' => clash::where('clash_id', $clash_id)->firstOrFail()
+            'clash' => clash::where('clash_id', $clash_id)->firstOrFail(),
+            'competitors' => competitor::all()
         ]);
     }
 
@@ -61,6 +64,16 @@ class ClashesController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+
+        if(!empty(request('inputCompetitor_1_id'))){
+            try {
+                $exists = clash_competitors::where('clash_id', request('inputClashId'))->exists();
+                // folyt: elágazni a fenti alapján és insert vagy update.
+            } catch (\Exception $e) {
+    
+            }
+        }
+        
     
         return redirect('success');
     }

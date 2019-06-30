@@ -118,6 +118,51 @@
                             @enderror
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="inputStartTime">Ellenfél 1</label>
+                                    <select class="form-control" name="inputCompetitor_1_id">
+
+                                        <option>Választás</option>
+                                        
+                                        @foreach ($competitors as $key => $value)
+                                            <option value="{{ $key }}"> 
+                                                {{ $value->name }}, {{ $value->birth_date }}
+                                            </option>
+                                        @endforeach    
+                                    </select>
+        
+                                    @error('inputCompetitor_1_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="inputStartTime">Ellenfél 2</label>
+                                    <select class="form-control" name="inputCompetitor_2_id">
+
+                                        <option>Választás</option>
+                                        
+                                        @foreach ($competitors as $key => $value)
+                                            <option value="{{ $key }}"> 
+                                                {{ $value->name }}, {{ $value->birth_date }}
+                                            </option>
+                                        @endforeach    
+                                    </select>
+        
+                                    @error('inputCompetitor_2_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Mentés</button>
                     <form>
                 </div>
