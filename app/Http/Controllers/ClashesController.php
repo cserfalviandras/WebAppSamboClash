@@ -67,10 +67,21 @@ class ClashesController extends Controller
 
         if(!empty(request('inputCompetitor_1_id'))){
             try {
-                $exists = clash_competitors::where('clash_id', request('inputClashId'))->exists();
-                // folyt: elágazni a fenti alapján és insert vagy update.
+                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
+                    ['comp_id_1' => 'inputCompetitor_1_id']
+                );
             } catch (\Exception $e) {
-    
+                return $e->getMessage();
+            }
+        }
+
+        if(!empty(request('inputCompetitor_2_id'))){
+            try {
+                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
+                    ['comp_id_2' => 'inputCompetitor_2_id']
+                );
+            } catch (\Exception $e) {
+                return $e->getMessage();
             }
         }
         
