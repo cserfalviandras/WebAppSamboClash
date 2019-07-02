@@ -13,17 +13,19 @@
                     @endphp
 
                     <div class="pt-3 table-responsive">
-                        <table class="table table-hover">
+                        <table id="clashes_table" class="table">
                             <thead>
                                 <th>Korosztály</th>
+                                <th>Súlycsoport</th>
                                 <th>Kezdési idő</th>
-                                <th>Befejezési idő</th>
                                 <th>Állapot</th>
+                                <th></th>
                             </thead>
     
                             <tbody>
                                 @foreach ($clashes as $clash)
                                     @include('components.clash_row', [
+                                        'clash_id' => $clash->clash_id,
                                         'age_group_id' => $clash->age_group_id, 
                                         'weight_cat_id' => $clash->weight_cat_id,
                                         'start_time' => $clash->start_time,
@@ -33,8 +35,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
                 </div>
             </div>
         </div>
