@@ -65,26 +65,21 @@ class ClashesController extends Controller
             return $e->getMessage();
         }
 
-        if(!empty(request('inputCompetitor_1_id'))){
+        if(!empty(request('inputCompetitor_1_id') && !empty(request('inputCompetitor_2_id')))){
             try {
                 clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
-                    ['comp_id_1' => 'inputCompetitor_1_id']
+                    [
+                        'clash_id' =>  request('inputClashId'),
+                        'comp_id' => request('inputCompetitor_1_id'),
+                        'comp_id_2' => request('inputCompetitor_2_id'),
+                        'dress_id' => 0,
+                        'dress_id_2' => 1
+                    ]
                 );
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
         }
-
-        if(!empty(request('inputCompetitor_2_id'))){
-            try {
-                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
-                    ['comp_id_2' => 'inputCompetitor_2_id']
-                );
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
-        }
-        
     
         return redirect('success');
     }
