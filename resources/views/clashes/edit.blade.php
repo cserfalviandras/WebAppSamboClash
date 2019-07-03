@@ -121,13 +121,14 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
+                                    @php
+                                        $tempCompId = $clashCompetitors->comp_id ?? null;
+                                    @endphp
+
                                     <label for="inputCompetitor_1_id">Ellenfél 1</label>
                                     <select class="form-control" name="inputCompetitor_1_id">
-
-                                        <option>Választás</option>
-                                        
                                         @foreach ($competitors as $key => $value)
-                                            <option value="{{ $key }}" {{ $clashCompetitors->comp_id == $key ? 'selected' : ''}}> 
+                                            <option value="{{ $key }}" {{ $tempCompId == $key ? 'selected' : ''}}> 
                                                 {{ $value->name }}, {{ $value->birth_date }}
                                             </option>
                                         @endforeach    
@@ -142,13 +143,14 @@
                             </div>
                             <div class="col-sm">
                                 <div class="form-group">
+                                    @php
+                                        $tempCompId = $clashCompetitors->comp_id_2 ?? null;
+                                    @endphp
+
                                     <label for="inputCompetitor_2_id">Ellenfél 2</label>
                                     <select class="form-control" name="inputCompetitor_2_id">
-
-                                        <option>Választás</option>
-                                        
                                         @foreach ($competitors as $key => $value)
-                                            <option value="{{ $key }}"  {{ $clashCompetitors->comp_id_2 == $key ? 'selected' : ''}}> 
+                                            <option value="{{ $key }}"  {{ $tempCompId == $key ? 'selected' : ''}}> 
                                                 {{ $value->name }}, {{ $value->birth_date }}
                                             </option>
                                         @endforeach    
