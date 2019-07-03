@@ -87,7 +87,7 @@
                                         type="datetime-local" 
                                         class="form-control"
                                         name="inputEndTime" 
-                                        value="{{ old('inputEndTime', $clash->inputEndTime) }}" 
+                                        value="{{ old('inputEndTime', $clash->end_time) }}" 
                                         required
                                         >
         
@@ -121,7 +121,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="inputStartTime">Ellenfél 1</label>
+                                    <label for="inputCompetitor_1_id">Ellenfél 1</label>
                                     <select class="form-control" name="inputCompetitor_1_id">
 
                                         <option>Választás</option>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="inputStartTime">Ellenfél 2</label>
+                                    <label for="inputCompetitor_2_id">Ellenfél 2</label>
                                     <select class="form-control" name="inputCompetitor_2_id">
 
                                         <option>Választás</option>
