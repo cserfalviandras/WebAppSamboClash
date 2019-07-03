@@ -127,7 +127,7 @@
                                         <option>Választás</option>
                                         
                                         @foreach ($competitors as $key => $value)
-                                            <option value="{{ $key }}"> 
+                                            <option value="{{ $key }}" {{ $clashCompetitors->comp_id == $key ? 'selected' : ''}}> 
                                                 {{ $value->name }}, {{ $value->birth_date }}
                                             </option>
                                         @endforeach    
@@ -148,7 +148,7 @@
                                         <option>Választás</option>
                                         
                                         @foreach ($competitors as $key => $value)
-                                            <option value="{{ $key }}"> 
+                                            <option value="{{ $key }}"  {{ $clashCompetitors->comp_id_2 == $key ? 'selected' : ''}}> 
                                                 {{ $value->name }}, {{ $value->birth_date }}
                                             </option>
                                         @endforeach    
