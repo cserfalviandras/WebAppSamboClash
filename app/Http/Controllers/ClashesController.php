@@ -43,11 +43,10 @@ class ClashesController extends Controller
 
     public function edit($clash_id)
     {
-        //dd(clash_competitors::where('clash_id', $clash_id)->firstOrFail());
         return view('clashes.edit',[
             'clash' => clash::where('clash_id', $clash_id)->firstOrFail(),
             'competitors' => competitor::all(),
-            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->firstOrFail()
+            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
         ]);
     }
 
