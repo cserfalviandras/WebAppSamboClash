@@ -26,6 +26,7 @@ Route::get('/administrator', 'AdministratorController@index');
 Route::get('/competitions', 'CompetitionsController@index'); 
 Route::post('/competitions/store', 'CompetitionsController@store');
 Route::get('/competitions/{comp_id}/edit', 'CompetitionsController@edit')->name('competitions.edit');
+Route::post('/competitions/update', 'CompetitionsController@update');
 
 Route::get('/competitors', 'CompetitorsController@index');
 Route::post('/competitors/store', 'CompetitorsController@store');
