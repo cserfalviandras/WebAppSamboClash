@@ -83,6 +83,44 @@
                             </div>
                         </div>
 
+                        <div class="row pt-3">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label>Hozzáadható mérkőzések</label>
+                                    <div class="pt-3 table-responsive">
+                                        <table id="clashes_table" class="table">
+                                            <thead>
+                                                <th></th>
+                                                <th>Korosztály</th>
+                                                <th>Súlycsoport</th>
+                                                <th>Kezdési idő</th>
+                                                <th>Állapot</th>
+                                            </thead>
+                    
+                                            <tbody>
+                                                @foreach ($clashes as $clash)
+                                                    @include('components.clash_add_row', [
+                                                        'clash_id' => $clash->clash_id,
+                                                        'age_group_id' => $clash->age_group_id, 
+                                                        'weight_cat_id' => $clash->weight_cat_id,
+                                                        'start_time' => $clash->start_time,
+                                                        'clash_status_id' => $clash->clash_status_id
+                                                        ])
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label>A {{ $comp->name }} verseny mérkőzései</label>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Mentés</button>
                     </form>
                 </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\competition;
+use App\clash;
+use App\competition_clashes;
 
 class CompetitionsController extends Controller
 {
@@ -38,6 +40,8 @@ class CompetitionsController extends Controller
     {
         return view('competitions.edit',[
             'comp' => competition::where('comp_id', $comp_id)->firstOrFail(),
+            'clashes' => clash::all(),
+            'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->first()
         ]);
     }
 
@@ -49,16 +53,6 @@ class CompetitionsController extends Controller
                 'start_date' => request('inputCompetitionStartDate'),
                 'end_date' => request('inputCompetitionEndDate')
             ]);
-
-            /*clash::where('clash_id', request('inputClashId'))->update([
-                'age_group_id' => request('inputAgeGroup'),
-                'weight_cat_id' => request('inputWeightCat'),
-                'start_time' => request('inputStartTime'),
-                'end_time' => request('inputEndTime'),
-                'scoreboard_id' => 0,
-                'winner_id' => 0,
-                'clash_status_id' => request('inputStatus')
-            ]);*/
         } catch (\Exception $e) {
             return $e->getMessage();
         }
