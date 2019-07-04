@@ -18,11 +18,13 @@
                                 <th>Megnevezés</th>
                                 <th>Kezdési dátum</th>
                                 <th>Befejezési dátum</th>
+                                <th></th>
                             </thead>
     
                             <tbody>
                                 @foreach ($competitions as $competition)
                                     @include('components.competition_row', [
+                                        'comp_id' => $competition->comp_id,
                                         'name' => $competition->name, 
                                         'start_date' => $competition->start_date,
                                         'end_date' => $competition->end_date
