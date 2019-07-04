@@ -44,6 +44,12 @@ class CompetitionsController extends Controller
     public function update()
     {
         try {
+            competition::where('comp_id', request('inputCompId'))->update([
+                'name' => request('inputCompetitionName'),
+                'start_date' => request('inputCompetitionStartDate'),
+                'end_date' => request('inputCompetitionEndDate')
+            ]);
+
             /*clash::where('clash_id', request('inputClashId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
                 'weight_cat_id' => request('inputWeightCat'),

@@ -17,7 +17,7 @@
                                 id="inputCompId" 
                                 type="hidden" 
                                 class="form-control"
-                                name="inputClashId" 
+                                name="inputCompId" 
                                 value="{{ $comp->comp_id }}" 
                                 required
                                 >
