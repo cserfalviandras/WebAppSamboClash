@@ -55,12 +55,35 @@ class CompetitionsController extends Controller
                 'end_date' => request('inputCompetitionEndDate')
             ]);
 
-            foreach (request('addedClashes') as $addedClash) {
-                competition_clashes::where('comp_id', request('inputCompId'))->updateOrInsert([
-                    'comp_id' => request('inputCompId'),
-                    'clash_id' => $addedClash,
-                    'status_id' => 0
-                ]);
+            if(null !== request('addedClashes')){
+                foreach (request('addedClashes') as $addedClash) {
+                    competition_clashes::where('comp_id', request('inputCompId'))->updateOrInsert([
+                        'comp_id' => request('inputCompId'),
+                        'clash_id' => $addedClash,
+                        'status_id' => 0
+                    ]);
+                }
+            }
+            
+
+            //dd(request('removedClashes'));
+            if(null !== request('removedClashes')){
+                /*$competition_clashes = competition_clashes::where('comp_id', request('inputCompId'))->get();
+                foreach (request('removedClashes') as $removedClash) {
+                    $competition_clashes::where('clash_id', $removedClash)->delete();
+                }
+                */
+                
+                /*foreach (request('removedClashes') as $removedClash) {
+
+                    $competition_clashes = competition_clashes::all();
+                    $clash = $competition_clashes
+                        ->where('comp_id', request('inputCompId'))
+                        ->where('clash_id', $removedClash)
+                        ->first();
+                    $clash->delete();
+                }
+                */
             }
         } catch (\Exception $e) {
             return $e->getMessage();

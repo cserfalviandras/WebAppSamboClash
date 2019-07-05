@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <input type="checkbox" name="addedClashes[]" value="{{$clash_id}}">
+        <input type="checkbox" name="removedClashes[]" value="{{$clash_id}}">
     </td>
     <td>
         @php
