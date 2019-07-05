@@ -47,12 +47,21 @@ class CompetitionsController extends Controller
 
     public function update()
     {
+        //dd(request()->all());
         try {
             competition::where('comp_id', request('inputCompId'))->update([
                 'name' => request('inputCompetitionName'),
                 'start_date' => request('inputCompetitionStartDate'),
                 'end_date' => request('inputCompetitionEndDate')
             ]);
+
+            foreach (request('addedClashes') as $addedClash) {
+                competition_clashes::where('comp_id', request('inputCompId'))->updateOrInsert([
+                    'comp_id' => request('inputCompId'),
+                    'clash_id' => $addedClash,
+                    'status_id' => 0
+                ]);
+            }
         } catch (\Exception $e) {
             return $e->getMessage();
         }
