@@ -116,7 +116,34 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label>A {{ $comp->name }} verseny mérkőzései</label>
-                                    
+                                    <div class="pt-3 table-responsive">
+                                        <table id="clashes_table" class="table">
+                                            <thead>
+                                                <th>Korosztály</th>
+                                                <th>Súlycsoport</th>
+                                                <th>Kezdési idő</th>
+                                                <th>Állapot</th>
+                                                <th></th>
+                                            </thead>
+                    
+                                            <tbody>
+                                                @if(@isset($competitionClashes))
+                                                    @foreach ($competitionClashes as $competition_clash)
+                                                        @php
+                                                            $clash = app\clash::where('clash_id',$competition_clash->clash_id)->first();
+                                                        @endphp
+                                                        @include('components.clash_row', [
+                                                            'clash_id' => $clash->clash_id,
+                                                            'age_group_id' => $clash->age_group_id, 
+                                                            'weight_cat_id' => $clash->weight_cat_id,
+                                                            'start_time' => $clash->start_time,
+                                                            'clash_status_id' => $clash->clash_status_id
+                                                            ])
+                                                    @endforeach
+                                                @endisset
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

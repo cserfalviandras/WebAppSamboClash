@@ -41,7 +41,7 @@ class CompetitionsController extends Controller
         return view('competitions.edit',[
             'comp' => competition::where('comp_id', $comp_id)->firstOrFail(),
             'clashes' => clash::all(),
-            'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->first()
+            'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->get()
         ]);
     }
 
