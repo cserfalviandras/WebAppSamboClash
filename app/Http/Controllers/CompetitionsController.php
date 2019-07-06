@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\competition;
 use App\clash;
 use App\competition_clashes;
+use DB;
 
 class CompetitionsController extends Controller
 {
@@ -47,7 +48,6 @@ class CompetitionsController extends Controller
 
     public function update()
     {
-        //dd(request()->all());
         try {
             competition::where('comp_id', request('inputCompId'))->update([
                 'name' => request('inputCompetitionName'),
@@ -64,27 +64,31 @@ class CompetitionsController extends Controller
                     ]);
                 }
             }
+
             
-
-            //dd(request('removedClashes'));
             if(null !== request('removedClashes')){
-                /*$competition_clashes = competition_clashes::where('comp_id', request('inputCompId'))->get();
-                foreach (request('removedClashes') as $removedClash) {
-                    $competition_clashes::where('clash_id', $removedClash)->delete();
-                }
-                */
-                
-                /*foreach (request('removedClashes') as $removedClash) {
+                foreach(request('removedClashes') as $removeClashId){
+                    $whereArray = array('comp_id' => request('inputCompId'),'clash_id' => $removeClashId);
 
-                    $competition_clashes = competition_clashes::all();
-                    $clash = $competition_clashes
-                        ->where('comp_id', request('inputCompId'))
-                        ->where('clash_id', $removedClash)
-                        ->first();
-                    $clash->delete();
+                    $query = DB::table('competition_clashes');
+                    foreach($whereArray as $field => $value) {
+                        $query->where($field, $value);
+                    }
+                    $query->delete();
                 }
-                */
-            }
+            }  
+
+            /*
+            if(null !== request('removedClashes')){
+                $compClashes = competition_clashes::where('comp_id', request('inputCompId'))->get();
+
+                foreach ($compClashes as $compClash) {
+                    if(in_array($compClash->clash_id, request('removedClashes'))){
+                        $clash = competition_clashes::find($compClash);
+                        dd($clash);
+                    }
+                }
+            }*/
         } catch (\Exception $e) {
             return $e->getMessage();
         }
