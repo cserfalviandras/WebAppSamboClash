@@ -19,11 +19,13 @@
                                 <th>Korosztály</th>
                                 <th>Súlycsoport</th>
                                 <th>Szövetség</th>
+                                <th></th>
                             </thead>
     
                             <tbody>
                                 @foreach ($competitors as $competitor)
                                     @include('components.competitor_row', [
+                                        'comp_id' => $competitor->comp_id,
                                         'name' => $competitor->name, 
                                         'age_group_id' => $competitor->age_group_id,
                                         'weight_cat_id' => $competitor->weight_cat_id,

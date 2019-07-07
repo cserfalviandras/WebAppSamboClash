@@ -19,4 +19,7 @@
             echo $organization_id;
         @endphp
     </td>
+    <td>
+        <a href="{{ route('competitors.edit', [$comp_id], 'edit') }}" class="card-link">Szerkesztés</a>
+    </td>
 </tr>

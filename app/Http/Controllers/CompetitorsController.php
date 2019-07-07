@@ -42,4 +42,16 @@ class CompetitorsController extends Controller
 
         return redirect('success');
     }
+
+    public function edit($comp_id)
+    {
+        return view('competitors.edit',[
+            'comp' => competitor::where('comp_id', $comp_id)->firstOrFail(),
+        ]);
+    }
+
+    public function update()
+    {
+
+    }
 }
