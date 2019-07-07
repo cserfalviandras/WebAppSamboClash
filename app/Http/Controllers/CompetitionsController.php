@@ -76,19 +76,7 @@ class CompetitionsController extends Controller
                     }
                     $query->delete();
                 }
-            }  
-
-            /*
-            if(null !== request('removedClashes')){
-                $compClashes = competition_clashes::where('comp_id', request('inputCompId'))->get();
-
-                foreach ($compClashes as $compClash) {
-                    if(in_array($compClash->clash_id, request('removedClashes'))){
-                        $clash = competition_clashes::find($compClash);
-                        dd($clash);
-                    }
-                }
-            }*/
+            }
         } catch (\Exception $e) {
             return $e->getMessage();
         }
