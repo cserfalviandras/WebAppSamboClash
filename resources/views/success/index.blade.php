@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    $previous = url()->previous();
+@endphp
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -9,8 +12,8 @@
                     <h5 class="card-title">Sikeres mentés</h5>
                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                     <p class="card-text"><p>
-                    <a href="#" class="card-link"></a>
-                    <a href="#" class="card-link"></a>
+                    <a href="{{$previous}}" class="card-link">Vissza</a>
+                    <a href="/" class="card-link">Főoldal</a>
                 </div>
             </div>
         </div>
