@@ -3,48 +3,24 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm">
+        <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Versenyzők</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyzők</h6>
-                    @php
-                        $competitors = App\competitor::all();
-                    @endphp
+                    <h5 class="card-title">Versenyző</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
 
-                    <div class="pt-3 table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <th>Név</th>
-                                <th>Korosztály</th>
-                                <th>Súlycsoport</th>
-                                <th>Szövetség</th>
-                                <th></th>
-                            </thead>
-    
-                            <tbody>
-                                @foreach ($competitors as $competitor)
-                                    @include('components.competitor_row', [
-                                        'comp_id' => $competitor->comp_id,
-                                        'name' => $competitor->name, 
-                                        'age_group_id' => $competitor->age_group_id,
-                                        'weight_cat_id' => $competitor->weight_cat_id,
-                                        'organization_id' => $competitor->organization_id
-                                        ])
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Új versenyző</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Versenyző rögzítése</h6>
-                    <form class="pt-3" action="/competitors/store" enctype="multipart/form-data" method="post">
+                    <form class="pt-3" action="/competitors/update" enctype="multipart/form-data" method="post">
                         @csrf
+                        <div class="form-group">
+                            <input 
+                                id="inputCompId" 
+                                type="hidden" 
+                                class="form-control"
+                                name="inputCompId" 
+                                value="{{ $comp->comp_id }}" 
+                                required
+                                >
+                        </div>
 
                         <div class="form-group">
                             <label for="inputCompetitorName">Név</label>
@@ -53,17 +29,17 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputCompetitorName" 
-                                value="{{ old('inputCompetitorName') }}" 
+                                value="{{ old('inputCompetitorName', $comp->name) }}" 
                                 required
                                 autofocus>
-
+    
                             @error('inputCompetitorName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-
+    
                         <div class="form-group">
                             <label for="inputBirthDate">Születési dátum</label>
                             <input 
@@ -72,7 +48,7 @@
                                 min="1919-01-01"
                                 class="form-control"
                                 name="inputBirthDate" 
-                                value="{{ old('inputBirthDate') }}" 
+                                value="{{ old('inputBirthDate', $comp->birth_date) }}" 
                                 required
                                 autofocus>
 
@@ -90,7 +66,7 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputBirthPlace" 
-                                value="{{ old('inputBirthPlace') }}" 
+                                value="{{ old('inputBirthPlace', $comp->birth_place) }}" 
                                 required
                                 autofocus>
 
@@ -108,7 +84,7 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputMothersMaidenName" 
-                                value="{{ old('inputMothersMaidenName') }}" 
+                                value="{{ old('inputMothersMaidenName', $comp->mother_maiden_name) }}" 
                                 required
                                 autofocus>
 
@@ -118,6 +94,9 @@
                                 </span>
                             @enderror
                         </div>
+                        @php
+                            //dd($comp);
+                        @endphp
 
                         <div class="form-group">
                             <label for="inputWeightCategory">Súlycsoport</label>
@@ -126,7 +105,7 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputWeightCategory" 
-                                value="{{ old('inputWeightCategory') }}" 
+                                value="{{ old('inputWeightCategory',$comp->weight_cat_id) }}" 
                                 required
                                 autofocus>
 
@@ -144,7 +123,7 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputAgeGroup" 
-                                value="{{ old('inputAgeGroup') }}" 
+                                value="{{ old('inputAgeGroup',$comp->age_group_id) }}" 
                                 required
                                 autofocus>
 
@@ -162,7 +141,7 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputOrganization" 
-                                value="{{ old('inputOrganization') }}" 
+                                value="{{ old('inputOrganization',$comp->organization_id) }}" 
                                 required
                                 autofocus>
 

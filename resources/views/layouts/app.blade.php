@@ -50,13 +50,13 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/competitions') }}">Versenyek</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/competitors') }}">Versenyzők</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/clashes') }}">Mérkőzések</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/competitions') }}">Versenyek</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
