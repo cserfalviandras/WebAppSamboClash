@@ -52,6 +52,22 @@ class CompetitorsController extends Controller
 
     public function update()
     {
+        //dd(request()->all());
+        try {
+            competitor::where('comp_id', request('inputCompId'))->update([
+                'age_group_id' => request('inputAgeGroup'),
+                'weight_cat_id' => request('inputWeightCategory'),
+                'organization_id' => request('inputOrganization'),
+                'name' => request('inputCompetitorName'),
+                'birth_date' => request('inputBirthDate'),
+                'birth_place' => request('inputBirthPlace'),
+                'mother_maiden_name' => request('inputMothersMaidenName'),
+                'creator_id' => auth()->user()->id
+            ]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
+        return redirect('success');
     }
 }
