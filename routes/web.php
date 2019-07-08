@@ -41,6 +41,7 @@ Route::post('/clashes/update', 'ClashesController@update');
 Route::get('/profiles/{user}', 'ProfilesController@index');
 
 Route::get('/success', 'AdministratorController@success');
+Route::get('/unsuccess', 'AdministratorController@unsuccess');
 
 // Deletable...
 Route::get('/p/create', 'PostController@create');

@@ -21,4 +21,9 @@ class AdministratorController extends Controller
     {
         return view('success.index');
     }
+
+    public function unsuccess()
+    {
+        return view('unsuccess.index');
+    }
 }
