@@ -1,0 +1,1 @@
+Nézői oldal<?php /**PATH D:\Development\POC_laravel_sambo\WebAppSamboClash_versioned\resources\views/spectator/index.blade.php ENDPATH**/ ?>
