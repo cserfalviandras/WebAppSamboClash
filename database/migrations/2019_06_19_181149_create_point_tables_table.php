@@ -18,7 +18,7 @@ class CreatePointTablesTable extends Migration
             $table->unsignedBigInteger('comp_id');
             $table->integer('current_point');
             $table->integer('point_added');
-            $table->timestamps('moment_of_store');
+            $table->timestamps();
             $table->unsignedBigInteger('user_id');
         });
     }
