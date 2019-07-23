@@ -18,7 +18,7 @@
                                 type="hidden" 
                                 class="form-control"
                                 name="inputCompId" 
-                                value="{{ $comp->comp_id }}" 
+                                value="{{ $comp->id }}" 
                                 required
                                 >
                         </div>

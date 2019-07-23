@@ -14,7 +14,7 @@ class CreateCompetitionsTable extends Migration
     public function up()
     {
         Schema::create('competitions', function (Blueprint $table) {
-            $table->bigIncrements('comp_id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();

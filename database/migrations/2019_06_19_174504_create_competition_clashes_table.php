@@ -14,7 +14,7 @@ class CreateCompetitionClashesTable extends Migration
     public function up()
     {
         Schema::create('competition_clashes', function (Blueprint $table) {
-            $table->unsignedBigInteger('comp_id');
+            $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('clash_id');
             $table->unsignedBigInteger('status_id');
             $table->timestamps();
