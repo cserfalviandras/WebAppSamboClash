@@ -14,7 +14,7 @@ class CreateClashesTable extends Migration
     public function up()
     {
         Schema::create('clashes', function (Blueprint $table) {
-            $table->bigIncrements('clash_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('age_group_id');
             $table->unsignedBigInteger('weight_cat_id');
             $table->unsignedBigInteger('scoreboard_id');

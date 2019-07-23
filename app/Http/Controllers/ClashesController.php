@@ -44,16 +44,16 @@ class ClashesController extends Controller
     public function edit($clash_id)
     {
         return view('clashes.edit',[
-            'clash' => clash::where('clash_id', $clash_id)->firstOrFail(),
+            'clash' => clash::where('id', $clash_id)->firstOrFail(),
             'competitors' => competitor::all(),
-            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
+            'clashCompetitors' => clash_competitors::where('id', $clash_id)->first()
         ]);
     }
 
     public function update()
     {
         try {
-            clash::where('clash_id', request('inputClashId'))->update([
+            clash::where('id', request('inputClashId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
                 'weight_cat_id' => request('inputWeightCat'),
                 'start_time' => request('inputStartTime'),
@@ -68,9 +68,9 @@ class ClashesController extends Controller
 
         if(!empty(request('inputCompetitor_1_id') && !empty(request('inputCompetitor_2_id')))){
             try {
-                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
+                clash_competitors::where('id', request('inputClashId'))->updateOrInsert(
                     [
-                        'clash_id' =>  request('inputClashId'),
+                        'id' =>  request('inputClashId'),
                         'comp_id' => request('inputCompetitor_1_id'),
                         'comp_id_2' => request('inputCompetitor_2_id'),
                         'dress_id' => 0,

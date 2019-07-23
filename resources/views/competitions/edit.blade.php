@@ -100,10 +100,10 @@
                                         @if(@isset($competitionClashes))
                                             @foreach ($competitionClashes as $competition_clash)
                                                 @php
-                                                    $clash = app\clash::where('clash_id',$competition_clash->clash_id)->first();
+                                                    $clash = app\clash::where('id',$competition_clash->id)->first();
                                                 @endphp
                                                 @include('components.clash_remove_row', [
-                                                    'clash_id' => $clash->clash_id,
+                                                    'clash_id' => $clash->id,
                                                     'age_group_id' => $clash->age_group_id, 
                                                     'weight_cat_id' => $clash->weight_cat_id,
                                                     'start_time' => $clash->start_time,
@@ -132,7 +132,7 @@
                                     <tbody>
                                         @foreach ($clashes as $clash)
                                             @include('components.clash_add_row', [
-                                                'clash_id' => $clash->clash_id,
+                                                'clash_id' => $clash->id,
                                                 'age_group_id' => $clash->age_group_id, 
                                                 'weight_cat_id' => $clash->weight_cat_id,
                                                 'start_time' => $clash->start_time,
