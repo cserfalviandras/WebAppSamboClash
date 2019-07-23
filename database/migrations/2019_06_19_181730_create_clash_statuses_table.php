@@ -14,7 +14,7 @@ class CreateClashStatusesTable extends Migration
     public function up()
     {
         Schema::create('clash_statuses', function (Blueprint $table) {
-            $table->bigIncrements('clash_status_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('status_id');
             $table->timestamps();
         });
