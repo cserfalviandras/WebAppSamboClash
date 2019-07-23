@@ -46,7 +46,7 @@ class ClashesController extends Controller
         return view('clashes.edit',[
             'clash' => clash::where('id', $clash_id)->firstOrFail(),
             'competitors' => competitor::all(),
-            'clashCompetitors' => clash_competitors::where('id', $clash_id)->first()
+            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
         ]);
     }
 
@@ -68,7 +68,7 @@ class ClashesController extends Controller
 
         if(!empty(request('inputCompetitor_1_id') && !empty(request('inputCompetitor_2_id')))){
             try {
-                clash_competitors::where('id', request('inputClashId'))->updateOrInsert(
+                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
                     [
                         'id' =>  request('inputClashId'),
                         'comp_id' => request('inputCompetitor_1_id'),
