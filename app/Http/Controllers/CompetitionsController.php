@@ -42,7 +42,7 @@ class CompetitionsController extends Controller
         return view('competitions.edit',[
             'comp' => competition::where('id', $comp_id)->firstOrFail(),
             'clashes' => clash::all(),
-            'competitionClashes' => competition_clashes::where('id', $comp_id)->get()
+            'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->get()
         ]);
     }
 
@@ -57,8 +57,8 @@ class CompetitionsController extends Controller
 
             if(null !== request('addedClashes')){
                 foreach (request('addedClashes') as $addedClash) {
-                    competition_clashes::where('id', request('inputCompId'))->updateOrInsert([
-                        'id' => request('inputCompId'),
+                    competition_clashes::where('comp_id', request('inputCompId'))->updateOrInsert([
+                        'comp_id' => request('inputCompId'),
                         'clash_id' => $addedClash,
                         'status_id' => 0
                     ]);
@@ -68,7 +68,7 @@ class CompetitionsController extends Controller
             
             if(null !== request('removedClashes')){
                 foreach(request('removedClashes') as $removeClashId){
-                    $whereArray = array('id' => request('inputCompId'),'clash_id' => $removeClashId);
+                    $whereArray = array('comp_id' => request('inputCompId'),'clash_id' => $removeClashId);
 
                     $query = DB::table('competition_clashes');
                     foreach($whereArray as $field => $value) {
