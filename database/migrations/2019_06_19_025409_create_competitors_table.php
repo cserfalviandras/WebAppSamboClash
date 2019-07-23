@@ -14,7 +14,7 @@ class CreateCompetitorsTable extends Migration
     public function up()
     {
         Schema::create('competitors', function (Blueprint $table) {
-            $table->bigIncrements('comp_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('age_group_id')->nullable();
             $table->unsignedBigInteger('weight_cat_id')->nullable();
             $table->unsignedBigInteger('organization_id')->nullable();
