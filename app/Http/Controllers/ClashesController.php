@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\clash;
 use App\competitor;
 use App\clash_competitors;
+use Illuminate\Database\Eloquent\Collection;
 
 class ClashesController extends Controller
 {
@@ -66,17 +67,26 @@ class ClashesController extends Controller
             return $e->getMessage();
         }
 
-        if(!empty(request('inputCompetitor_1_id') && !empty(request('inputCompetitor_2_id')))){
+        if(!is_null(request('inputCompetitor_1_id') && !is_null(request('inputCompetitor_2_id')))){
             try {
-                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
-                    [
-                        'id' =>  request('inputClashId'),
-                        'comp_id' => request('inputCompetitor_1_id'),
-                        'comp_id_2' => request('inputCompetitor_2_id'),
-                        'dress_id' => 0,
-                        'dress_id_2' => 1
-                    ]
-                );
+                $clash_current_competitors = clash_competitors::where('clash_id', request('inputClashId'))->first();
+                
+                if ($clash_current_competitors === null) {
+                    $clash_competitors = new clash_competitors;
+
+                    $clash_competitors->clash_id = request('inputClashId');
+                    $clash_competitors->comp_id = request('inputCompetitor_1_id');
+                    $clash_competitors->dress_id = 0;
+                    $clash_competitors->comp_id_2 = request('inputCompetitor_2_id');
+                    $clash_competitors->dress_id_2 = 1;
+
+                    $clash_competitors->save();
+                } else {
+                    $clash_current_competitors->comp_id = request('inputCompetitor_1_id');
+                    $clash_current_competitors->comp_id_2 = request('inputCompetitor_2_id');
+                    
+                    $clash_current_competitors->save();
+                }
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
