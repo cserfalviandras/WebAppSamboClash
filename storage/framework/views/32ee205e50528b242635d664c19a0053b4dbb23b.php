@@ -23,7 +23,7 @@
                             <tbody>
                                 <?php $__currentLoopData = $clashes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $clash): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php echo $__env->make('components.clash_row', [
-                                        'clash_id' => $clash->clash_id,
+                                        'clash_id' => $clash->id,
                                         'age_group_id' => $clash->age_group_id, 
                                         'weight_cat_id' => $clash->weight_cat_id,
                                         'start_time' => $clash->start_time,
