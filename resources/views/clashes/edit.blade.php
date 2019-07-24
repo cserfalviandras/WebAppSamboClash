@@ -58,28 +58,6 @@
                             @enderror
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="inputStartTime">Dátum</label>
-                                    <input 
-                                        id="inputStartTime" 
-                                        type="date" 
-                                        class="form-control"
-                                        name="inputStartTime" 
-                                        value="{{ old('inputStartTime', $clash->start_time) }}" 
-                                        required
-                                        >
-        
-                                    @error('inputStartTime')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="inputStatus">Státusz</label>
                             <input 
