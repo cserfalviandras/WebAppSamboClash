@@ -9,7 +9,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Mérkőzés</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
-
+                    @php
+                        var_dump($clash->start_time);
+                    @endphp
                     <form class="pt-3" action="/clashes/update" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="form-group">
