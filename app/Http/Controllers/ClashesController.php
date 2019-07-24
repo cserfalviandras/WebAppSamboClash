@@ -57,8 +57,6 @@ class ClashesController extends Controller
             clash::where('id', request('inputClashId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
                 'weight_cat_id' => request('inputWeightCat'),
-                'start_time' => request('inputStartTime'),
-                'end_time' => request('inputEndTime'),
                 'scoreboard_id' => 0,
                 'winner_id' => 0,
                 'clash_status_id' => request('inputStatus')
