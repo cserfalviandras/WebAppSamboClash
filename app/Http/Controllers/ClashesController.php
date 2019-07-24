@@ -33,7 +33,7 @@ class ClashesController extends Controller
         $clash->age_group_id = request('inputAgeGroup');
         $clash->weight_cat_id = request('inputWeightCat');
         $clash->start_time = request('inputStartTime');
-        $clash->end_time = request('inputEndTime');
+        //$clash->end_time = request('inputEndTime');
         $clash->scoreboard_id = 0;
         $clash->winner_id = 0;   
         $clash->clash_status_id = 0;
@@ -70,7 +70,7 @@ class ClashesController extends Controller
         if(!is_null(request('inputCompetitor_1_id') && !is_null(request('inputCompetitor_2_id')))){
             try {
                 $clash_current_competitors = clash_competitors::where('clash_id', request('inputClashId'))->first();
-                
+
                 if ($clash_current_competitors === null) {
                     $clash_competitors = new clash_competitors;
 

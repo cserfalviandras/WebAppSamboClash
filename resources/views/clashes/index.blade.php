@@ -17,7 +17,7 @@
                             <thead>
                                 <th>Korosztály</th>
                                 <th>Súlycsoport</th>
-                                <th>Kezdési idő</th>
+                                <th>Dátum</th>
                                 <th>Állapot</th>
                                 <th></th>
                             </thead>
@@ -85,10 +85,10 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="inputStartTime">Kezdési idő</label>
+                                    <label for="inputStartTime">Dátum</label>
                                     <input 
                                         id="inputStartTime" 
-                                        type="datetime-local" 
+                                        type="date" 
                                         class="form-control"
                                         name="inputStartTime" 
                                         value="{{ old('inputStartTime') }}" 
@@ -96,25 +96,6 @@
                                         autofocus>
         
                                     @error('inputStartTime')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="inputEndTime">Befejezési idő</label>
-                                    <input 
-                                        id="inputEndTime" 
-                                        type="datetime-local" 
-                                        class="form-control"
-                                        name="inputEndTime" 
-                                        value="{{ old('inputEndTime') }}" 
-                                        required
-                                        autofocus>
-        
-                                    @error('inputEndTime')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
