@@ -15,7 +15,7 @@
                             <thead>
                                 <th>Korosztály</th>
                                 <th>Súlycsoport</th>
-                                <th>Kezdési idő</th>
+                                <th>Dátum</th>
                                 <th>Állapot</th>
                                 <th></th>
                             </thead>
@@ -91,10 +91,10 @@ endif; ?>
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="inputStartTime">Kezdési idő</label>
+                                    <label for="inputStartTime">Dátum</label>
                                     <input 
                                         id="inputStartTime" 
-                                        type="datetime-local" 
+                                        type="date" 
                                         class="form-control"
                                         name="inputStartTime" 
                                         value="<?php echo e(old('inputStartTime')); ?>" 
@@ -104,29 +104,6 @@ endif; ?>
                                     <?php if ($errors->has('inputStartTime')) :
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('inputStartTime'); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                    <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="inputEndTime">Befejezési idő</label>
-                                    <input 
-                                        id="inputEndTime" 
-                                        type="datetime-local" 
-                                        class="form-control"
-                                        name="inputEndTime" 
-                                        value="<?php echo e(old('inputEndTime')); ?>" 
-                                        required
-                                        autofocus>
-        
-                                    <?php if ($errors->has('inputEndTime')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('inputEndTime'); ?>
                                         <span class="invalid-feedback" role="alert">
                                             <strong><?php echo e($message); ?></strong>
                                         </span>
