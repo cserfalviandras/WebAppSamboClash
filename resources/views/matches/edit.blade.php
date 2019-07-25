@@ -31,7 +31,11 @@
                                     <h5 class="card-title">Ellenfél 1</h5>
                                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                                     <div class="form-group">
-                                        
+                                        @include('components.match_panel', [
+                                            'clash_id' => $clash->id,
+                                            'comp_id' => $clashCompetitors->comp_id,
+                                            'dress_id' => $clashCompetitors->dress_id
+                                            ])
                                     </div>
                                 </div>
                             </div>
@@ -39,10 +43,14 @@
                         <div class="col-sm">
                             <div class="card">
                                 <div class="card-body bg-primary text-white">
-                                    <h5 class="card-title">Ellenfél 2</h5>
+                                     <h5 class="card-title">Ellenfél 2</h5> {{-- {{ App\competitor::where('id', $clashCompetitors->comp_id_2)->first()->name }} --}}
                                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                                     <div class="form-group">
-                                        
+                                        @include('components.match_panel', [
+                                            'clash_id' => $clash->id,
+                                            'comp_id' => $clashCompetitors->comp_id_2,
+                                            'dress_id' => $clashCompetitors->dress_id_2
+                                            ])
                                     </div>
                                 </div>
                             </div>
@@ -53,18 +61,18 @@
                         <div class="col-sm">
                             <div class="row">
                                 <div class="col-sm">
-                                    <button type="" class="btn btn-secondary">Indít</button>
+                                    <button type="" class="btn btn-secondary  btn-block">Indít</button>
                                 </div>
                                 <div class="col-sm">
-                                    <button type="" class="btn btn-secondary">Állj</button>
+                                    <button type="" class="btn btn-secondary  btn-block">Állj</button>
                                 </div>
                                 <div class="col-sm">
-                                    <button type="" class="btn btn-danger">Visszaállít</button>
+                                    <button type="" class="btn btn-danger  btn-block">Visszaállít</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm">
-                            <button type="" class="btn btn-secondary btn-lg">Mérkőzés vége</button>
+                            <button type="" class="btn btn-secondary btn-block">Mérkőzés vége</button>
                         </div>
                     </div>
                 </div>
