@@ -40,7 +40,7 @@ class CompetitionsController extends Controller
     public function edit($comp_id)
     {
         return view('competitions.edit',[
-            'comp' => competition::where('comp_id', $comp_id)->firstOrFail(),
+            'comp' => competition::where('id', $comp_id)->firstOrFail(),
             'clashes' => clash::all(),
             'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->get()
         ]);
@@ -49,7 +49,7 @@ class CompetitionsController extends Controller
     public function update()
     {
         try {
-            competition::where('comp_id', request('inputCompId'))->update([
+            competition::where('id', request('inputCompId'))->update([
                 'name' => request('inputCompetitionName'),
                 'start_date' => request('inputCompetitionStartDate'),
                 'end_date' => request('inputCompetitionEndDate')

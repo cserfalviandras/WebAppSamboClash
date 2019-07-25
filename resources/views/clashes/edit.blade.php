@@ -7,9 +7,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Mérkőzés</h5>
+                    <h5 class="card-title">Mérkőzés, {{ $clash->start_time }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
-
                     <form class="pt-3" action="/clashes/update" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="form-group">
@@ -18,7 +17,7 @@
                                 type="hidden" 
                                 class="form-control"
                                 name="inputClashId" 
-                                value="{{ $clash->clash_id }}" 
+                                value="{{ $clash->id }}" 
                                 required
                                 >
                         </div>
@@ -57,47 +56,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="inputStartTime">Kezdési idő</label>
-                                    <input 
-                                        id="inputStartTime" 
-                                        type="datetime-local" 
-                                        class="form-control"
-                                        name="inputStartTime" 
-                                        value="{{ old('inputStartTime', $clash->start_time) }}" 
-                                        required
-                                        >
-        
-                                    @error('inputStartTime')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="form-group">
-                                    <label for="inputEndTime">Befejezési idő</label>
-                                    <input 
-                                        id="inputEndTime" 
-                                        type="datetime-local" 
-                                        class="form-control"
-                                        name="inputEndTime" 
-                                        value="{{ old('inputEndTime', $clash->end_time) }}" 
-                                        required
-                                        >
-        
-                                    @error('inputEndTime')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
                         </div>
 
                         <div class="form-group">

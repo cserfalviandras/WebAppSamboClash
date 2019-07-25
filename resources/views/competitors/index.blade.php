@@ -25,7 +25,7 @@
                             <tbody>
                                 @foreach ($competitors as $competitor)
                                     @include('components.competitor_row', [
-                                        'comp_id' => $competitor->comp_id,
+                                        'comp_id' => $competitor->id,
                                         'name' => $competitor->name, 
                                         'age_group_id' => $competitor->age_group_id,
                                         'weight_cat_id' => $competitor->weight_cat_id,

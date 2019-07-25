@@ -14,7 +14,7 @@ class CreateSqueezeTimingHeadsTable extends Migration
     public function up()
     {
         Schema::create('squeeze_timing_heads', function (Blueprint $table) {
-            $table->bigIncrements('squeeze_timing_head_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('clash_id');
             $table->unsignedBigInteger('comp_id');
             $table->timestamps();

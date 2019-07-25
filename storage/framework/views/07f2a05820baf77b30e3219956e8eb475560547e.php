@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -8,9 +6,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Versenyek</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyek</h6>
-                    @php
+                    <?php
                         $competitions = App\competition::all();
-                    @endphp
+                    ?>
 
                     <div class="pt-3 table-responsive">
                         <table class="table table-hover">
@@ -22,14 +20,14 @@
                             </thead>
     
                             <tbody>
-                                @foreach ($competitions as $competition)
-                                    @include('components.competition_row', [
-                                        'comp_id' => $competition->id,
+                                <?php $__currentLoopData = $competitions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $competition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php echo $__env->make('components.competition_row', [
+                                        'comp_id' => $competition->comp_id,
                                         'name' => $competition->name, 
                                         'start_date' => $competition->start_date,
                                         'end_date' => $competition->end_date
-                                        ])
-                                @endforeach
+                                        ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                     </div>
@@ -42,7 +40,7 @@
                     <h5 class="card-title">Új verseny</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Verseny rögzítése</h6>
                     <form class="pt-3" action="/competitions/store" enctype="multipart/form-data" method="post">
-                        @csrf
+                        <?php echo csrf_field(); ?>
 
                         <div class="form-group">
                             <label for="inputCompetitionName">Megnevezés</label>
@@ -51,15 +49,19 @@
                                 type="text" 
                                 class="form-control"
                                 name="inputCompetitionName" 
-                                value="{{ old('inputCompetitionName') }}" 
+                                value="<?php echo e(old('inputCompetitionName')); ?>" 
                                 required
                                 autofocus>
 
-                            @error('inputCompetitionName')
+                            <?php if ($errors->has('inputCompetitionName')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('inputCompetitionName'); ?>
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong><?php echo e($message); ?></strong>
                                 </span>
-                            @enderror
+                            <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                         </div>
 
                         <div class="row">
@@ -72,15 +74,19 @@
                                         min="2019-01-01"
                                         class="form-control"
                                         name="inputCompetitionStartDate" 
-                                        value="{{ old('inputCompetitionStartDate') }}" 
+                                        value="<?php echo e(old('inputCompetitionStartDate')); ?>" 
                                         required
                                         autofocus>
         
-                                    @error('inputCompetitionStartDate')
+                                    <?php if ($errors->has('inputCompetitionStartDate')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('inputCompetitionStartDate'); ?>
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong><?php echo e($message); ?></strong>
                                         </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -91,15 +97,19 @@
                                         type="date" 
                                         class="form-control"
                                         name="inputCompetitionEndDate" 
-                                        value="{{ old('inputCompetitionEndDate') }}" 
+                                        value="<?php echo e(old('inputCompetitionEndDate')); ?>" 
                                         required
                                         autofocus>
         
-                                    @error('inputCompetitionEndDate')
+                                    <?php if ($errors->has('inputCompetitionEndDate')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('inputCompetitionEndDate'); ?>
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong><?php echo e($message); ?></strong>
                                         </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -111,4 +121,5 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Development\POC_laravel_sambo\WebAppSamboClash_backup\resources\views/competitions/index.blade.php ENDPATH**/ ?>

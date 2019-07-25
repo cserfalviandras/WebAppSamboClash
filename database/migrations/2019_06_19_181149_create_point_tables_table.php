@@ -14,11 +14,12 @@ class CreatePointTablesTable extends Migration
     public function up()
     {
         Schema::create('point_tables', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('clash_id');
             $table->unsignedBigInteger('comp_id');
             $table->integer('current_point');
             $table->integer('point_added');
-            $table->timestamps('moment_of_store');
+            $table->timestamps();
             $table->unsignedBigInteger('user_id');
         });
     }
