@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\clash;
 use App\competitor;
 use App\clash_competitors;
+use Illuminate\Database\Eloquent\Collection;
 
 class ClashesController extends Controller
 {
@@ -32,7 +33,7 @@ class ClashesController extends Controller
         $clash->age_group_id = request('inputAgeGroup');
         $clash->weight_cat_id = request('inputWeightCat');
         $clash->start_time = request('inputStartTime');
-        $clash->end_time = request('inputEndTime');
+        //$clash->end_time = request('inputEndTime');
         $clash->scoreboard_id = 0;
         $clash->winner_id = 0;   
         $clash->clash_status_id = 0;
@@ -44,7 +45,7 @@ class ClashesController extends Controller
     public function edit($clash_id)
     {
         return view('clashes.edit',[
-            'clash' => clash::where('clash_id', $clash_id)->firstOrFail(),
+            'clash' => clash::where('id', $clash_id)->firstOrFail(),
             'competitors' => competitor::all(),
             'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
         ]);
@@ -53,11 +54,9 @@ class ClashesController extends Controller
     public function update()
     {
         try {
-            clash::where('clash_id', request('inputClashId'))->update([
+            clash::where('id', request('inputClashId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
                 'weight_cat_id' => request('inputWeightCat'),
-                'start_time' => request('inputStartTime'),
-                'end_time' => request('inputEndTime'),
                 'scoreboard_id' => 0,
                 'winner_id' => 0,
                 'clash_status_id' => request('inputStatus')
@@ -66,17 +65,26 @@ class ClashesController extends Controller
             return $e->getMessage();
         }
 
-        if(!empty(request('inputCompetitor_1_id') && !empty(request('inputCompetitor_2_id')))){
+        if(!is_null(request('inputCompetitor_1_id') && !is_null(request('inputCompetitor_2_id')))){
             try {
-                clash_competitors::where('clash_id', request('inputClashId'))->updateOrInsert(
-                    [
-                        'clash_id' =>  request('inputClashId'),
-                        'comp_id' => request('inputCompetitor_1_id'),
-                        'comp_id_2' => request('inputCompetitor_2_id'),
-                        'dress_id' => 0,
-                        'dress_id_2' => 1
-                    ]
-                );
+                $clash_current_competitors = clash_competitors::where('clash_id', request('inputClashId'))->first();
+
+                if ($clash_current_competitors === null) {
+                    $clash_competitors = new clash_competitors;
+
+                    $clash_competitors->clash_id = request('inputClashId');
+                    $clash_competitors->comp_id = request('inputCompetitor_1_id');
+                    $clash_competitors->dress_id = 0;
+                    $clash_competitors->comp_id_2 = request('inputCompetitor_2_id');
+                    $clash_competitors->dress_id_2 = 1;
+
+                    $clash_competitors->save();
+                } else {
+                    $clash_current_competitors->comp_id = request('inputCompetitor_1_id');
+                    $clash_current_competitors->comp_id_2 = request('inputCompetitor_2_id');
+                    
+                    $clash_current_competitors->save();
+                }
             } catch (\Exception $e) {
                 return $e->getMessage();
             }

@@ -1,0 +1,2 @@
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Development\POC_laravel_sambo\WebAppSamboClash_backup\resources\views/administrator/index.blade.php ENDPATH**/ ?>

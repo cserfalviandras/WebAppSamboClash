@@ -14,7 +14,7 @@ class CreateClashTimingHeadsTable extends Migration
     public function up()
     {
         Schema::create('clash_timing_heads', function (Blueprint $table) {
-            $table->bigIncrements('clash_timing_head_id');
+            $table->bigIncrements('id');
             $table->integer('clash_id');
             $table->decimal('start_time', 5, 2);
             $table->timestamps();

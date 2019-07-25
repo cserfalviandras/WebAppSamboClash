@@ -14,7 +14,7 @@ class CreateWeightCategoriesTable extends Migration
     public function up()
     {
         Schema::create('weight_categories', function (Blueprint $table) {
-            $table->bigIncrements('weight_cat_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('age_group_id');
             $table->integer('weight_min');
             $table->integer('weight_max');

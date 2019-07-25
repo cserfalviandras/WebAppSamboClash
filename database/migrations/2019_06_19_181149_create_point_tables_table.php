@@ -14,6 +14,7 @@ class CreatePointTablesTable extends Migration
     public function up()
     {
         Schema::create('point_tables', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('clash_id');
             $table->unsignedBigInteger('comp_id');
             $table->integer('current_point');

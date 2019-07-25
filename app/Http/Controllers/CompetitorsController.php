@@ -46,15 +46,14 @@ class CompetitorsController extends Controller
     public function edit($comp_id)
     {
         return view('competitors.edit',[
-            'comp' => competitor::where('comp_id', $comp_id)->firstOrFail(),
+            'comp' => competitor::where('id', $comp_id)->firstOrFail(),
         ]);
     }
 
     public function update()
     {
-        //dd(request()->all());
         try {
-            competitor::where('comp_id', request('inputCompId'))->update([
+            competitor::where('id', request('inputCompId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
                 'weight_cat_id' => request('inputWeightCategory'),
                 'organization_id' => request('inputOrganization'),
