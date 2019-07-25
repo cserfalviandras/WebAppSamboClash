@@ -20,6 +20,7 @@
                                 <th>Dátum</th>
                                 <th>Állapot</th>
                                 <th></th>
+                                <th></th>
                             </thead>
     
                             <tbody>

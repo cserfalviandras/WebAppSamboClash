@@ -22,4 +22,7 @@
     <td>
         <a href="{{ route('clashes', [$clash_id], 'edit') }}" class="card-link">Szerkesztés</a>
     </td>
+    <td>
+        <a href="{{ route('matches', [$clash_id], 'edit') }}" class="card-link">Indítás</a>
+    </td>
 </tr>
