@@ -6,11 +6,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm">
+                    <div class="my-5 row">
+                        <div class="col-sm text-right font-weight-bold h2">
                             Küzdelem idő
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm h2">
                             05:00
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-3 row">  
+                    <div class="my-5 row">  
                         <div class="col-sm">
                             <div class="row">
                                 <div class="col-sm">
