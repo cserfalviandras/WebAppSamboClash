@@ -41,27 +41,57 @@
                         </div>
                     </div>
 
-                    <div class="my-5 row">  
-                        <div class="col-sm">
-                            <div class="row">
+                    <form>
+                        <div class="my-5 form-group">
+                            <label for="inputStartTime">Idő</label>
+                            <div class="row">  
                                 <div class="col-sm">
-                                    <button type="" class="btn btn-secondary  btn-block">Indít</button>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <button type="" class="btn btn-secondary btn-block btn-submit">Indít</button>
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="" class="btn btn-secondary btn-block">Állj</button>
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="" class="btn btn-danger btn-block">Visszaállít</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-sm">
-                                    <button type="" class="btn btn-secondary  btn-block">Állj</button>
-                                </div>
-                                <div class="col-sm">
-                                    <button type="" class="btn btn-danger  btn-block">Visszaállít</button>
+                                    <button type="" class="btn btn-secondary btn-block">Mérkőzés vége</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm">
-                            <button type="" class="btn btn-secondary btn-block">Mérkőzés vége</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".btn-submit").click(function(e){
+        e.preventDefault();
+        /*var name = $("input[name=name]").val();
+        var password = $("input[name=password]").val();
+        var email = $("input[name=email]").val();*/
+
+        $.ajax({
+           type:'POST',
+           url:'/ajaxRequest',
+           data:{},
+           success:function(data){
+              alert(data.success);
+           }
+        });
+	});
+
+</script>
 @endsection
