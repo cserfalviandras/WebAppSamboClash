@@ -11,7 +11,7 @@
                             Küzdelem idő
                         </div>
                         <div class="col-sm h2">
-                            05:00
+                                <time class="countdown" datetime="P5M"></time>
                         </div>
                     </div>
 
@@ -93,5 +93,8 @@
         });
 	});
 
+    $('div, h1, time').countDown({
+        with_labels: false
+    });
 </script>
 @endsection
