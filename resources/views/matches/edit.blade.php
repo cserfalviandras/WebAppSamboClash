@@ -88,7 +88,11 @@
 
     $(".btn-pause").click(function(e){
         e.preventDefault();
-        $('#match-timer').countDown('pause');
+        var currenttime = $( "#match-timer" ).text();
+        $('#match-timer').countDown('destroy').replaceWith('<time id="match-timer"></time>');
+        var newCountdown = $('#match-timer');
+        newCountdown.attr('datetime', currenttime);
+        $( "#match-timer" ).text( currenttime );
     });
 
     $(".btn-reset").click(function(e){
@@ -97,7 +101,15 @@
         var newCountdown = $('#match-timer');
         newCountdown.attr('datetime', matchtime);
         $( "#match-timer" ).text( matchtime );
+        //resetTimer('#match-timer', matchtime);
     });
+
+    function resetTimer(timerid, startvalue){
+        $(timerid).countDown('destroy').replaceWith('<time id=' + timerid + '></time>');
+        var newCountdown = $(timerid);
+        newCountdown.attr('datetime', startvalue);
+        $(timerid).text( startvalue );
+    }
     
 </script>
 @endsection
