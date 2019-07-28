@@ -11,8 +11,8 @@
                             Küzdelem idő
                         </div>
                         <div class="col-sm h2">
-                                <time class="countdown" datetime="P5M"></time>
-                        </div>
+                            <time id="match-timer" class="countdown" datetime="P5M">00:05:00</time>
+                        </div>                      
                     </div>
 
                     <div class="row">
@@ -48,18 +48,18 @@
                                 <div class="col-sm">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <button type="" class="btn btn-secondary btn-block btn-submit">Indít</button>
+                                            <button class="btn btn-secondary btn-block btn-start">Indít</button>
                                         </div>
                                         <div class="col-sm">
-                                            <button type="" class="btn btn-secondary btn-block">Állj</button>
+                                            <button class="btn btn-secondary btn-block btn-pause">Állj</button>
                                         </div>
                                         <div class="col-sm">
-                                            <button type="" class="btn btn-danger btn-block">Visszaállít</button>
+                                            <button class="btn btn-danger btn-block btn-reset">Visszaállít</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <button type="" class="btn btn-secondary btn-block">Mérkőzés vége</button>
+                                    <button class="btn btn-secondary btn-block">Mérkőzés vége</button>
                                 </div>
                             </div>
                         </div>
@@ -71,30 +71,33 @@
 </div>
 
 <script type="text/javascript">
+    var matchtime = "00:05:00";
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    $(".btn-submit").click(function(e){
+    $(".btn-start").click(function(e){
         e.preventDefault();
-        /*var name = $("input[name=name]").val();
-        var password = $("input[name=password]").val();
-        var email = $("input[name=email]").val();*/
-
-        $.ajax({
-           type:'POST',
-           url:'/ajaxRequest',
-           data:{},
-           success:function(data){
-              alert(data.success);
-           }
+        $('#match-timer').countDown({
+            with_labels: false
         });
-	});
-
-    $('div, h1, time').countDown({
-        with_labels: false
     });
+
+    $(".btn-pause").click(function(e){
+        e.preventDefault();
+        $('#match-timer').countDown('pause');
+    });
+
+    $(".btn-reset").click(function(e){
+        e.preventDefault();
+        $('#match-timer').countDown('destroy').replaceWith('<time id="match-timer"></time>');
+        var newCountdown = $('#match-timer');
+        newCountdown.attr('datetime', matchtime);
+        $( "#match-timer" ).text( matchtime );
+    });
+    
 </script>
 @endsection
