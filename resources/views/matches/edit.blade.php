@@ -7,12 +7,20 @@
             <div class="card">
                 <div class="card-body">
                     <div class="my-5 row">
-                        <div class="col-sm text-right font-weight-bold h2">
+                        <div class="col-sm-6 text-right font-weight-bold h2">
                             Küzdelem idő
                         </div>
-                        <div class="col-sm h2">
+                        <div class="col-sm-2 h2">
                             <time id="match-timer" class="countdown" datetime="P5M">00:05:00</time>
-                        </div>                      
+                        </div>  
+                        <div class="col-sm-2">
+                            <select id="match-time-selector" class="custom-select custom-select-sm">
+                                <option selected>Mérkőzés időhossza</option>
+                                <option value="00:05:00">5 perc</option>
+                                <option value="00:04:00">4 perc</option>
+                                <option value="00:03:00">3 perc</option>
+                            </select>                                   
+                        </div>                     
                     </div>
 
                     <div class="row">
@@ -77,6 +85,11 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    $("#match-time-selector").on('change', function() {
+        matchtime = this.value;
+        resetTimer('match-timer', matchtime);
     });
 
     $(".btn-start").click(function(e){
