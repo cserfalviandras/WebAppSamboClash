@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <button class="btn btn-secondary btn-block">Mérkőzés vége</button>
+                                    {{-- <button class="btn btn-secondary btn-block">Mérkőzés vége</button> --}}
                                 </div>
                             </div>
                         </div>
