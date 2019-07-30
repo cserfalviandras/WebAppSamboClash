@@ -35,6 +35,7 @@
                     <div class="row">
                         <div class="col-sm">
                             @include('components.match_panel', [
+                                'panel_id' => 0,
                                 'clash_id' => $clash->id,
                                 'comp_id' => $clashCompetitors->comp_id,
                                 'dress_id' => $clashCompetitors->dress_id
@@ -42,6 +43,7 @@
                         </div>
                         <div class="col-sm">
                             @include('components.match_panel', [
+                                'panel_id' => 1,
                                 'clash_id' => $clash->id,
                                 'comp_id' => $clashCompetitors->comp_id_2,
                                 'dress_id' => $clashCompetitors->dress_id_2
@@ -79,6 +81,98 @@
 </div>
 
 <script type="text/javascript">
+    // ------------------------------------------------------------
+    // Point handling
+    // ------------------------------------------------------------
+
+    // Button functions
+    $("#btn-addpoint-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-removepoint-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-addpunishment-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-removepunishment-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-startsqueeze-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-stopsqueeze-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-startspan-0").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-stopspan-0").click(function(e){
+        alert(this.id)
+    });
+
+
+    $("#btn-addpoint-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-removepoint-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-addpunishment-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-removepunishment-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-startsqueeze-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-stopsqueeze-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-startspan-1").click(function(e){
+        alert(this.id)
+    });
+
+    $("#btn-stopspan-1").click(function(e){
+        alert(this.id)
+    });
+
+    
+
+    
+
+
+    
+
+
+    // Basic functions
+    function addPoint(clash_id, competitor_id, point){
+        $.ajax({
+            type:'POST',
+            url:'/ajaxRequest',
+            data:{},
+            success:function(data){
+                alert(data.success);
+            }
+        });
+    }
+    // ------------------------------------------------------------
+    // Timer
+    // ------------------------------------------------------------
     var matchtime = "00:05:00";
 
     $.ajaxSetup({
