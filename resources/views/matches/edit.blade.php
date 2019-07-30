@@ -82,16 +82,22 @@
 
 <script type="text/javascript">
     // ------------------------------------------------------------
-    // Point handling
+    // Variables
     // ------------------------------------------------------------
+    var clash_id = '{{$clash->id}}';
+    var competitor_id = '{{$clashCompetitors->comp_id}}';
+    var competitor_id_2 = '{{$clashCompetitors->comp_id_2}}';
 
+
+    // ------------------------------------------------------------
     // Button functions
+    // ------------------------------------------------------------
     $("#btn-addpoint-0").click(function(e){
-        alert(this.id)
+        addPoint(clash_id, competitor_id, "1");
     });
 
     $("#btn-removepoint-0").click(function(e){
-        alert(this.id)
+        addPoint(clash_id, competitor_id, "-1");
     });
 
     $("#btn-addpunishment-0").click(function(e){
@@ -120,11 +126,11 @@
 
 
     $("#btn-addpoint-1").click(function(e){
-        alert(this.id)
+        addPoint(clash_id, competitor_id_2, "1");
     });
 
     $("#btn-removepoint-1").click(function(e){
-        alert(this.id)
+        addPoint(clash_id, competitor_id_2, "-1");
     });
 
     $("#btn-addpunishment-1").click(function(e){
@@ -151,22 +157,20 @@
         alert(this.id)
     });
 
-    
-
-    
-
-
-    
-
 
     // Basic functions
     function addPoint(clash_id, competitor_id, point){
+        //alert(clash_id+", "+competitor_id+", "+point);
         $.ajax({
             type:'POST',
             url:'/ajaxRequest',
-            data:{},
+            data:{
+                clash_id: clash_id, 
+                competitor_id: competitor_id, 
+                point: point
+            },
             success:function(data){
-                alert(data.success);
+                alert("ajax request");
             }
         });
     }
