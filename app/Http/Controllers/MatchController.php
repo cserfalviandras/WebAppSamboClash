@@ -42,7 +42,14 @@ class MatchController extends Controller
      */
     public function ajaxRequestPost(Request $request)
     {
-        $input = $request->all();
-        return response()->json(['success'=>'Got Simple Ajax Request.']);
+        $clash_id = $request->input('clash_id');
+        $competitor_id = $request->input('competitor_id');
+        $point = $request->input('point');
+
+        return response()->json([
+            'clash_id' => "$clash_id",
+            'competitor_id'=>"$competitor_id",
+            'point' => "$point"
+        ]);
     }
 }

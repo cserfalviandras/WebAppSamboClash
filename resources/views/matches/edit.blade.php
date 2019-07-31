@@ -93,6 +93,7 @@
     // Button functions
     // ------------------------------------------------------------
     $("#btn-addpoint-0").click(function(e){
+        e.preventDefault();
         addPoint(clash_id, competitor_id, "1");
     });
 
@@ -165,12 +166,12 @@
             type:'POST',
             url:'/ajaxRequest',
             data:{
-                clash_id: clash_id, 
-                competitor_id: competitor_id, 
-                point: point
+                clash_id:clash_id, 
+                competitor_id:competitor_id, 
+                point:point
             },
             success:function(data){
-                alert("ajax request");
+                alert(data.clash_id + ", " + data.competitor_id + ", " + data.point);
             }
         });
     }
