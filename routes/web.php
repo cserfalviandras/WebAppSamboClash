@@ -40,8 +40,8 @@ Route::post('/clashes/update', 'ClashesController@update');
 
 Route::get('/matches/{clash_id}/edit', 'MatchController@edit')->name('matches');
 
-Route::get('ajaxRequest', 'MatchController@ajaxRequest');
-Route::post('ajaxRequest', 'MatchController@ajaxRequestPost');
+//Route::get('ajaxRequest', 'MatchController@ajaxRequest');
+Route::post('addPoint', 'MatchController@addPoint');
 
 Route::get('/profiles/{user}', 'ProfilesController@index');
 

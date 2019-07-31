@@ -40,7 +40,7 @@ class MatchController extends Controller
      *
      * @return void
      */
-    public function ajaxRequestPost(Request $request)
+    public function addPoint(Request $request)
     {
         $clash_id = $request->input('clash_id');
         $competitor_id = $request->input('competitor_id');

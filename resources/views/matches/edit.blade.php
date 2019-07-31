@@ -164,7 +164,7 @@
         //alert(clash_id+", "+competitor_id+", "+point);
         $.ajax({
             type:'POST',
-            url:'/ajaxRequest',
+            url:'/addPoint',
             data:{
                 clash_id:clash_id, 
                 competitor_id:competitor_id, 
