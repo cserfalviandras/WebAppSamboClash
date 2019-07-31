@@ -22,18 +22,6 @@ class MatchController extends Controller
             'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
         ]);
     }
-
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function ajaxRequest()
-    {
-        return view('ajaxRequest');
-    }
-
    
     /**
      * Create a new controller instance.
@@ -50,6 +38,24 @@ class MatchController extends Controller
             'clash_id' => "$clash_id",
             'competitor_id'=>"$competitor_id",
             'point' => "$point"
+        ]);
+    }
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function addPunishment(Request $request)
+    {
+        $clash_id = $request->input('clash_id');
+        $competitor_id = $request->input('competitor_id');
+        $punishment = $request->input('punishment');
+
+        return response()->json([
+            'clash_id' => "$clash_id",
+            'competitor_id'=>"$competitor_id",
+            'punishment' => "$punishment"
         ]);
     }
 }

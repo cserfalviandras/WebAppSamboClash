@@ -93,7 +93,6 @@
     // Button functions
     // ------------------------------------------------------------
     $("#btn-addpoint-0").click(function(e){
-        e.preventDefault();
         addPoint(clash_id, competitor_id, "1");
     });
 
@@ -102,11 +101,11 @@
     });
 
     $("#btn-addpunishment-0").click(function(e){
-        alert(this.id)
+        addPunishment(clash_id, competitor_id, "1");
     });
 
     $("#btn-removepunishment-0").click(function(e){
-        alert(this.id)
+        addPunishment(clash_id, competitor_id, "-1");
     });
 
     $("#btn-startsqueeze-0").click(function(e){
@@ -135,11 +134,11 @@
     });
 
     $("#btn-addpunishment-1").click(function(e){
-        alert(this.id)
+        addPunishment(clash_id, competitor_id_2, "1");
     });
 
     $("#btn-removepunishment-1").click(function(e){
-        alert(this.id)
+        addPunishment(clash_id, competitor_id_2, "-1");
     });
 
     $("#btn-startsqueeze-1").click(function(e){
@@ -161,7 +160,6 @@
 
     // Basic functions
     function addPoint(clash_id, competitor_id, point){
-        //alert(clash_id+", "+competitor_id+", "+point);
         $.ajax({
             type:'POST',
             url:'/addPoint',
@@ -171,7 +169,22 @@
                 point:point
             },
             success:function(data){
-                alert(data.clash_id + ", " + data.competitor_id + ", " + data.point);
+                alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
+            }
+        });
+    }
+
+    function addPunishment(clash_id, competitor_id, punishment){
+        $.ajax({
+            type:'POST',
+            url:'/addPunishment',
+            data:{
+                clash_id:clash_id, 
+                competitor_id:competitor_id, 
+                punishment:punishment
+            },
+            success:function(data){
+                alert("Punisment: " + data.clash_id + ", " + data.competitor_id + ", " + data.punishment);
             }
         });
     }
