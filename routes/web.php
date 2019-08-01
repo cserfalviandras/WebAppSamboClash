@@ -38,6 +38,11 @@ Route::post('/clashes/store', 'ClashesController@store');
 Route::get('/clashes/{clash_id}/edit', 'ClashesController@edit')->name('clashes');
 Route::post('/clashes/update', 'ClashesController@update');
 
+Route::get('/matches/{clash_id}/edit', 'MatchController@edit')->name('matches');
+
+Route::post('addPoint', 'MatchController@addPoint');
+Route::post('addPunishment', 'MatchController@addPunishment');
+
 Route::get('/profiles/{user}', 'ProfilesController@index');
 
 Route::get('/success', 'AdministratorController@success');
