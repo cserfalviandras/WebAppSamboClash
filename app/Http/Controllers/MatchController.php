@@ -23,6 +23,14 @@ class MatchController extends Controller
             'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
         ]);
     }
+
+    public function show($clash_id)
+    {
+        return view('matches.show',[
+            'clash' => clash::where('id', $clash_id)->firstOrFail(),
+            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
+        ]);
+    }
    
     /**
      * Create a new controller instance.
