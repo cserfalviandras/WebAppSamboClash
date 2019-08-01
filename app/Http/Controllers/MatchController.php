@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\clash;
 use App\clash_competitors;
+use App\point_table;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -33,6 +34,21 @@ class MatchController extends Controller
         $clash_id = $request->input('clash_id');
         $competitor_id = $request->input('competitor_id');
         $point = $request->input('point');
+
+
+        try {
+            $point_table = new point_table();
+            $point_table->clash_id = $clash_id;
+            $point_table->comp_id = $competitor_id;
+            $point_table->current_point = 0;
+            $point_table->point_added = $point;
+            $point_table->user_id = 1;
+
+            $point_table->save();
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
 
         return response()->json([
             'clash_id' => "$clash_id",
