@@ -16,8 +16,8 @@
                         @include('components.match_panel_spectator', [
                             'panel_id' => 0,
                             'clash_id' => $clash->id,
-                            'comp_id' => $clashCompetitors->comp_id,
-                            'dress_id' => $clashCompetitors->dress_id
+                            'comp_id' => $clashCompetitors->comp_id_2,
+                            'dress_id' => $clashCompetitors->dress_id_2
                             ])
                     </div>
                 </div>
