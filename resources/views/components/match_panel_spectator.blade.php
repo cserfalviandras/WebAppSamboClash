@@ -8,7 +8,7 @@
             <h5 class="card-title">{{$competitor_name}}</h5>
             <h6 class="card-subtitle mb-2 text-white">Egyesület</h6>
 
-            <p class="card-text"></p>
+            <p id={{"point_field-".$dress_id}}></p>
         </div>
     </div>
 </div>

@@ -10,11 +10,7 @@ use App\Http\Controllers\Controller;
 
 class MatchController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth');
-        // $this->middleware('role:admin');
-    }
+    public function __construct(){}
 
     public function edit($clash_id)
     {
@@ -31,12 +27,7 @@ class MatchController extends Controller
             'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
         ]);
     }
-   
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function addPoint(Request $request)
     {
         $clash_id = $request->input('clash_id');
@@ -65,11 +56,6 @@ class MatchController extends Controller
         ]);
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function addPunishment(Request $request)
     {
         $clash_id = $request->input('clash_id');
@@ -80,6 +66,27 @@ class MatchController extends Controller
             'clash_id' => "$clash_id",
             'competitor_id'=>"$competitor_id",
             'punishment' => "$punishment"
+        ]);
+    }
+
+    public function getPoints(Request $request)
+    {
+        $clash_id = $request->input('clash_id');
+        $competitor_id = $request->input('competitor_id');
+
+        $sumPoints = 0;
+
+        try {
+            $sumPoints = point_table::where([
+                ['clash_id', '=', $clash_id],
+                ['comp_id', '=', $competitor_id]
+            ])->sum('point_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return response()->json([
+            'sum' => "$sumPoints"
         ]);
     }
 }
