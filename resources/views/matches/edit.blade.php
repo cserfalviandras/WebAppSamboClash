@@ -169,7 +169,7 @@
                 point:point
             },
             success:function(data){
-                alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
+                //alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
             }
         });
     }
