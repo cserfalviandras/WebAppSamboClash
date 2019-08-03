@@ -158,7 +158,7 @@
     });
 
 
-    // Basic functions
+    // Ajax functions
     function addPoint(clash_id, competitor_id, point){
         $.ajax({
             type:'POST',
@@ -169,7 +169,7 @@
                 point:point
             },
             success:function(data){
-                alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
+                //alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
             }
         });
     }
@@ -188,6 +188,22 @@
             }
         });
     }
+
+    function saveClashTime(clash_id, timevalue){
+        $.ajax({
+            type:'POST',
+            url:'/saveClashTime',
+            data:{
+                clash_id:clash_id, 
+                time_value:timevalue, 
+            },
+            success:function(data){
+                
+            }
+        });
+    }
+
+
     // ------------------------------------------------------------
     // Timer
     // ------------------------------------------------------------
@@ -197,6 +213,11 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    $('#match-timer').on('time.tick', function (ev, ms) {
+        var timevalue = $("#match-timer").text();
+        saveClashTime(clash_id, timevalue);
     });
 
     $("#match-time-selector").on('change', function() {

@@ -38,10 +38,16 @@ Route::post('/clashes/store', 'ClashesController@store');
 Route::get('/clashes/{clash_id}/edit', 'ClashesController@edit')->name('clashes');
 Route::post('/clashes/update', 'ClashesController@update');
 
-Route::get('/matches/{clash_id}/edit', 'MatchController@edit')->name('matches');
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/matches/{clash_id}/edit', 'MatchController@edit')->name('matchedit');
+});
+Route::get('/matches/{clash_id}/show', 'MatchController@show')->name('matches');
 
 Route::post('addPoint', 'MatchController@addPoint');
 Route::post('addPunishment', 'MatchController@addPunishment');
+Route::get('getPoints', 'MatchController@getPoints');
+Route::post('saveClashTime', 'MatchController@saveClashTime');
+Route::get('getClashTime', 'MatchController@getClashTime');
 
 Route::get('/profiles/{user}', 'ProfilesController@index');
 
