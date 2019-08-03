@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\clash;
-use App\clash_competitors;
-use App\point_table;
 use App\clashtiming;
+use App\point_table;
+use App\clash_competitors;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -91,16 +91,26 @@ class MatchController extends Controller
         ]);
     }
 
-    public function saveClashTime()
+    public function saveClashTime(Request $request)
     {
         $clash_id = $request->input('clash_id');
         $time_value = $request->input('time_value');
 
         try {
-            clashtiming::where('clash_id', $clash_id)->updateOrInsert([
-                'clash_id' => $clash_id,
-                'timevalue' => $time_value,
-            ]);
+            $clash_current_timings = clashtiming::where('clash_id', $clash_id)->first();
+
+            if ($clash_current_timings === null) {
+                $clashtiming = new clashtiming;
+
+                $clashtiming->clash_id = $clash_id;
+                $clashtiming->timevalue = $time_value;
+
+                $clashtiming->save();
+            } else {
+                $clash_current_timings->timevalue = $time_value;
+                
+                $clash_current_timings->save();
+            }
         } catch (\Exception $e) {
             return $e->getMessage();
         }
