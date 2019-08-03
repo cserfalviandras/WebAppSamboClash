@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\clash;
 use App\clash_competitors;
 use App\point_table;
+use App\clashtiming;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -88,5 +89,20 @@ class MatchController extends Controller
         return response()->json([
             'sum' => "$sumPoints"
         ]);
+    }
+
+    public function saveClashTime()
+    {
+        $clash_id = $request->input('clash_id');
+        $time_value = $request->input('time_value');
+
+        try {
+            clashtiming::where('clash_id', $clash_id)->updateOrInsert([
+                'clash_id' => $clash_id,
+                'timevalue' => $time_value,
+            ]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
