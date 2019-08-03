@@ -158,7 +158,7 @@
     });
 
 
-    // Basic functions
+    // Ajax functions
     function addPoint(clash_id, competitor_id, point){
         $.ajax({
             type:'POST',
@@ -188,6 +188,22 @@
             }
         });
     }
+
+    function saveClashTime(clash_id, timevalue){
+        $.ajax({
+            type:'POST',
+            url:'/saveClashTime',
+            data:{
+                clash_id:clash_id, 
+                time_value:timevalue, 
+            },
+            success:function(data){
+                
+            }
+        });
+    }
+
+
     // ------------------------------------------------------------
     // Timer
     // ------------------------------------------------------------
@@ -201,6 +217,7 @@
 
     $('#match-timer').on('time.tick', function (ev, ms) {
         var timevalue = $("#match-timer").text();
+        saveClashTime(clash_id, timevalue);
     });
 
     $("#match-time-selector").on('change', function() {
