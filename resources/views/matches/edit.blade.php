@@ -199,6 +199,10 @@
         }
     });
 
+    $('#match-timer').on('time.tick', function (ev, ms) {
+        var timevalue = $("#match-timer").text();
+    });
+
     $("#match-time-selector").on('change', function() {
         matchtime = this.value;
         resetTimer('match-timer', matchtime);

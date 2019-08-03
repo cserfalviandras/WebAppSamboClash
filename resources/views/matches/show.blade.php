@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="my-5 col">
+                        <div id="time_field" class="row"></div>
+
                         @include('components.match_panel_spectator', [
                             'panel_id' => 0,
                             'clash_id' => $clash->id,
@@ -41,7 +43,7 @@
     window.setInterval(function(){
         getPoints(clash_id, competitor_id, "#point_field-0");
         getPoints(clash_id, competitor_id_2, "#point_field-1");
-    }, 1000);
+    }, 2000);
 
     function getPoints(clash_id, competitor_id, point_field_id){
         $.ajax({
