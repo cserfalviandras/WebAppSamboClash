@@ -115,4 +115,21 @@ class MatchController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function getClashTime(Request $request)
+    {
+        $clash_id = $request->input('clash_id');
+
+        $clash_current_time = 0;
+
+        try {
+            $clash_current_time = clashtiming::where('clash_id', $clash_id)->first()->timevalue;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return response()->json([
+            'clash_current_time' => "$clash_current_time"
+        ]);
+    }
 }

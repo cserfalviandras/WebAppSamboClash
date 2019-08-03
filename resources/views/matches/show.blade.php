@@ -43,6 +43,7 @@
     window.setInterval(function(){
         getPoints(clash_id, competitor_id, "#point_field-0");
         getPoints(clash_id, competitor_id_2, "#point_field-1");
+        getClashTime(clash_id, "#time_field")
     }, 2000);
 
     function getPoints(clash_id, competitor_id, point_field_id){
@@ -55,6 +56,20 @@
             },
             success:function(data){
                 $(point_field_id).first().text(data.sum);
+            }
+        });
+    }
+
+    function getClashTime(clash_id, time_field_id){
+        $.ajax({
+            type:'GET',
+            url:'/getClashTime',
+            data:{
+                clash_id:clash_id, 
+                competitor_id:competitor_id, 
+            },
+            success:function(data){
+                $(time_field_id).first().text(data.clash_current_time);
             }
         });
     }
