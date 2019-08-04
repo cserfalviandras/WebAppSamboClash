@@ -215,10 +215,15 @@
         }
     });
 
-    $('#match-timer').on('time.tick', function (ev, ms) {
+    /*$('#match-timer').on('time.tick', function (ev, ms) {
         var timevalue = $("#match-timer").text();
         saveClashTime(clash_id, timevalue);
-    });
+    });*/
+
+    window.setInterval(function(){
+        var timevalue = $("#match-timer").text();
+        saveClashTime(clash_id, timevalue);
+    }, 2000);
 
     $("#match-time-selector").on('change', function() {
         matchtime = this.value;
