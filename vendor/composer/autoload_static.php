@@ -426,6 +426,7 @@ class ComposerStaticInit3d14d4bcef261cfd7c47fbf6c6a90c37
         'App\\clash_status' => __DIR__ . '/../..' . '/app/clash_status.php',
         'App\\clash_timing_body' => __DIR__ . '/../..' . '/app/clash_timing_body.php',
         'App\\clash_timing_head' => __DIR__ . '/../..' . '/app/clash_timing_head.php',
+        'App\\clashtiming' => __DIR__ . '/../..' . '/app/clashtiming.php',
         'App\\competition' => __DIR__ . '/../..' . '/app/competition.php',
         'App\\competition_clashes' => __DIR__ . '/../..' . '/app/competition_clashes.php',
         'App\\competitor' => __DIR__ . '/../..' . '/app/competitor.php',

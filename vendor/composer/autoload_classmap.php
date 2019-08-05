@@ -45,6 +45,7 @@ return array(
     'App\\clash_status' => $baseDir . '/app/clash_status.php',
     'App\\clash_timing_body' => $baseDir . '/app/clash_timing_body.php',
     'App\\clash_timing_head' => $baseDir . '/app/clash_timing_head.php',
+    'App\\clashtiming' => $baseDir . '/app/clashtiming.php',
     'App\\competition' => $baseDir . '/app/competition.php',
     'App\\competition_clashes' => $baseDir . '/app/competition_clashes.php',
     'App\\competitor' => $baseDir . '/app/competitor.php',
