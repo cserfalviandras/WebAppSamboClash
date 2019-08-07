@@ -12,7 +12,7 @@
                 <div class="col-md-3">
                     <div class="row mx-5 h-100">
                         <div class="col-sm-12 my-auto text-center font-weight-bold">
-                        <div class="text-dark bg-warning rounded" style="font-size:4rem !important;">{{$dress_id+1}}</div>
+                        <div class="text-dark bg-warning rounded" style="font-size:4rem !important; min-width:60px;">{{$dress_id+1}}</div>
                         </div>
                     </div>
                 </div>
