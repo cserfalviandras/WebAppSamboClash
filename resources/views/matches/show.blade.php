@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.spectator')
 
 @section('content')
 <div class="container">
@@ -6,8 +6,12 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="my-5 col">
-                        <div id="time_field" class="row"></div>
+                    <div class="my-5 w-100 col">
+                        <div class="row h-100" style="z-index:100; position: absolute;">
+                            <div class="col w-100 my-auto">
+                                <div id="time_field" class="text-warning font-weight-bold" style="font-size: 9vw"></div>
+                            </div>
+                        </div>                  
 
                         @include('components.match_panel_spectator', [
                             'panel_id' => 0,
