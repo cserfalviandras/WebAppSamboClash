@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -60,14 +59,16 @@
 
                         <div class="form-group">
                             <label for="inputStatus">Státusz</label>
-                            <input 
-                                id="inputStatus" 
-                                type="text" 
-                                class="form-control"
-                                name="inputStatus" 
-                                value="{{ old('inputStatus', $clash->clash_status_id) }}" 
-                                required
-                                >
+                            @php
+                                $tempStatusId = $clash->clash_status_id ? $clash->clash_status_id-1 : null;
+                            @endphp
+                            <select class="form-control" name="inputStatus">
+                                @foreach ($clash_statuses as $key => $value)
+                                    <option value="{{ $key }}" {{ $tempStatusId == $key ? 'selected' : ''}}> 
+                                        {{ $value->name }}
+                                    </option>
+                                @endforeach    
+                            </select>
 
                             @error('inputStatus')
                                 <span class="invalid-feedback" role="alert">
