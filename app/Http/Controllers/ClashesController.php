@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\clash;
+use App\status;
 use App\competitor;
 use App\clash_competitors;
 use Illuminate\Database\Eloquent\Collection;
@@ -18,7 +19,19 @@ class ClashesController extends Controller
 
     public function index()
     {
-        return view('clashes.index');
+        return view('clashes.index',[
+            'clashes' => clash::all()->each(
+                [
+                    $this,
+                    'getNamesForStatuses'
+                ]
+            )
+        ]);
+    }
+
+    public function getNamesForStatuses(clash $clash)
+    {
+        $clash->clash_status_id = isset($clash->clash_status_id) ?  $clash->clash_status_id = status::where('id', $clash->clash_status_id)->first()->name : null;
     }
 
     public function store()
