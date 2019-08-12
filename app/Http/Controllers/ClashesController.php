@@ -49,7 +49,7 @@ class ClashesController extends Controller
         //$clash->end_time = request('inputEndTime');
         $clash->scoreboard_id = 0;
         $clash->winner_id = 0;   
-        $clash->clash_status_id = 0;
+        $clash->clash_status_id = 1;
         $clash->save();
 
         return redirect('success');
