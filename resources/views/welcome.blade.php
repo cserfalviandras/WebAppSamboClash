@@ -62,6 +62,9 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -84,9 +87,25 @@
                     SAMBO
                 </div>
 
-                <div class="links">
-                    <a href="{{ url('/spectator') }}">Nézői oldal</a>
-                    <a href="{{ url('/administrator') }}">Adminisztrátori oldal</a>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Nézői oldal</h5>
+                                <p class="card-text">Még el nem kezdett, folyamatban lévő és már befejeződött mérkőzések megtekintése. A felületek eléréséhez nem szükséges regisztráció.</p>
+                                <a href="{{ url('/spectator') }}" class="btn btn-primary mt-auto">Belépés</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Adminisztrátori oldal</h5>
+                                <p class="card-text">Versenyek, mérkőzések és versenyzők teljeskörű adminisztrációja, valamint az egyes mérkőzések levezetése. Használatához regisztráció és <b>adminisztrátori jogosultság szükséges</b>.</p>
+                                <a href="{{ url('/administrator') }}" class="btn btn-dark mt-auto">Belépés</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
