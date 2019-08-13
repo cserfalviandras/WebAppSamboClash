@@ -50,6 +50,9 @@
                             <?php endif; ?>
                         <?php else: ?>
                             <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(url('/administrator')); ?>">Adminisztrator - kezdőlap</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(url('/competitors')); ?>">Versenyzők</a>
                             </li>
                             <li class="nav-item">

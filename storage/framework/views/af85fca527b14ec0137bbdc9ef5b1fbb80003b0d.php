@@ -87,8 +87,6 @@
                     SAMBO
                 </div>
 
-                
-
                 <div class="row justify-content-md-center">
                     <div class="col-sm-3">
                         <div class="card h-100">
