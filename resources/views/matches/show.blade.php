@@ -1,32 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.spectator')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="my-5 col">
-                        <div id="time_field" class="row"></div>
-
-                        @include('components.match_panel_spectator', [
-                            'panel_id' => 0,
-                            'clash_id' => $clash->id,
-                            'comp_id' => $clashCompetitors->comp_id,
-                            'dress_id' => $clashCompetitors->dress_id
-                            ])
-                        @include('components.match_panel_spectator', [
-                            'panel_id' => 0,
-                            'clash_id' => $clash->id,
-                            'comp_id' => $clashCompetitors->comp_id_2,
-                            'dress_id' => $clashCompetitors->dress_id_2
-                            ])
-                    </div>
+<div class="card h-100">
+    <div class="card-body h-100">
+        <div class="my-5 w-100 col">
+            <div class="row h-100" style="z-index:100; position: absolute;">
+                <div class="col w-100 my-auto">
+                    <div id="time_field" class="text-warning font-weight-bold" style="font-size: 9vw"></div>
                 </div>
-            </div>
+            </div>   
+            
+            @include('components.match_panel_spectator', [
+                'panel_id' => 0,
+                'clash_id' => $clash->id,
+                'comp_id' => $clashCompetitors->comp_id,
+                'dress_id' => $clashCompetitors->dress_id
+                ])
+            @include('components.match_panel_spectator', [
+                'panel_id' => 0,
+                'clash_id' => $clash->id,
+                'comp_id' => $clashCompetitors->comp_id_2,
+                'dress_id' => $clashCompetitors->dress_id_2
+                ])
         </div>
     </div>
 </div>
+<a class="nav-link" href="{{ url('/spectator') }}">
+<button type="button" class="btn btn-light">x</button>
+</a>
 
 
 <script type="text/javascript">

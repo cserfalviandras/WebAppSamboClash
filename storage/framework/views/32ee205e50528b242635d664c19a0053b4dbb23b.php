@@ -6,10 +6,6 @@
                 <div class="card-body">
                     <h5 class="card-title">Mérkőzések</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített mérkőzések</h6>
-                    <?php
-                        $clashes = App\clash::all();
-                    ?>
-
                     <div class="pt-3 table-responsive">
                         <table id="clashes_table" class="table">
                             <thead>

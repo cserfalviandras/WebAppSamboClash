@@ -50,6 +50,9 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/administrator') }}">Adminisztrator - kezdőlap</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/competitors') }}">Versenyzők</a>
                             </li>
                             <li class="nav-item">

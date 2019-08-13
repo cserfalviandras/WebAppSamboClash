@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\clash;
+use App\status;
 use App\competitor;
 use App\clash_competitors;
 use Illuminate\Database\Eloquent\Collection;
@@ -18,7 +19,19 @@ class ClashesController extends Controller
 
     public function index()
     {
-        return view('clashes.index');
+        return view('clashes.index',[
+            'clashes' => clash::all()->each(
+                [
+                    $this,
+                    'getNamesForStatuses'
+                ]
+            )
+        ]);
+    }
+
+    public function getNamesForStatuses(clash $clash)
+    {
+        $clash->clash_status_id = isset($clash->clash_status_id) ?  $clash->clash_status_id = status::where('id', $clash->clash_status_id)->first()->name : null;
     }
 
     public function store()
@@ -36,7 +49,7 @@ class ClashesController extends Controller
         //$clash->end_time = request('inputEndTime');
         $clash->scoreboard_id = 0;
         $clash->winner_id = 0;   
-        $clash->clash_status_id = 0;
+        $clash->clash_status_id = 1;
         $clash->save();
 
         return redirect('success');
@@ -47,19 +60,21 @@ class ClashesController extends Controller
         return view('clashes.edit',[
             'clash' => clash::where('id', $clash_id)->firstOrFail(),
             'competitors' => competitor::all(),
-            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
+            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first(),
+            'clash_statuses' => status::all()
         ]);
     }
 
     public function update()
     {
+        //dd(request()->all());
         try {
             clash::where('id', request('inputClashId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
                 'weight_cat_id' => request('inputWeightCat'),
                 'scoreboard_id' => 0,
                 'winner_id' => 0,
-                'clash_status_id' => request('inputStatus')
+                'clash_status_id' => (request('inputStatus') + 1)
             ]);
         } catch (\Exception $e) {
             return $e->getMessage();
