@@ -92,7 +92,6 @@
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
                                         <th>Kezdési idő</th>
-                                        <th>Állapot</th>
                                         <th></th>
                                     </thead>
             
@@ -106,8 +105,7 @@
                                                     'clash_id' => $clash->id,
                                                     'age_group_id' => $clash->age_group_id, 
                                                     'weight_cat_id' => $clash->weight_cat_id,
-                                                    'start_time' => $clash->start_time,
-                                                    'clash_status_id' => $clash->clash_status_id
+                                                    'start_time' => $clash->start_time
                                                     ])
                                             @endforeach
                                         @endisset
@@ -125,7 +123,6 @@
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
                                         <th>Kezdési idő</th>
-                                        <th>Állapot</th>
                                         <th></th>
                                     </thead>
             
@@ -135,8 +132,7 @@
                                                 'clash_id' => $clash->id,
                                                 'age_group_id' => $clash->age_group_id, 
                                                 'weight_cat_id' => $clash->weight_cat_id,
-                                                'start_time' => $clash->start_time,
-                                                'clash_status_id' => $clash->clash_status_id
+                                                'start_time' => $clash->start_time
                                                 ])
                                         @endforeach
                                     </tbody>
