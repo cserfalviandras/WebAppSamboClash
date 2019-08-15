@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\competition;
 use App\clash;
+use App\competitor;
 use App\competition_clashes;
+use App\clash_competitors;
 use DB;
 
 class CompetitionsController extends Controller
@@ -42,6 +44,8 @@ class CompetitionsController extends Controller
         return view('competitions.edit',[
             'comp' => competition::where('id', $comp_id)->firstOrFail(),
             'clashes' => clash::all(),
+            'competitors' => competitor::select('id','name')->get(),
+            'clashCompetitors' => clash_competitors::all(),
             'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->get()
         ]);
     }

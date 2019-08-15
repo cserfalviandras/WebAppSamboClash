@@ -113,7 +113,6 @@
                                 </table>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Hozzáadható mérkőzések</label>
                             <div class="pt-3 table-responsive">
@@ -124,15 +123,21 @@
                                         <th>Súlycsoport</th>
                                         <th>Kezdési idő</th>
                                         <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </thead>
             
                                     <tbody>
                                         @foreach ($clashes as $clash)
+                                        @php //dd($clashCompetitors->where('clash_id', $clash->id)->all()); 
+                                        @endphp
                                             @include('components.clash_add_row', [
                                                 'clash_id' => $clash->id,
                                                 'age_group_id' => $clash->age_group_id, 
                                                 'weight_cat_id' => $clash->weight_cat_id,
-                                                'start_time' => $clash->start_time
+                                                'start_time' => $clash->start_time,
+                                                'competitors_in_clash' => $clashCompetitors->where('clash_id', $clash->id)->first(),
+                                                'competitors' => $competitors
                                                 ])
                                         @endforeach
                                     </tbody>
