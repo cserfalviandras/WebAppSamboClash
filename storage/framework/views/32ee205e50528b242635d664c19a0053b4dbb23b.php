@@ -7,7 +7,7 @@
                     <h5 class="card-title">Mérkőzések</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített mérkőzések</h6>
                     <div class="pt-3 table-responsive">
-                        <table id="clashes_table" class="table">
+                        <table id="clashes_table" class="table table-striped">
                             <thead>
                                 <th>Korosztály</th>
                                 <th>Súlycsoport</th>

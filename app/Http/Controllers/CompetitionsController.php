@@ -20,7 +20,12 @@ class CompetitionsController extends Controller
 
     public function index()
     {
-        return view('competitions.index');
+        $competitions = competition::all();
+        $competitions = $competitions->sortBy('start_date');
+
+        return view('competitions.index', [
+            'competitions' => $competitions
+        ]);
     }
 
     public function store(){
@@ -41,9 +46,12 @@ class CompetitionsController extends Controller
 
     public function edit($comp_id)
     {
+        $clashes = clash::all();
+        $clashes = $clashes->sortBy('start_time');
+
         return view('competitions.edit',[
             'comp' => competition::where('id', $comp_id)->firstOrFail(),
-            'clashes' => clash::all(),
+            'clashes' => $clashes,
             'competitors' => competitor::select('id','name')->get(),
             'clashCompetitors' => clash_competitors::all(),
             'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->get()
