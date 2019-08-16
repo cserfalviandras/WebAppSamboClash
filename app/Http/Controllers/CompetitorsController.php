@@ -15,7 +15,12 @@ class CompetitorsController extends Controller
 
     public function index()
     {
-        return view('competitors.index');
+        $competitors = competitor::all();
+        $competitors = $competitors->sortBy('name');
+
+        return view('competitors.index', [
+            'competitors' => $competitors
+        ]);
     }
 
     public function store(){
