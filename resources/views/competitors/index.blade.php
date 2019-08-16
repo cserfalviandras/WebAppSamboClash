@@ -9,7 +9,7 @@
                     <h5 class="card-title">Versenyzők</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyzők</h6>
                     <div class="pt-3 table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-striped">
                             <thead>
                                 <th>Név</th>
                                 <th>Korosztály</th>

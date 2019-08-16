@@ -6,12 +6,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Versenyek</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyek</h6>
-                    <?php
-                        //$competitions = App\competition::all();
-                    ?>
-
                     <div class="pt-3 table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-striped">
                             <thead>
                                 <th>Megnevezés</th>
                                 <th>Kezdési dátum</th>
