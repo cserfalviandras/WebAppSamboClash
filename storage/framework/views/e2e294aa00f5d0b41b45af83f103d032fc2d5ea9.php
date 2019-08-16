@@ -7,7 +7,7 @@
                     <h5 class="card-title">Versenyek</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Rögzített versenyek</h6>
                     <?php
-                        $competitions = App\competition::all();
+                        //$competitions = App\competition::all();
                     ?>
 
                     <div class="pt-3 table-responsive">

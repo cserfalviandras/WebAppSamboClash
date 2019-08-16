@@ -20,7 +20,12 @@ class CompetitionsController extends Controller
 
     public function index()
     {
-        return view('competitions.index');
+        $competitions = competition::all();
+        $competitions = $competitions->sortBy('start_date');
+
+        return view('competitions.index', [
+            'competitions' => $competitions
+        ]);
     }
 
     public function store(){
