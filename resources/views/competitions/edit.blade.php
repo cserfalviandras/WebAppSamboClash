@@ -91,7 +91,7 @@
                                         <th>Törlés</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
-                                        <th>Kezdési idő</th>
+                                        <th>Dátum</th>
                                         <th></th>
                                     </thead>
             
@@ -121,7 +121,7 @@
                                         <th>Hozzáadás</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
-                                        <th>Kezdési idő</th>
+                                        <th>Dátum</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
