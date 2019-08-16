@@ -99,7 +99,7 @@
                                         @if(@isset($competitionClashes))
                                             @foreach ($competitionClashes as $competition_clash)
                                                 @php
-                                                    $clash = app\clash::where('id',$competition_clash->id)->first();
+                                                    $clash = app\clash::where('id',$competition_clash->clash_id)->first();
                                                 @endphp
                                                 @include('components.clash_remove_row', [
                                                     'clash_id' => $clash->id,
@@ -126,10 +126,8 @@
                                         <th></th>
                                         <th></th>
                                     </thead>
-            
                                     <tbody>
                                         @foreach ($clashes as $clash)
-                                        @php //dd($clashCompetitors->where('clash_id', $clash->id)->all()); 
                                         @endphp
                                             @include('components.clash_add_row', [
                                                 'clash_id' => $clash->id,
