@@ -93,6 +93,8 @@
                                         <th>Súlycsoport</th>
                                         <th>Dátum</th>
                                         <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </thead>
             
                                     <tbody>
@@ -105,7 +107,9 @@
                                                     'clash_id' => $clash->id,
                                                     'age_group_id' => $clash->age_group_id, 
                                                     'weight_cat_id' => $clash->weight_cat_id,
-                                                    'start_time' => $clash->start_time
+                                                    'start_time' => $clash->start_time,
+                                                    'competitors_in_clash' => $clashCompetitors->where('clash_id', $clash->id)->first(),
+                                                    'competitors' => $competitors
                                                     ])
                                             @endforeach
                                         @endisset
@@ -128,7 +132,6 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($clashes as $clash)
-                                        @endphp
                                             @include('components.clash_add_row', [
                                                 'clash_id' => $clash->id,
                                                 'age_group_id' => $clash->age_group_id, 
