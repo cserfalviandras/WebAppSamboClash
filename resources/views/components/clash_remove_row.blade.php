@@ -19,7 +19,16 @@
     </td>
     <td>
         @php
-            echo $clash_status_id;
+            if (isset($competitors->where("id", ($competitors_in_clash["comp_id"] + 1))->first()->name)) {
+                echo $competitors->where("id", ($competitors_in_clash["comp_id"] + 1))->first()->name;
+            }
+        @endphp
+    </td>
+    <td>
+        @php
+            if (isset($competitors->where("id", ($competitors_in_clash["comp_id_2"] + 1))->first()->name)) {
+                echo $competitors->where("id", ($competitors_in_clash["comp_id_2"] + 1))->first()->name;
+            }
         @endphp
     </td>
     <td>

@@ -91,8 +91,9 @@
                                         <th>Törlés</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
-                                        <th>Kezdési idő</th>
-                                        <th>Állapot</th>
+                                        <th>Dátum</th>
+                                        <th></th>
+                                        <th></th>
                                         <th></th>
                                     </thead>
             
@@ -100,14 +101,15 @@
                                         @if(@isset($competitionClashes))
                                             @foreach ($competitionClashes as $competition_clash)
                                                 @php
-                                                    $clash = app\clash::where('id',$competition_clash->id)->first();
+                                                    $clash = app\clash::where('id',$competition_clash->clash_id)->first();
                                                 @endphp
                                                 @include('components.clash_remove_row', [
                                                     'clash_id' => $clash->id,
                                                     'age_group_id' => $clash->age_group_id, 
                                                     'weight_cat_id' => $clash->weight_cat_id,
                                                     'start_time' => $clash->start_time,
-                                                    'clash_status_id' => $clash->clash_status_id
+                                                    'competitors_in_clash' => $clashCompetitors->where('clash_id', $clash->id)->first(),
+                                                    'competitors' => $competitors
                                                     ])
                                             @endforeach
                                         @endisset
@@ -115,7 +117,6 @@
                                 </table>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Hozzáadható mérkőzések</label>
                             <div class="pt-3 table-responsive">
@@ -124,11 +125,11 @@
                                         <th>Hozzáadás</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
-                                        <th>Kezdési idő</th>
-                                        <th>Állapot</th>
+                                        <th>Dátum</th>
+                                        <th></th>
+                                        <th></th>
                                         <th></th>
                                     </thead>
-            
                                     <tbody>
                                         @foreach ($clashes as $clash)
                                             @include('components.clash_add_row', [
@@ -136,7 +137,8 @@
                                                 'age_group_id' => $clash->age_group_id, 
                                                 'weight_cat_id' => $clash->weight_cat_id,
                                                 'start_time' => $clash->start_time,
-                                                'clash_status_id' => $clash->clash_status_id
+                                                'competitors_in_clash' => $clashCompetitors->where('clash_id', $clash->id)->first(),
+                                                'competitors' => $competitors
                                                 ])
                                         @endforeach
                                     </tbody>
