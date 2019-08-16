@@ -19,13 +19,11 @@ class ClashesController extends Controller
 
     public function index()
     {
+        $clashes = clash::all()->each([$this, 'getNamesForStatuses']);
+        $clashes = $clashes->sortBy('start_time');
+
         return view('clashes.index',[
-            'clashes' => clash::all()->each(
-                [
-                    $this,
-                    'getNamesForStatuses'
-                ]
-            )
+            'clashes' => $clashes
         ]);
     }
 
