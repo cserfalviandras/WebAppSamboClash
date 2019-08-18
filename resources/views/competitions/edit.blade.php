@@ -14,7 +14,7 @@
 
                                 <input id="inputCompId" type="hidden" class="form-control" name="inputCompId" value="{{ $comp->id }}" required >
 
-                                <button type="submit" class="btn btn-danger">Verseny törlése</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')">Verseny törlése</button>
                             </form>
                         </div>
                     </h5>
