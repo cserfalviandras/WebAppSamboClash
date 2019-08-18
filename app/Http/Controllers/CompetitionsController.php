@@ -95,4 +95,16 @@ class CompetitionsController extends Controller
     
         return redirect('success');
     }
+
+    public function destroy()
+    {
+        try {
+            $competition = competition::where('id', request('inputCompId'));
+            $competition->delete();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    
+        return redirect('success');
+    }
 }
