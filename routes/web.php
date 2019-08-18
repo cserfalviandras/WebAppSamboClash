@@ -33,6 +33,7 @@ Route::get('/competitors', 'CompetitorsController@index');
 Route::post('/competitors/store', 'CompetitorsController@store');
 Route::get('/competitors/{comp_id}/edit', 'CompetitorsController@edit')->name('competitors.edit');
 Route::post('/competitors/update', 'CompetitorsController@update');
+Route::post('/competitors/destroy', 'CompetitorsController@destroy');
 
 Route::get('/clashes', 'ClashesController@index');
 Route::post('/clashes/store', 'ClashesController@store');

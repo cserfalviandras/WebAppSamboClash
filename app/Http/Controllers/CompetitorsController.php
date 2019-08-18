@@ -74,4 +74,16 @@ class CompetitorsController extends Controller
 
         return redirect('success');
     }
+
+    public function destroy()
+    {
+        try {
+            $competitor = competitor::where('id', request('inputCompId'));
+            $competitor->delete();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    
+        return redirect('success');
+    }
 }
