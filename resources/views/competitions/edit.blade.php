@@ -6,9 +6,20 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Verseny</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
+                    <h5 class="card-title">
+                        Verseny
+                        <div class="float-right">
+                            <form action="/competitions/destroy" enctype="multipart/form-data" method="post">
+                                @csrf
 
+                                <input id="inputCompId" type="hidden" class="form-control" name="inputCompId" value="{{ $comp->id }}" required >
+
+                                <button type="submit" class="btn btn-danger">Verseny törlése</button>
+                            </form>
+                        </div>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
+                    
                     <form class="pt-3" action="/competitions/update" enctype="multipart/form-data" method="post">
                         @csrf
 
