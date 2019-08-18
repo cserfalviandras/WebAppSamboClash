@@ -6,7 +6,18 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Mérkőzés, {{ $clash->start_time }}</h5>
+                    <h5 class="card-title">
+                        Mérkőzés, {{ $clash->start_time }}
+                        <div class="float-right">
+                            <form action="/clashes/destroy" enctype="multipart/form-data" method="post">
+                                @csrf
+
+                                <input id="inputClashId" type="hidden" class="form-control" name="inputClashId" value="{{ $clash->id }}" required >
+
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')">Mérkőzés törlése</button>
+                            </form>
+                        </div>
+                    </h5>
                     <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
                     <form class="pt-3" action="/clashes/update" enctype="multipart/form-data" method="post">
                         @csrf

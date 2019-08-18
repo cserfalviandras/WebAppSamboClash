@@ -105,4 +105,16 @@ class ClashesController extends Controller
     
         return redirect('success');
     }
+
+    public function destroy()
+    {
+        try {
+            $clash = clash::where('id', request('inputClashId'));
+            $clash->delete();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    
+        return redirect('success');
+    }
 }
