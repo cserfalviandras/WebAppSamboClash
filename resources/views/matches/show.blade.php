@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="card h-100">
+    <h5 class="card-title">
+        <div class="float-right">
+            <a href="{{ url('/spectator') }}"><button type="button" class="btn btn-light">x</button></a>
+        </div>
+    </h5>
     <div class="card-body h-100">
         <div class="my-5 w-100 col">
             <div class="row h-100" style="z-index:100; position: absolute;">
@@ -25,10 +30,6 @@
         </div>
     </div>
 </div>
-<a class="nav-link" href="{{ url('/spectator') }}">
-<button type="button" class="btn btn-light">x</button>
-</a>
-
 
 <script type="text/javascript">
     // ------------------------------------------------------------
