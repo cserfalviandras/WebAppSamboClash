@@ -97,9 +97,9 @@
                         <div class="form-group">
                             <label>A {{ $comp->name }} verseny mérkőzései</label>
                             <div class="pt-3 table-responsive">
-                                <table id="clashes_table" class="table">
+                                <table id="clashes_table" class="table table-striped">
                                     <thead>
-                                        <th>Törlés</th>
+                                        <th class="text-danger">Törlés</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
                                         <th>Dátum</th>
@@ -131,9 +131,9 @@
                         <div class="form-group">
                             <label>Hozzáadható mérkőzések</label>
                             <div class="pt-3 table-responsive">
-                                <table id="clashes_table" class="table">
+                                <table id="clashes_table" class="table table-striped">
                                     <thead>
-                                        <th>Hozzáadás</th>
+                                        <th class="text-success">Hozzáadás</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
                                         <th>Dátum</th>
