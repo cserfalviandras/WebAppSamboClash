@@ -27,16 +27,30 @@ Route::get('/competitions', 'CompetitionsController@index');
 Route::post('/competitions/store', 'CompetitionsController@store');
 Route::get('/competitions/{comp_id}/edit', 'CompetitionsController@edit')->name('competitions.edit');
 Route::post('/competitions/update', 'CompetitionsController@update');
+Route::post('/competitions/destroy', 'CompetitionsController@destroy');
 
 Route::get('/competitors', 'CompetitorsController@index');
 Route::post('/competitors/store', 'CompetitorsController@store');
 Route::get('/competitors/{comp_id}/edit', 'CompetitorsController@edit')->name('competitors.edit');
 Route::post('/competitors/update', 'CompetitorsController@update');
+Route::post('/competitors/destroy', 'CompetitorsController@destroy');
 
 Route::get('/clashes', 'ClashesController@index');
 Route::post('/clashes/store', 'ClashesController@store');
 Route::get('/clashes/{clash_id}/edit', 'ClashesController@edit')->name('clashes');
 Route::post('/clashes/update', 'ClashesController@update');
+Route::post('/clashes/destroy', 'ClashesController@destroy');
+
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/matches/{clash_id}/edit', 'MatchController@edit')->name('matchedit');
+});
+Route::get('/matches/{clash_id}/show', 'MatchController@show')->name('matches');
+
+Route::post('addPoint', 'MatchController@addPoint');
+Route::post('addPunishment', 'MatchController@addPunishment');
+Route::get('getPoints', 'MatchController@getPoints');
+Route::post('saveClashTime', 'MatchController@saveClashTime');
+Route::get('getClashTime', 'MatchController@getClashTime');
 
 Route::get('/profiles/{user}', 'ProfilesController@index');
 

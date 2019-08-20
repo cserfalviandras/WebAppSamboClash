@@ -6,9 +6,20 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Verseny</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
+                    <h5 class="card-title">
+                        Verseny
+                        <div class="float-right">
+                            <form action="/competitions/destroy" enctype="multipart/form-data" method="post">
+                                @csrf
 
+                                <input id="inputCompId" type="hidden" class="form-control" name="inputCompId" value="{{ $comp->id }}" required >
+
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')">Verseny törlése</button>
+                            </form>
+                        </div>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Szerkesztés</h6>
+                    
                     <form class="pt-3" action="/competitions/update" enctype="multipart/form-data" method="post">
                         @csrf
 
@@ -86,13 +97,14 @@
                         <div class="form-group">
                             <label>A {{ $comp->name }} verseny mérkőzései</label>
                             <div class="pt-3 table-responsive">
-                                <table id="clashes_table" class="table">
+                                <table id="clashes_table" class="table table-striped">
                                     <thead>
-                                        <th>Törlés</th>
+                                        <th class="text-danger">Törlés</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
-                                        <th>Kezdési idő</th>
-                                        <th>Állapot</th>
+                                        <th>Dátum</th>
+                                        <th></th>
+                                        <th></th>
                                         <th></th>
                                     </thead>
             
@@ -100,14 +112,15 @@
                                         @if(@isset($competitionClashes))
                                             @foreach ($competitionClashes as $competition_clash)
                                                 @php
-                                                    $clash = app\clash::where('id',$competition_clash->id)->first();
+                                                    $clash = app\clash::where('id',$competition_clash->clash_id)->first();
                                                 @endphp
                                                 @include('components.clash_remove_row', [
                                                     'clash_id' => $clash->id,
                                                     'age_group_id' => $clash->age_group_id, 
                                                     'weight_cat_id' => $clash->weight_cat_id,
                                                     'start_time' => $clash->start_time,
-                                                    'clash_status_id' => $clash->clash_status_id
+                                                    'competitors_in_clash' => $clashCompetitors->where('clash_id', $clash->id)->first(),
+                                                    'competitors' => $competitors
                                                     ])
                                             @endforeach
                                         @endisset
@@ -115,20 +128,19 @@
                                 </table>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label>Hozzáadható mérkőzések</label>
                             <div class="pt-3 table-responsive">
-                                <table id="clashes_table" class="table">
+                                <table id="clashes_table" class="table table-striped">
                                     <thead>
-                                        <th>Hozzáadás</th>
+                                        <th class="text-success">Hozzáadás</th>
                                         <th>Korosztály</th>
                                         <th>Súlycsoport</th>
-                                        <th>Kezdési idő</th>
-                                        <th>Állapot</th>
+                                        <th>Dátum</th>
+                                        <th></th>
+                                        <th></th>
                                         <th></th>
                                     </thead>
-            
                                     <tbody>
                                         @foreach ($clashes as $clash)
                                             @include('components.clash_add_row', [
@@ -136,7 +148,8 @@
                                                 'age_group_id' => $clash->age_group_id, 
                                                 'weight_cat_id' => $clash->weight_cat_id,
                                                 'start_time' => $clash->start_time,
-                                                'clash_status_id' => $clash->clash_status_id
+                                                'competitors_in_clash' => $clashCompetitors->where('clash_id', $clash->id)->first(),
+                                                'competitors' => $competitors
                                                 ])
                                         @endforeach
                                     </tbody>

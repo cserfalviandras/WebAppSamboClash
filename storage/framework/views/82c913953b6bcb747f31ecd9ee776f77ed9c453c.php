@@ -10,7 +10,7 @@
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <!-- Scripts -->
-    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -49,6 +49,9 @@
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(url('/administrator')); ?>">Adminisztrator - kezdőlap</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(url('/competitors')); ?>">Versenyzők</a>
                             </li>

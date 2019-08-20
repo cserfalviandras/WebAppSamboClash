@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\competition;
 use App\clash;
+use App\competitor;
 use App\competition_clashes;
+use App\clash_competitors;
 use DB;
 
 class CompetitionsController extends Controller
@@ -18,7 +20,12 @@ class CompetitionsController extends Controller
 
     public function index()
     {
-        return view('competitions.index');
+        $competitions = competition::all();
+        $competitions = $competitions->sortBy('start_date');
+
+        return view('competitions.index', [
+            'competitions' => $competitions
+        ]);
     }
 
     public function store(){
@@ -39,9 +46,14 @@ class CompetitionsController extends Controller
 
     public function edit($comp_id)
     {
+        $clashes = clash::all();
+        $clashes = $clashes->sortBy('start_time');
+
         return view('competitions.edit',[
             'comp' => competition::where('id', $comp_id)->firstOrFail(),
-            'clashes' => clash::all(),
+            'clashes' => $clashes,
+            'competitors' => competitor::select('id','name')->get(),
+            'clashCompetitors' => clash_competitors::all(),
             'competitionClashes' => competition_clashes::where('comp_id', $comp_id)->get()
         ]);
     }
@@ -77,6 +89,18 @@ class CompetitionsController extends Controller
                     $query->delete();
                 }
             }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    
+        return redirect('success');
+    }
+
+    public function destroy()
+    {
+        try {
+            $competition = competition::where('id', request('inputCompId'));
+            $competition->delete();
         } catch (\Exception $e) {
             return $e->getMessage();
         }

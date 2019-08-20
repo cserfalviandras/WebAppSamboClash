@@ -20,9 +20,6 @@
         @endphp
     </td>
     <td>
-        <a href="{{ route('clashes', [$clash_id], 'edit') }}" class="card-link">Szerkesztés</a>
-    </td>
-    <td>
-        <a href="{{ route('matchedit', [$clash_id], 'edit') }}" class="card-link">Indítás</a>
+        <a href="{{ route('matches', [$clash_id], 'show') }}" class="card-link">Mutat</a>
     </td>
 </tr>

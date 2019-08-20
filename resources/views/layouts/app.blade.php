@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -49,6 +49,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/administrator') }}">Adminisztrator - kezdőlap</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/competitors') }}">Versenyzők</a>
                             </li>
