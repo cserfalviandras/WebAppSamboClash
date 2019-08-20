@@ -10,7 +10,7 @@
                         <h5 class="card-title">Mérkőzések</h5>
 
                         <div class="pt-3 table-responsive">
-                            <table id="clashes_table" class="table">
+                            <table id="clashes_table" class="table table-striped">
                                 <thead>
                                     <th>Korosztály</th>
                                     <th>Súlycsoport</th>
