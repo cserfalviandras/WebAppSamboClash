@@ -104,6 +104,27 @@ class MatchController extends Controller
         ]);
     }
 
+    public function getPunishments(Request $request)
+    {
+        $clash_id = $request->input('clash_id');
+        $competitor_id = $request->input('competitor_id');
+
+        $sumPunisments = 0;
+
+        try {
+            $sumPunisments = punishment::where([
+                ['clash_id', '=', $clash_id],
+                ['comp_id', '=', $competitor_id]
+            ])->sum('punishment_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return response()->json([
+            'sum' => "$sumPunisments"
+        ]);
+    }
+
     public function saveClashTime(Request $request)
     {
         $clash_id = $request->input('clash_id');
