@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\clash;
 use App\clashtiming;
 use App\point_table;
+use App\punishment;
 use App\clash_competitors;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -61,12 +62,24 @@ class MatchController extends Controller
     {
         $clash_id = $request->input('clash_id');
         $competitor_id = $request->input('competitor_id');
-        $punishment = $request->input('punishment');
+        $punishment_added = $request->input('punishment');
+
+        try {
+            $punishment = new punishment();
+            $punishment->clash_id = $clash_id;
+            $punishment->comp_id = $competitor_id;
+            $punishment->punishment_added = $punishment_added;
+            $punishment->user_id = 1;
+
+            $punishment->save();
+        } catch (\Throwable $th) {
+            return $e->getMessage();
+        }
 
         return response()->json([
             'clash_id' => "$clash_id",
             'competitor_id'=>"$competitor_id",
-            'punishment' => "$punishment"
+            'punishment' => "$punishment_added"
         ]);
     }
 
@@ -88,6 +101,27 @@ class MatchController extends Controller
 
         return response()->json([
             'sum' => "$sumPoints"
+        ]);
+    }
+
+    public function getPunishments(Request $request)
+    {
+        $clash_id = $request->input('clash_id');
+        $competitor_id = $request->input('competitor_id');
+
+        $sumPunisments = 0;
+
+        try {
+            $sumPunisments = punishment::where([
+                ['clash_id', '=', $clash_id],
+                ['comp_id', '=', $competitor_id]
+            ])->sum('punishment_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return response()->json([
+            'sum' => "$sumPunisments"
         ]);
     }
 

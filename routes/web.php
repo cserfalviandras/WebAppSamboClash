@@ -49,6 +49,7 @@ Route::get('/matches/{clash_id}/show', 'MatchController@show')->name('matches');
 Route::post('addPoint', 'MatchController@addPoint');
 Route::post('addPunishment', 'MatchController@addPunishment');
 Route::get('getPoints', 'MatchController@getPoints');
+Route::get('getPunishments', 'MatchController@getPunishments');
 Route::post('saveClashTime', 'MatchController@saveClashTime');
 Route::get('getClashTime', 'MatchController@getClashTime');
 

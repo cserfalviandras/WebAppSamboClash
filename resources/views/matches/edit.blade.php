@@ -184,7 +184,7 @@
                 punishment:punishment
             },
             success:function(data){
-                alert("Punisment: " + data.clash_id + ", " + data.competitor_id + ", " + data.punishment);
+                //alert("Punisment: " + data.clash_id + ", " + data.competitor_id + ", " + data.punishment);
             }
         });
     }
