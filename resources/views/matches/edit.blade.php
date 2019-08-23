@@ -6,7 +6,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="my-5 row">
+                    <div class="my-2 row">
                         <div class="col-sm-6 text-right font-weight-bold h2">
                             Küzdelem idő
                         </div>
@@ -21,6 +21,15 @@
                                 <option value="00:03:00">3 perc</option>
                             </select>                                   
                         </div>                     
+                    </div>
+
+                    <div class="my-1 row">
+                        <div class="col-sm-6 text-right font-weight-bold h4">
+                            Leszorítási idő
+                        </div>
+                        <div class="col-sm-4 h4">
+                            <div id="squeeze-timer" class="countdown" datetime="P5M">-</div>
+                        </div>                      
                     </div>
 
                     <div class="row">
@@ -110,10 +119,12 @@
 
     $("#btn-startsqueeze-0").click(function(e){
         enableButtons(false, ["#btn-startsqueeze-1", "#btn-stopsqueeze-1"]);
+        startSqueeze(competitor_id);
     });
 
     $("#btn-stopsqueeze-0").click(function(e){
         enableButtons(true, ["#btn-startsqueeze-1", "#btn-stopsqueeze-1"]);
+        stopSqueeze();
     });
 
     $("#btn-startspan-0").click(function(e){
@@ -143,10 +154,12 @@
 
     $("#btn-startsqueeze-1").click(function(e){
         enableButtons(false, ["#btn-startsqueeze-0", "#btn-stopsqueeze-0"]);
+        startSqueeze(competitor_id_2);
     });
 
     $("#btn-stopsqueeze-1").click(function(e){
         enableButtons(true, ["#btn-startsqueeze-0", "#btn-stopsqueeze-0"]);
+        stopSqueeze();
     });
 
     $("#btn-startspan-1").click(function(e){
@@ -251,6 +264,28 @@
         var newCountdown = $(hashmarkedtimer);
         newCountdown.attr('datetime', startvalue);
         $(hashmarkedtimer).text( startvalue );
+    }
+
+    // ------------------------------------------------------------
+    // Timer (secounds counter)
+    // ------------------------------------------------------------
+    var seconds = 0;
+    var squeezeTimerElement = document.getElementById('squeeze-timer');
+    var timer;
+
+    function incrementSeconds() {
+        seconds += 1;
+        squeezeTimerElement.innerText = seconds + " s";
+    }
+    
+    function startSqueeze(competitor_id){
+        timer = setInterval(incrementSeconds, 1000);
+    }
+
+    function stopSqueeze(){
+        seconds = 0;
+        clearInterval(timer);
+        squeezeTimerElement.innerText = "-";
     }
 
     // ------------------------------------------------------------
