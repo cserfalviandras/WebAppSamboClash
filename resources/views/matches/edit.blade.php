@@ -270,12 +270,15 @@
     // Timer (secounds counter)
     // ------------------------------------------------------------
     var seconds = 0;
+    var maxSqueezeTime = 20;
     var squeezeTimerElement = document.getElementById('squeeze-timer');
     var timer;
 
     function incrementSeconds() {
-        seconds += 1;
-        squeezeTimerElement.innerText = seconds + " s";
+        if(maxSqueezeTime > seconds){
+            seconds += 1;
+            squeezeTimerElement.innerText = seconds + " s";
+        }
     }
     
     function startSqueeze(competitor_id){
