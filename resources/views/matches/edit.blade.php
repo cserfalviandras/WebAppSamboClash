@@ -109,11 +109,11 @@
     });
 
     $("#btn-startsqueeze-0").click(function(e){
-        alert(this.id)
+        enableButtons(false, ["#btn-startsqueeze-1", "#btn-stopsqueeze-1"]);
     });
 
     $("#btn-stopsqueeze-0").click(function(e){
-        alert(this.id)
+        enableButtons(true, ["#btn-startsqueeze-1", "#btn-stopsqueeze-1"]);
     });
 
     $("#btn-startspan-0").click(function(e){
@@ -142,11 +142,11 @@
     });
 
     $("#btn-startsqueeze-1").click(function(e){
-        alert(this.id)
+        enableButtons(false, ["#btn-startsqueeze-0", "#btn-stopsqueeze-0"]);
     });
 
     $("#btn-stopsqueeze-1").click(function(e){
-        alert(this.id)
+        enableButtons(true, ["#btn-startsqueeze-0", "#btn-stopsqueeze-0"]);
     });
 
     $("#btn-startspan-1").click(function(e){
@@ -215,11 +215,6 @@
         }
     });
 
-    /*$('#match-timer').on('time.tick', function (ev, ms) {
-        var timevalue = $("#match-timer").text();
-        saveClashTime(clash_id, timevalue);
-    });*/
-
     window.setInterval(function(){
         var timevalue = $("#match-timer").text();
         saveClashTime(clash_id, timevalue);
@@ -256,6 +251,15 @@
         var newCountdown = $(hashmarkedtimer);
         newCountdown.attr('datetime', startvalue);
         $(hashmarkedtimer).text( startvalue );
+    }
+
+    // ------------------------------------------------------------
+    // Helper functions
+    // ------------------------------------------------------------
+    function enableButtons(enable, buttonsArray){
+        buttonsArray.forEach(element => {
+            $(element).prop('disabled', !enable);
+        });
     }
     
 </script>
