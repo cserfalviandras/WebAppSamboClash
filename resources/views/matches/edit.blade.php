@@ -216,6 +216,20 @@
         });
     }
 
+    function updateClashStatus(clash_id, clash_status_id){
+        $.ajax({
+            type:'POST',
+            url:'/updateClashStatus',
+            data:{
+                clash_id:clash_id, 
+                clash_status_id:clash_status_id, 
+            },
+            success:function(data){
+                
+            }
+        });
+    }
+
 
     // ------------------------------------------------------------
     // Timer
