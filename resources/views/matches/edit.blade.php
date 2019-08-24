@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    {{-- <button class="btn btn-secondary btn-block">Mérkőzés vége</button> --}}
+                                    <button class="btn btn-secondary btn-block btn-end">Mérkőzés vége</button>
                                 </div>
                             </div>
                         </div>
@@ -272,6 +272,14 @@
         resetTimer('match-timer', matchtime);
 
         updateClashStatus(clash_id, 1);
+    });
+
+    $(".btn-end").click(function(e){
+        e.preventDefault();
+        var currenttime = $( "#match-timer" ).text();
+        resetTimer('match-timer', currenttime);
+        
+        updateClashStatus(clash_id, 3);
     });
 
     function resetTimer(timerid, startvalue){
