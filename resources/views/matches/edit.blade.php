@@ -257,6 +257,8 @@
         $('#match-timer').countDown({
             with_labels: false
         });
+
+        updateClashStatus(clash_id, 2);
     });
 
     $(".btn-pause").click(function(e){
@@ -268,6 +270,8 @@
     $(".btn-reset").click(function(e){
         e.preventDefault();
         resetTimer('match-timer', matchtime);
+
+        updateClashStatus(clash_id, 1);
     });
 
     function resetTimer(timerid, startvalue){
