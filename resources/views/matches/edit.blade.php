@@ -273,15 +273,33 @@
     var maxSqueezeTime = 20;
     var squeezeTimerElement = document.getElementById('squeeze-timer');
     var timer;
+    var squeezerCompetitorId;
 
     function incrementSeconds() {
         if(maxSqueezeTime > seconds){
             seconds += 1;
             squeezeTimerElement.innerText = seconds + " s";
+
+            // add points by time
+            switch (seconds) {
+                case 10:
+                    addPoint(clash_id, squeezerCompetitorId, "1");
+                    break;
+                case 15:
+                    addPoint(clash_id, squeezerCompetitorId, "2");
+                    break;
+                case 20:
+                    addPoint(clash_id, squeezerCompetitorId, "4");
+                    break;
+            
+                default:
+                    break;
+            }
         }
     }
     
     function startSqueeze(competitor_id){
+        squeezerCompetitorId = competitor_id;
         timer = setInterval(incrementSeconds, 1000);
     }
 
