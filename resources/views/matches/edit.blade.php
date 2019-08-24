@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    {{-- <button class="btn btn-secondary btn-block">Mérkőzés vége</button> --}}
+                                    <button class="btn btn-secondary btn-block btn-end">Mérkőzés vége</button>
                                 </div>
                             </div>
                         </div>
@@ -216,6 +216,20 @@
         });
     }
 
+    function updateClashStatus(clash_id, clash_status_id){
+        $.ajax({
+            type:'POST',
+            url:'/updateClashStatus',
+            data:{
+                clash_id:clash_id, 
+                clash_status_id:clash_status_id, 
+            },
+            success:function(data){
+                
+            }
+        });
+    }
+
 
     // ------------------------------------------------------------
     // Timer
@@ -243,6 +257,8 @@
         $('#match-timer').countDown({
             with_labels: false
         });
+
+        updateClashStatus(clash_id, 2);
     });
 
     $(".btn-pause").click(function(e){
@@ -254,6 +270,16 @@
     $(".btn-reset").click(function(e){
         e.preventDefault();
         resetTimer('match-timer', matchtime);
+
+        updateClashStatus(clash_id, 1);
+    });
+
+    $(".btn-end").click(function(e){
+        e.preventDefault();
+        var currenttime = $( "#match-timer" ).text();
+        resetTimer('match-timer', currenttime);
+        
+        updateClashStatus(clash_id, 3);
     });
 
     function resetTimer(timerid, startvalue){

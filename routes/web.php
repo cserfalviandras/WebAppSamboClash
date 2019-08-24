@@ -40,6 +40,7 @@ Route::post('/clashes/store', 'ClashesController@store');
 Route::get('/clashes/{clash_id}/edit', 'ClashesController@edit')->name('clashes');
 Route::post('/clashes/update', 'ClashesController@update');
 Route::post('/clashes/destroy', 'ClashesController@destroy');
+Route::post('updateClashStatus', 'ClashesController@updateClashStatus');
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/matches/{clash_id}/edit', 'MatchController@edit')->name('matchedit');
