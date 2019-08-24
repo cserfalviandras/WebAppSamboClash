@@ -6,7 +6,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="my-5 row">
+                    <div class="my-2 row">
                         <div class="col-sm-6 text-right font-weight-bold h2">
                             Küzdelem idő
                         </div>
@@ -21,6 +21,15 @@
                                 <option value="00:03:00">3 perc</option>
                             </select>                                   
                         </div>                     
+                    </div>
+
+                    <div class="my-1 row">
+                        <div class="col-sm-6 text-right font-weight-bold h4">
+                            Leszorítási idő
+                        </div>
+                        <div class="col-sm-4 h4">
+                            <div id="squeeze-timer" class="countdown" datetime="P5M">-</div>
+                        </div>                      
                     </div>
 
                     <div class="row">
@@ -109,11 +118,13 @@
     });
 
     $("#btn-startsqueeze-0").click(function(e){
-        alert(this.id)
+        enableButtons(false, ["#btn-startsqueeze-1", "#btn-stopsqueeze-1"]);
+        startSqueeze(competitor_id);
     });
 
     $("#btn-stopsqueeze-0").click(function(e){
-        alert(this.id)
+        enableButtons(true, ["#btn-startsqueeze-1", "#btn-stopsqueeze-1"]);
+        stopSqueeze();
     });
 
     $("#btn-startspan-0").click(function(e){
@@ -142,11 +153,13 @@
     });
 
     $("#btn-startsqueeze-1").click(function(e){
-        alert(this.id)
+        enableButtons(false, ["#btn-startsqueeze-0", "#btn-stopsqueeze-0"]);
+        startSqueeze(competitor_id_2);
     });
 
     $("#btn-stopsqueeze-1").click(function(e){
-        alert(this.id)
+        enableButtons(true, ["#btn-startsqueeze-0", "#btn-stopsqueeze-0"]);
+        stopSqueeze();
     });
 
     $("#btn-startspan-1").click(function(e){
@@ -215,11 +228,6 @@
         }
     });
 
-    /*$('#match-timer').on('time.tick', function (ev, ms) {
-        var timevalue = $("#match-timer").text();
-        saveClashTime(clash_id, timevalue);
-    });*/
-
     window.setInterval(function(){
         var timevalue = $("#match-timer").text();
         saveClashTime(clash_id, timevalue);
@@ -256,6 +264,58 @@
         var newCountdown = $(hashmarkedtimer);
         newCountdown.attr('datetime', startvalue);
         $(hashmarkedtimer).text( startvalue );
+    }
+
+    // ------------------------------------------------------------
+    // Timer (secounds counter)
+    // ------------------------------------------------------------
+    var seconds = 0;
+    var maxSqueezeTime = 20;
+    var squeezeTimerElement = document.getElementById('squeeze-timer');
+    var timer;
+    var squeezerCompetitorId;
+
+    function incrementSeconds() {
+        if(maxSqueezeTime > seconds){
+            seconds += 1;
+            squeezeTimerElement.innerText = seconds + " s";
+
+            // add points by time
+            switch (seconds) {
+                case 10:
+                    addPoint(clash_id, squeezerCompetitorId, "1");
+                    break;
+                case 15:
+                    addPoint(clash_id, squeezerCompetitorId, "2");
+                    break;
+                case 20:
+                    addPoint(clash_id, squeezerCompetitorId, "4");
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+    }
+    
+    function startSqueeze(competitor_id){
+        squeezerCompetitorId = competitor_id;
+        timer = setInterval(incrementSeconds, 1000);
+    }
+
+    function stopSqueeze(){
+        seconds = 0;
+        clearInterval(timer);
+        squeezeTimerElement.innerText = "-";
+    }
+
+    // ------------------------------------------------------------
+    // Helper functions
+    // ------------------------------------------------------------
+    function enableButtons(enable, buttonsArray){
+        buttonsArray.forEach(element => {
+            $(element).prop('disabled', !enable);
+        });
     }
     
 </script>
