@@ -170,8 +170,27 @@
         alert(this.id)
     });
 
+    // ------------------------------------------------------------
+    // Main
+    // ------------------------------------------------------------
+    function initialization(){
+        // disable buttons except time handlers
+        let timerButtons = ['btn-start'];
+        let buttons = $('button[id^="btn"]').get();
+        let buttonsIds = [];
+        buttons.forEach(element => {
+            buttonsIds.push("#" + element["id"]);
+        });
+        enableButtons(false, buttonsIds);
+    }
 
+    $( document ).ready(function() {
+        initialization();
+    });
+
+    // ------------------------------------------------------------
     // Ajax functions
+    // ------------------------------------------------------------
     function addPoint(clash_id, competitor_id, point){
         $.ajax({
             type:'POST',
