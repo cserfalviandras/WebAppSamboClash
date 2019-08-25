@@ -170,8 +170,19 @@
         alert(this.id)
     });
 
+    // ------------------------------------------------------------
+    // Main
+    // ------------------------------------------------------------
+    function initialization(){
+        enablePanelButtons(false);
+    }
 
+    $( document ).ready(function() {
+        initialization();
+    });
+    // ------------------------------------------------------------
     // Ajax functions
+    // ------------------------------------------------------------
     function addPoint(clash_id, competitor_id, point){
         $.ajax({
             type:'POST',
@@ -259,12 +270,14 @@
         });
 
         updateClashStatus(clash_id, 2);
+        enablePanelButtons(true);
     });
 
     $(".btn-pause").click(function(e){
         e.preventDefault();
         var currenttime = $( "#match-timer" ).text();
         resetTimer('match-timer', currenttime);
+        enablePanelButtons(false);
     });
 
     $(".btn-reset").click(function(e){
@@ -272,6 +285,7 @@
         resetTimer('match-timer', matchtime);
 
         updateClashStatus(clash_id, 1);
+        enablePanelButtons(false);
     });
 
     $(".btn-end").click(function(e){
@@ -280,6 +294,7 @@
         resetTimer('match-timer', currenttime);
         
         updateClashStatus(clash_id, 3);
+        enablePanelButtons(false);
     });
 
     function resetTimer(timerid, startvalue){
@@ -343,6 +358,16 @@
             $(element).prop('disabled', !enable);
         });
     }
+
+    function enablePanelButtons(enable){
+        let buttons = $('button[id^="btn"]').get();
+        let buttonsIds = [];
+        buttons.forEach(element => {
+            buttonsIds.push("#" + element["id"]);
+        });
+        enableButtons(enable, buttonsIds);
+    }
+
     
 </script>
 @endsection
