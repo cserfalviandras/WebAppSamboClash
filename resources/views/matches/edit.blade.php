@@ -174,20 +174,12 @@
     // Main
     // ------------------------------------------------------------
     function initialization(){
-        // disable buttons except time handlers
-        let timerButtons = ['btn-start'];
-        let buttons = $('button[id^="btn"]').get();
-        let buttonsIds = [];
-        buttons.forEach(element => {
-            buttonsIds.push("#" + element["id"]);
-        });
-        enableButtons(false, buttonsIds);
+        enablePanelButtons(false);
     }
 
     $( document ).ready(function() {
         initialization();
     });
-
     // ------------------------------------------------------------
     // Ajax functions
     // ------------------------------------------------------------
@@ -362,6 +354,16 @@
             $(element).prop('disabled', !enable);
         });
     }
+
+    function enablePanelButtons(enable){
+        let buttons = $('button[id^="btn"]').get();
+        let buttonsIds = [];
+        buttons.forEach(element => {
+            buttonsIds.push("#" + element["id"]);
+        });
+        enableButtons(enable, buttonsIds);
+    }
+
     
 </script>
 @endsection
