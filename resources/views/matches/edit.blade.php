@@ -270,12 +270,14 @@
         });
 
         updateClashStatus(clash_id, 2);
+        enablePanelButtons(true);
     });
 
     $(".btn-pause").click(function(e){
         e.preventDefault();
         var currenttime = $( "#match-timer" ).text();
         resetTimer('match-timer', currenttime);
+        enablePanelButtons(false);
     });
 
     $(".btn-reset").click(function(e){
@@ -283,6 +285,7 @@
         resetTimer('match-timer', matchtime);
 
         updateClashStatus(clash_id, 1);
+        enablePanelButtons(false);
     });
 
     $(".btn-end").click(function(e){
@@ -291,6 +294,7 @@
         resetTimer('match-timer', currenttime);
         
         updateClashStatus(clash_id, 3);
+        enablePanelButtons(false);
     });
 
     function resetTimer(timerid, startvalue){
