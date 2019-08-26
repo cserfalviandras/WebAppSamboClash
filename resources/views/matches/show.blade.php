@@ -9,9 +9,12 @@
     </h5>
     <div class="card-body h-100">
         <div class="my-5 w-100 col">
-            <div class="row h-100" style="z-index:100; position: absolute;">
-                <div class="col w-100 my-auto">
+            <div class="row h-100 w-100" style="z-index:100; position: absolute;">
+                <div class="col-8 my-auto">
                     <div id="time_field" class="text-warning font-weight-bold" style="font-size: 9vw"></div>
+                </div>
+                <div class="col-4 my-auto">
+                    Kategória, súly
                 </div>
             </div>   
             
