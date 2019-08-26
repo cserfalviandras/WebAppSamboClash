@@ -14,7 +14,22 @@
                     <div id="time_field" class="text-warning font-weight-bold" style="font-size: 9vw"></div>
                 </div>
                 <div class="col-4 my-auto">
-                    Kategória, súly
+                    <div class="row">
+                        <div class="col-6">
+                            Katagória:
+                        </div>
+                        <div class="col-6">
+                            {{$clash->weight_cat_id}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            Súly:
+                        </div>
+                        <div class="col-6">
+                            {{$clash->age_group_id}}
+                        </div>
+                    </div>
                 </div>
             </div>   
             
