@@ -241,6 +241,22 @@
         });
     }
 
+    function isClashOver(clash_id){
+        $.ajax({
+            type:'GET',
+            url:'/isClashOver',
+            data:{
+                clash_id:clash_id
+            },
+            success:function(data){
+                alert(data.point_dif);
+            },
+            error: function(){
+                alert('Error at clash over checking!');
+            }
+        });
+    }
+
 
     // ------------------------------------------------------------
     // Timer

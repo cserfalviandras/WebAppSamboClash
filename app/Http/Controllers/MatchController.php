@@ -166,4 +166,38 @@ class MatchController extends Controller
             'clash_current_time' => "$clash_current_time"
         ]);
     }
+
+    public function isClashOver(Request $request)
+    {
+        // Get competitors
+        $clash_competitors = clash_competitors::where('clash_id', $request->input('clash_id'))->first();
+
+        // Get points for competitor 1
+        $sumPoints_1 = 0;
+
+        try {
+            $sumPoints_1 = point_table::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id]
+            ])->sum('point_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        // Get points for competitor 2
+        $sumPoints_2 = 0;
+
+        try {
+            $sumPoints_2 = point_table::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id_2]
+            ])->sum('point_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return response()->json([
+            'point_dif' => abs($sumPoints_1 - $sumPoints_2)
+        ]);
+    }
 }
