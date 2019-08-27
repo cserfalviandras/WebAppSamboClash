@@ -96,6 +96,7 @@
     var clash_id = '{{$clash->id}}';
     var competitor_id = '{{$clashCompetitors->comp_id}}';
     var competitor_id_2 = '{{$clashCompetitors->comp_id_2}}';
+    var maximum_point_dif = 8;
 
 
     // ------------------------------------------------------------
@@ -194,6 +195,7 @@
             },
             success:function(data){
                 //alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
+                isClashOver(clash_id);
             }
         });
     }
@@ -250,6 +252,11 @@
             },
             success:function(data){
                 alert(data.point_dif);
+                if(data.point_dif >= maximum_point_dif){
+                    if (confirm('Pontkülönbség: ' + data.point_dif + '. Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
             },
             error: function(){
                 alert('Error at clash over checking!');
@@ -306,11 +313,7 @@
 
     $(".btn-end").click(function(e){
         e.preventDefault();
-        var currenttime = $( "#match-timer" ).text();
-        resetTimer('match-timer', currenttime);
-        
-        updateClashStatus(clash_id, 3);
-        enablePanelButtons(false);
+        clashEnd(clash_id);
     });
 
     function resetTimer(timerid, startvalue){
@@ -382,6 +385,14 @@
             buttonsIds.push("#" + element["id"]);
         });
         enableButtons(enable, buttonsIds);
+    }
+
+    function clashEnd(clash_id){
+        var currenttime = $( "#match-timer" ).text();
+        resetTimer('match-timer', currenttime);
+        
+        updateClashStatus(clash_id, 3);
+        enablePanelButtons(false);
     }
 
     
