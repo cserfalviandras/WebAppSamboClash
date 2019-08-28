@@ -96,6 +96,8 @@
     var clash_id = '{{$clash->id}}';
     var competitor_id = '{{$clashCompetitors->comp_id}}';
     var competitor_id_2 = '{{$clashCompetitors->comp_id_2}}';
+    var maximum_point_dif = 8;
+    var maximum_punisment = 4;
 
 
     // ------------------------------------------------------------
@@ -193,7 +195,7 @@
                 point:point
             },
             success:function(data){
-                //alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
+                isClashOver(clash_id);
             }
         });
     }
@@ -208,7 +210,7 @@
                 punishment:punishment
             },
             success:function(data){
-                //alert("Punisment: " + data.clash_id + ", " + data.competitor_id + ", " + data.punishment);
+                isClashOver(clash_id);
             }
         });
     }
@@ -237,6 +239,38 @@
             },
             success:function(data){
                 
+            }
+        });
+    }
+
+    function isClashOver(clash_id){
+        $.ajax({
+            type:'GET',
+            url:'/isClashOver',
+            data:{
+                clash_id:clash_id
+            },
+            success:function(data){
+                if(data.point_dif >= maximum_point_dif){
+                    if (confirm('Pontkülönbség: ' + data.point_dif + '. Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
+
+                if(data.punisment_comp_1 >= maximum_punisment){
+                    if (confirm('Büntetések száma az 1. ellenfélnél: ' + data.punisment_comp_1 + '. Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
+
+                if(data.punisment_comp_2 >= maximum_punisment){
+                    if (confirm('Büntetések száma az 2. ellenfélnél: ' + data.punisment_comp_2 + '. Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
+            },
+            error: function(){
+                alert('Error at clash over checking!');
             }
         });
     }
@@ -290,11 +324,7 @@
 
     $(".btn-end").click(function(e){
         e.preventDefault();
-        var currenttime = $( "#match-timer" ).text();
-        resetTimer('match-timer', currenttime);
-        
-        updateClashStatus(clash_id, 3);
-        enablePanelButtons(false);
+        clashEnd(clash_id);
     });
 
     function resetTimer(timerid, startvalue){
@@ -366,6 +396,14 @@
             buttonsIds.push("#" + element["id"]);
         });
         enableButtons(enable, buttonsIds);
+    }
+
+    function clashEnd(clash_id){
+        var currenttime = $( "#match-timer" ).text();
+        resetTimer('match-timer', currenttime);
+        
+        updateClashStatus(clash_id, 3);
+        enablePanelButtons(false);
     }
 
     

@@ -166,4 +166,64 @@ class MatchController extends Controller
             'clash_current_time' => "$clash_current_time"
         ]);
     }
+
+    public function isClashOver(Request $request)
+    {
+        // Get competitors
+        $clash_competitors = clash_competitors::where('clash_id', $request->input('clash_id'))->first();
+
+        // Get points for competitor 1
+        $sumPoints_1 = 0;
+
+        try {
+            $sumPoints_1 = point_table::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id]
+            ])->sum('point_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        // Get points for competitor 2
+        $sumPoints_2 = 0;
+
+        try {
+            $sumPoints_2 = point_table::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id_2]
+            ])->sum('point_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        // Get punisments for competitor 1
+        $sumPunisments_1 = 0;
+
+        try {
+            $sumPunisments_1 = punishment::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id]
+            ])->sum('punishment_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        // Get punisments for competitor 2
+        $sumPunisments_2 = 0;
+
+        try {
+            $sumPunisments_2 = punishment::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id_2]
+            ])->sum('punishment_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return response()->json([
+            'point_dif' => abs($sumPoints_1 - $sumPoints_2),
+            'punisment_comp_1' => $sumPunisments_1,
+            'punisment_comp_2' => $sumPunisments_2
+        ]);
+    }
 }

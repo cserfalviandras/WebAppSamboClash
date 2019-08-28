@@ -53,6 +53,7 @@ Route::get('getPoints', 'MatchController@getPoints');
 Route::get('getPunishments', 'MatchController@getPunishments');
 Route::post('saveClashTime', 'MatchController@saveClashTime');
 Route::get('getClashTime', 'MatchController@getClashTime');
+Route::get('isClashOver', 'MatchController@isClashOver');
 
 Route::get('/profiles/{user}', 'ProfilesController@index');
 
