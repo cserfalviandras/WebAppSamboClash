@@ -196,8 +196,34 @@ class MatchController extends Controller
             return $e->getMessage();
         }
 
+        // Get punisments for competitor 1
+        $sumPunisments_1 = 0;
+
+        try {
+            $sumPunisments_1 = punishment::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id]
+            ])->sum('punishment_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        // Get punisments for competitor 2
+        $sumPunisments_2 = 0;
+
+        try {
+            $sumPunisments_2 = punishment::where([
+                ['clash_id', '=', $request->input('clash_id')],
+                ['comp_id', '=', $clash_competitors->comp_id_2]
+            ])->sum('punishment_added');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
         return response()->json([
-            'point_dif' => abs($sumPoints_1 - $sumPoints_2)
+            'point_dif' => abs($sumPoints_1 - $sumPoints_2),
+            'punisment_comp_1' => $sumPunisments_1,
+            'punisment_comp_2' => $sumPunisments_2
         ]);
     }
 }

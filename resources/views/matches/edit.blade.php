@@ -257,8 +257,14 @@
                     }
                 }
 
-                if(data.punisment >= maximum_punisment){
-                    if (confirm('Büntetések száma elérte a ' + data.punisment + '. Lezárja a mérkőzést?')) {
+                if(data.punisment_comp_1 >= maximum_punisment){
+                    if (confirm('Büntetések száma az 1. ellenfélnél: ' + data.punisment_comp_1 + '. Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
+
+                if(data.punisment_comp_2 >= maximum_punisment){
+                    if (confirm('Büntetések száma az 2. ellenfélnél: ' + data.punisment_comp_2 + '. Lezárja a mérkőzést?')) {
                         clashEnd(clash_id);
                     }
                 }
