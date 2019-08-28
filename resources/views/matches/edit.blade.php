@@ -97,6 +97,7 @@
     var competitor_id = '{{$clashCompetitors->comp_id}}';
     var competitor_id_2 = '{{$clashCompetitors->comp_id_2}}';
     var maximum_point_dif = 8;
+    var maximum_punisment = 4;
 
 
     // ------------------------------------------------------------
@@ -194,7 +195,6 @@
                 point:point
             },
             success:function(data){
-                //alert("Point: " + data.clash_id + ", " + data.competitor_id + ", " + data.point);
                 isClashOver(clash_id);
             }
         });
@@ -210,7 +210,7 @@
                 punishment:punishment
             },
             success:function(data){
-                //alert("Punisment: " + data.clash_id + ", " + data.competitor_id + ", " + data.punishment);
+                isClashOver(clash_id);
             }
         });
     }
@@ -251,9 +251,14 @@
                 clash_id:clash_id
             },
             success:function(data){
-                alert(data.point_dif);
                 if(data.point_dif >= maximum_point_dif){
                     if (confirm('Pontkülönbség: ' + data.point_dif + '. Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
+
+                if(data.punisment >= maximum_punisment){
+                    if (confirm('Büntetések száma elérte a ' + data.punisment + '. Lezárja a mérkőzést?')) {
                         clashEnd(clash_id);
                     }
                 }
