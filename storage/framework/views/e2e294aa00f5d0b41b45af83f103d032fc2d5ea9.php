@@ -110,7 +110,8 @@ endif; ?>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Mentés</button>
+                        <button type="submit" class="btn btn-primary"
+                            data-toggle="tooltip" title="<?php echo e(config('tooltips.competition_save_new_button')); ?>">Mentés</button>
                     </form>
                 </div>
             </div>

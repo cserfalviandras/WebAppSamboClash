@@ -23,10 +23,10 @@
             <label for="inputStartTime">Büntetés</label>
             <div class="row">
                 <div class="col-sm">
-                    <button id={{"btn-addpunishment-".$panel_id}} class="btn btn-light  btn-block" disabled>+</button>
+                    <button id={{"btn-addpunishment-".$panel_id}} class="btn btn-light  btn-block">+</button>
                 </div>
                 <div class="col-sm">
-                    <button id={{"btn-removepunishment-".$panel_id}} class="btn btn-light  btn-block" disabled>-</button>
+                    <button id={{"btn-removepunishment-".$panel_id}} class="btn btn-light  btn-block">-</button>
                 </div>
             </div>
         </div>
@@ -35,10 +35,10 @@
             <label for="inputStartTime">Leszorítás</label>
             <div class="row">
                 <div class="col-sm">
-                    <button id={{"btn-startsqueeze-".$panel_id}} class="btn btn-light  btn-block" disabled>Indít</button>
+                    <button id={{"btn-startsqueeze-".$panel_id}} class="btn btn-light  btn-block">Indít</button>
                 </div>
                 <div class="col-sm">
-                    <button id={{"btn-stopsqueeze-".$panel_id}} class="btn btn-light  btn-block" disabled>Állj</button>
+                    <button id={{"btn-stopsqueeze-".$panel_id}} class="btn btn-light  btn-block">Állj</button>
                 </div>
             </div>
         </div>

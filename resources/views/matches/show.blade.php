@@ -9,9 +9,27 @@
     </h5>
     <div class="card-body h-100">
         <div class="my-5 w-100 col">
-            <div class="row h-100" style="z-index:100; position: absolute;">
-                <div class="col w-100 my-auto">
+            <div class="row h-100 w-100" style="z-index:100; position: absolute;">
+                <div class="col-7 my-auto">
                     <div id="time_field" class="text-warning font-weight-bold" style="font-size: 9vw"></div>
+                </div>
+                <div class="col-5 my-auto" style="font-size: 3vw">
+                    <div class="row">
+                        <div class="col-6 text-warning font-weight-bold">
+                            Katagória:
+                        </div>
+                        <div class="col-6 text-warning font-weight-bold">
+                            {{$clash->weight_cat_id}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-warning font-weight-bold">
+                            Súly:
+                        </div>
+                        <div class="col-6 text-warning font-weight-bold">
+                            {{$clash->age_group_id}}
+                        </div>
+                    </div>
                 </div>
             </div>   
             
@@ -45,6 +63,8 @@
     window.setInterval(function(){
         getPoints(clash_id, competitor_id, "#point_field-0");
         getPoints(clash_id, competitor_id_2, "#point_field-1");
+        getPunishments(clash_id, competitor_id, "#punishment_field-0");
+        getPunishments(clash_id, competitor_id_2, "#punishment_field-1");
         getClashTime(clash_id, "#time_field")
     }, 2000);
 
@@ -58,6 +78,20 @@
             },
             success:function(data){
                 $(point_field_id).first().text(data.sum);
+            }
+        });
+    }
+
+    function getPunishments(clash_id, competitor_id, punishment_field_id){
+        $.ajax({
+            type:'GET',
+            url:'/getPunishments',
+            data:{
+                clash_id:clash_id, 
+                competitor_id:competitor_id, 
+            },
+            success:function(data){
+                $(punishment_field_id).first().text(data.sum);
             }
         });
     }

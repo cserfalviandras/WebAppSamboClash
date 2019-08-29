@@ -55,9 +55,12 @@ class ClashesController extends Controller
 
     public function edit($clash_id)
     {
+        $competitors = competitor::all();
+        $competitors = $competitors->sortBy('name');
+
         return view('clashes.edit',[
             'clash' => clash::where('id', $clash_id)->firstOrFail(),
-            'competitors' => competitor::all(),
+            'competitors' => $competitors,
             'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first(),
             'clash_statuses' => status::all()
         ]);
@@ -116,5 +119,19 @@ class ClashesController extends Controller
         }
     
         return redirect('success');
+    }
+
+    public function updateClashStatus(Request $request)
+    {
+        $clash_id = $request->input('clash_id');
+        $clash_status_id = $request->input('clash_status_id');
+
+        try {
+            clash::where('id', $clash_id)->update([
+                'clash_status_id' => $clash_status_id
+            ]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

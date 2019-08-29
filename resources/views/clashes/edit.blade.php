@@ -14,7 +14,8 @@
 
                                 <input id="inputClashId" type="hidden" class="form-control" name="inputClashId" value="{{ $clash->id }}" required >
 
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')">Mérkőzés törlése</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')"
+                                    data-toggle="tooltip" title="{{ config('tooltips.clash_delete_button') }}">Mérkőzés törlése</button>
                             </form>
                         </div>
                     </h5>
@@ -143,7 +144,8 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="mt-5 btn btn-primary">Mentés</button>
+                        <button type="submit" class="mt-5 btn btn-primary"
+                            data-toggle="tooltip" title="{{ config('tooltips.update_button') }}">Mentés</button>
                     <form>
                 </div>
             </div>
