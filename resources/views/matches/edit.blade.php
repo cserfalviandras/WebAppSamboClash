@@ -67,18 +67,22 @@
                                 <div class="col-sm">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <button class="btn btn-secondary btn-block btn-start">Indít</button>
+                                            <button class="btn btn-secondary btn-block btn-start"
+                                                data-toggle="tooltip" title="{{ config('tooltips.clash_time_start') }}">Indít</button>
                                         </div>
                                         <div class="col-sm">
-                                            <button class="btn btn-secondary btn-block btn-pause">Állj</button>
+                                            <button class="btn btn-secondary btn-block btn-pause"
+                                                data-toggle="tooltip" title="{{ config('tooltips.clash_time_pause') }}">Állj</button>
                                         </div>
                                         <div class="col-sm">
-                                            <button class="btn btn-danger btn-block btn-reset">Visszaállít</button>
+                                            <button class="btn btn-danger btn-block btn-reset"
+                                                data-toggle="tooltip" title="{{ config('tooltips.clash_time_reset') }}">Visszaállít</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <button class="btn btn-secondary btn-block btn-end">Mérkőzés vége</button>
+                                    <button class="btn btn-secondary btn-block btn-end"
+                                        data-toggle="tooltip" title="{{ config('tooltips.clash_ending') }}">Mérkőzés vége</button>
                                 </div>
                             </div>
                         </div>

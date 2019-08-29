@@ -14,7 +14,8 @@
 
                                 <input id="inputCompId" type="hidden" class="form-control" name="inputCompId" value="{{ $comp->id }}" required >
 
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')">Versenyző törlése</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Biztosan törli?')"  
+                                    data-toggle="tooltip" title="{{ config('tooltips.competitor_delete_button') }}">Versenyző törlése</button>
                             </form>
                         </div>
                     </h5>
@@ -163,7 +164,8 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Mentés</button>
+                        <button type="submit" class="btn btn-primary"
+                            data-toggle="tooltip" title="{{ config('tooltips.update_button') }}">Mentés</button>
                     </form>
                 </div>
             </div>

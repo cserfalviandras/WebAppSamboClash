@@ -15,6 +15,7 @@
         @endphp
     </td>
     <td>
-        <a href="{{ route('competitions.edit', [$comp_id], 'edit') }}" class="card-link">Szerkesztés</a>
+        <a href="{{ route('competitions.edit', [$comp_id], 'edit') }}" class="card-link"
+            data-toggle="tooltip" title="{{ config('tooltips.competition_edit_button') }}">Szerkesztés</a>
     </td>
 </tr>
