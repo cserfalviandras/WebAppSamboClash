@@ -20,9 +20,11 @@
         @endphp
     </td>
     <td>
-        <a href="{{ route('clashes', [$clash_id], 'edit') }}" class="card-link">Szerkesztés</a>
+        <a href="{{ route('clashes', [$clash_id], 'edit') }}" class="card-link"
+            data-toggle="tooltip" title="{{ config('tooltips.clash_edit_button') }}">Szerkesztés</a>
     </td>
     <td>
-        <a href="{{ route('matchedit', [$clash_id], 'edit') }}" class="card-link">Indítás</a>
+        <a href="{{ route('matchedit', [$clash_id], 'edit') }}" class="card-link"
+            data-toggle="tooltip" title="{{ config('tooltips.clash_start_button') }}">Indítás</a>
     </td>
 </tr>

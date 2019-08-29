@@ -195,7 +195,7 @@ if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Mentés</button>
+                        <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="<?php echo e(config('tooltips.competitor_save_new_button')); ?>">Mentés</button>
                     </form>
                 </div>
             </div>
