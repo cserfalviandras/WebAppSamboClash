@@ -307,6 +307,7 @@
             with_labels: false
         });
 
+        startSubTimers();
         updateClashStatus(clash_id, 2);
         enablePanelButtons(true);
     });
@@ -315,6 +316,7 @@
         e.preventDefault();
         var currenttime = $( "#match-timer" ).text();
         resetTimer('match-timer', currenttime);
+        pauseSubTimers();
         enablePanelButtons(false);
     });
 
@@ -322,6 +324,7 @@
         e.preventDefault();
         resetTimer('match-timer', matchtime);
 
+        resetSubTimers();
         updateClashStatus(clash_id, 1);
         enablePanelButtons(false);
     });
@@ -349,9 +352,10 @@
     var squeezeTimerElement = document.getElementById('squeeze-timer');
     var timer;
     var squeezerCompetitorId;
+    var isSqueezePaused = false;
 
     function incrementSeconds() {
-        if(maxSqueezeTime > seconds){
+        if(maxSqueezeTime > seconds && !isSqueezePaused){
             seconds += 1;
             squeezeTimerElement.innerText = seconds + " s";
 
@@ -375,13 +379,27 @@
     
     function startSqueeze(competitor_id){
         squeezerCompetitorId = competitor_id;
+        isSqueezePaused = false;
         timer = setInterval(incrementSeconds, 1000);
     }
 
     function stopSqueeze(){
         seconds = 0;
+        isSqueezePaused = false;
         clearInterval(timer);
         squeezeTimerElement.innerText = "-";
+    }
+
+    function resumeSqueeze(){
+        isSqueezePaused = false;
+    }
+
+    function pauseSqueeze(){
+        isSqueezePaused = true;
+    }
+
+    function resetSqueeze(){
+        stopSqueeze();
     }
 
     // ------------------------------------------------------------
@@ -410,6 +428,17 @@
         enablePanelButtons(false);
     }
 
+    function startSubTimers(){
+        resumeSqueeze();
+    }
+
+    function pauseSubTimers(){
+        pauseSqueeze();
+    }
+
+    function resetSubTimers(){
+        resetSqueeze();
+    }
     
 </script>
 @endsection
