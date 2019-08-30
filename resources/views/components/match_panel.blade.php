@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="inputStartTime">Feszítés</label>
             <div class="row">
                 <div class="col-sm">
@@ -53,6 +53,6 @@
                     <button id={{"btn-stopspan-".$panel_id}} class="btn btn-light  btn-block" disabled>Állj</button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
