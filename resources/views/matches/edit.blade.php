@@ -20,7 +20,11 @@
                                 <option value="00:04:00">4 perc</option>
                                 <option value="00:03:00">3 perc</option>
                             </select>                                   
-                        </div>                     
+                        </div>   
+                        <div class="col-sm-2">
+                            <a href="{{ url('/matches/' . $clash->id . '/show') }}" target="_blank" class="btn btn-secondary btn-block"
+                                data-toggle="tooltip" title="{{ config('tooltips.link_to_spectator_view') }}">Nézői oldal</a>
+                        </div>                   
                     </div>
 
                     <div class="my-1 row">

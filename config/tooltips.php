@@ -15,5 +15,6 @@ return [
     'clash_time_start' => 'Mérkőzés időmérésének elindítása',
     'clash_time_pause' => 'Mérkőzés időmérésének szüneteltetésé',
     'clash_time_reset' => 'Mérkőzés időmérésének visszaállítása az eredetire',
-    'clash_ending' => 'Mérkőzés befejezése'
+    'clash_ending' => 'Mérkőzés befejezése',
+    'link_to_spectator_view' => 'Adott mérkőzés nézői oldalának megnyitása'
 ];
