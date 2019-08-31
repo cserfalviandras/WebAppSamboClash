@@ -27,11 +27,8 @@ class MatchController extends Controller
     {
         $clash_competitors = clash_competitors::where('clash_id', $clash_id)->first();
 
-        $competitor = competitor::where('id', $clash_competitors->comp_id)->first() ?? '';
-        $organization = $competitor->organization_id;
-
-        $competitor = competitor::where('id', $clash_competitors->comp_id_2)->first() ?? '';
-        $organization_2 = $competitor->organization_id;
+        $organization = $this->getOrganization($clash_competitors->comp_id);
+        $organization_2 = $this->getOrganization($clash_competitors->comp_id_2);
 
         return view('matches.show',[
             'clash' => clash::where('id', $clash_id)->firstOrFail(),
@@ -39,6 +36,18 @@ class MatchController extends Controller
             'organization' => $organization,
             'organization_2' => $organization_2
         ]);
+    }
+
+    private function getOrganization($competitor_id)
+    {
+        $result = '';
+
+        $competitor = competitor::where('id', $competitor_id)->first();
+        if(isset($competitor)){
+            $result = $competitor->organization_id;
+        }
+
+        return $result;
     }
 
     public function addPoint(Request $request)
