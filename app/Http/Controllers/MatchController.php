@@ -7,6 +7,7 @@ use App\clashtiming;
 use App\point_table;
 use App\punishment;
 use App\clash_competitors;
+use App\competitor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,9 +25,19 @@ class MatchController extends Controller
 
     public function show($clash_id)
     {
+        $clash_competitors = clash_competitors::where('clash_id', $clash_id)->first();
+
+        $competitor = competitor::where('id', $clash_competitors->comp_id)->first() ?? '';
+        $organization = $competitor->organization_id;
+
+        $competitor = competitor::where('id', $clash_competitors->comp_id_2)->first() ?? '';
+        $organization_2 = $competitor->organization_id;
+
         return view('matches.show',[
             'clash' => clash::where('id', $clash_id)->firstOrFail(),
-            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
+            'clashCompetitors' => $clash_competitors,
+            'organization' => $organization,
+            'organization_2' => $organization_2
         ]);
     }
 
