@@ -12,7 +12,7 @@
                                 <div class="row h-100">
                                     <div class="ml-3">
                                         <div style="font-size:4rem !important;" class="text-white" style="font-size:3rem">{{$competitor_name}}</div>
-                                        <div style="font-size:2rem !important;" class="mb-2 text-white" style="font-size:1rem" >Egyesület</div>
+                                        <div style="font-size:2rem !important;" class="mb-2 text-white" style="font-size:1rem" >{{$organization}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                         <div class="col-md-5">
                             <div class="row h-100">
                                 <div class="mt-auto ml-3">
-                                    <div style="font-size:2rem !important;" class="mb-2 text-white" style="font-size:1rem">Egyesület</div>
+                                    <div style="font-size:2rem !important;" class="mb-2 text-white" style="font-size:1rem">{{$organization}}</div>
                                     <div style="font-size:4rem !important;" class="text-white" style="font-size:3rem">{{$competitor_name}}</div>
                                 </div>
                             </div>
