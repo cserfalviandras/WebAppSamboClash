@@ -15,18 +15,18 @@
                 </div>
                 <div class="col-5 my-auto" style="font-size: 3vw">
                     <div class="row">
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-5 text-warning font-weight-bold">
                             Katagória:
                         </div>
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-3 text-warning font-weight-bold">
                             {{$clash->weight_cat_id}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-5 text-warning font-weight-bold">
                             Súly:
                         </div>
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-3 text-warning font-weight-bold">
                             {{$clash->age_group_id}}
                         </div>
                     </div>
