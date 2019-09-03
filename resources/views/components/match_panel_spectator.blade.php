@@ -16,14 +16,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="row mx-5 h-100">
                                     <div class="col-sm-12 my-auto text-center font-weight-bold">
-                                    <div class="text-dark bg-warning rounded" style="font-size:4rem !important; min-width:60px;" id={{"punishment_field-".$dress_id}}>-</div>
+                                    <div class="text-dark bg-warning rounded" style="font-size:4rem !important; min-width:60px; !important; max-width:120px;" id={{"punishment_field-".$dress_id}}>-</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 w-100">
+                            <div class="col-md-3 w-100">
                                 <div class="row h-100">
                                     <div class="col-sm-12 my-auto text-center font-weight-bold">
                                         <div style="font-size:10rem !important;" id={{"point_field-".$dress_id}}></div>
@@ -41,14 +41,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="row mx-5 h-100">
                                 <div class="col-sm-12 my-auto text-center font-weight-bold">
-                                    <div class="text-dark bg-warning rounded" style="font-size:4rem !important; min-width:60px;" id={{"punishment_field-".$dress_id}}>-</div>
+                                    <div class="text-dark bg-warning rounded" style="font-size:4rem !important; min-width:60px; !important; max-width:120px;" id={{"punishment_field-".$dress_id}}>-</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 w-100">
+                        <div class="col-md-3 w-100">
                             <div class="row h-100">
                                 <div class="col-sm-12 my-auto text-center font-weight-bold">
                                     <div style="font-size:10rem !important;" id={{"point_field-".$dress_id}}></div>
