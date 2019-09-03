@@ -27,6 +27,10 @@ class MatchController extends Controller
     {
         $clash_competitors = clash_competitors::where('clash_id', $clash_id)->first();
 
+        if(!isset($clash_competitors->comp_id) or !isset($clash_competitors->comp_id_2)){
+            return view('matches.missingData');
+        }
+
         $organization = $this->getOrganization($clash_competitors->comp_id);
         $organization_2 = $this->getOrganization($clash_competitors->comp_id_2);
 
