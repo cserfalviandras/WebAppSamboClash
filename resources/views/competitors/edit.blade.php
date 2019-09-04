@@ -145,17 +145,19 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="inputOrganization">Szövetség</label>
-                            <input 
-                                id="inputOrganization" 
-                                type="text" 
-                                class="form-control"
-                                name="inputOrganization" 
-                                value="{{ old('inputOrganization',$comp->organization_id) }}" 
-                                required
-                                autofocus>
+                            @php
+                                $tempOrgId = $comp->organization_id ?? null;
+                            @endphp
+                            <select class="form-control" name="inputOrganization">
+                                @foreach ($organizations as $key => $value)
+                                    <option value="{{ $key }}" {{ $tempOrgId == $key ? 'selected' : ''}}> 
+                                        {{ $value->name }}, {{ $value->leader_name }}
+                                    </option>
+                                @endforeach    
+                            </select>
 
                             @error('inputOrganization')
                                 <span class="invalid-feedback" role="alert">

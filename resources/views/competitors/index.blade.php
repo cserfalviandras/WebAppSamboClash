@@ -150,17 +150,16 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="inputOrganization">Szövetség</label>
-                            <input 
-                                id="inputOrganization" 
-                                type="text" 
-                                class="form-control"
-                                name="inputOrganization" 
-                                value="{{ old('inputOrganization') }}" 
-                                required
-                                autofocus>
+                            <select class="form-control" name="inputOrganization">
+                                @foreach ($organizations as $key => $value)
+                                    <option value="{{ $key }}"> 
+                                        {{ $value->name }}, {{ $value->leader_name }}
+                                    </option>
+                                @endforeach    
+                            </select>
 
                             @error('inputOrganization')
                                 <span class="invalid-feedback" role="alert">
