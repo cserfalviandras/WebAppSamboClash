@@ -45,4 +45,18 @@ class OrganizationController extends Controller
             'organization' => organization::where('id', $id)->firstOrFail(),
         ]);
     }
+
+    public function update()
+    {
+        try {
+            organization::where('id', request('inputOrganizationId'))->update([
+                'name' => request('inputOrganizationName'),
+                'leader_name' => request('inputOrganizationLeaderName')
+            ]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return redirect('success');
+    }
 }

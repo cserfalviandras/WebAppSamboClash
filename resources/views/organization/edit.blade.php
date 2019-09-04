@@ -40,7 +40,7 @@
                                 id="inputOrganizationName" 
                                 type="text" 
                                 class="form-control"
-                                name="inputCompetitorName" 
+                                name="inputOrganizationName" 
                                 value="{{ old('inputOrganizationName', $organization->name) }}" 
                                 required
                                 autofocus>
