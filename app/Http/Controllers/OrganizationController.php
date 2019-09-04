@@ -23,4 +23,19 @@ class OrganizationController extends Controller
             'organizations' => $organizations
         ]);
     }
+
+    public function store(){
+        $data = request()->validate([
+            'inputOrganizationName' => 'required',
+            'inputOrganizationLeaderName' => 'required'
+        ]);
+
+        $organization = new organization();
+        $organization->name = request('inputOrganizationName');
+        $organization->leader_name = request('inputOrganizationLeaderName');
+
+        $organization->save();
+
+        return redirect('success');
+    }
 }

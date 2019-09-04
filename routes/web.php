@@ -56,6 +56,8 @@ Route::get('getClashTime', 'MatchController@getClashTime');
 Route::get('isClashOver', 'MatchController@isClashOver');
 
 Route::get('/organization', 'OrganizationController@index');
+Route::post('/organization/store', 'OrganizationController@store');
+Route::get('/organization/{id}/edit', 'OrganizationController@edit')->name('organization.edit');
 
 Route::get('/profiles/{user}', 'ProfilesController@index');
 

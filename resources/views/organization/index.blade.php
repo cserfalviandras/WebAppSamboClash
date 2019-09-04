@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Új szövetség</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Szövetség rögzítése</h6>
-                    <form class="pt-3" action="/competitors/store" enctype="multipart/form-data" method="post">
+                    <form class="pt-3" action="/organization/store" enctype="multipart/form-data" method="post">
                         @csrf
 
                         <div class="form-group">
@@ -74,7 +74,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="{{ config('tooltips.competitor_save_new_button') }}">Mentés</button>
+                        <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="{{ config('tooltips.organization_save_new_button') }}">Mentés</button>
                     </form>
                 </div>
             </div>

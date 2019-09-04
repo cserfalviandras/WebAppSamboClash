@@ -16,5 +16,8 @@ return [
     'clash_time_pause' => 'Mérkőzés időmérésének szüneteltetésé',
     'clash_time_reset' => 'Mérkőzés időmérésének visszaállítása az eredetire',
     'clash_ending' => 'Mérkőzés befejezése',
-    'link_to_spectator_view' => 'Adott mérkőzés nézői oldalának megnyitása'
+    'link_to_spectator_view' => 'Adott mérkőzés nézői oldalának megnyitása',
+    'organization_save_new_button' => 'Új szövetség elmentése',
+    'organization_edit_button' => 'A szerkesztés oldalon szerkeszthető, illetve törölhető a szövetség',
+    'organization_delete_button' => "Aktuális szövetség végleges törlése",
 ];
