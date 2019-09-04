@@ -59,4 +59,16 @@ class OrganizationController extends Controller
 
         return redirect('success');
     }
+
+    public function destroy()
+    {
+        try {
+            $organization = organization::where('id', request('inputOrganizationId'));
+            $organization->delete();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    
+        return redirect('success');
+    }
 }
