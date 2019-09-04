@@ -38,4 +38,11 @@ class OrganizationController extends Controller
 
         return redirect('success');
     }
+
+    public function edit($id)
+    {
+        return view('organization.edit',[
+            'organization' => organization::where('id', $id)->firstOrFail(),
+        ]);
+    }
 }
