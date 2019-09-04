@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body d-flex flex-column">
@@ -10,6 +10,14 @@
                         <p class="card-text">Versenyzők rögzítése, szerkesztése, törlése.</p>
                         <p class="card-text"><small class="text-muted">Tipp: Az itt rögzített versenyzők a Mérkőzések menü alatt hozzárendelhetők egy-egy mérkőzéshez.</small></p>
                         <a href="{{ url('/competitors') }}" class="btn btn-dark mt-auto">Megnyítás</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Szövetségek</h5>
+                        <p class="card-text">Szövetségek rögzítése, szerkesztése, törlése.</p>
+                        <p class="card-text"><small class="text-muted">Tipp: versenyző csak úgy rögzíthető, ha kapcsolható hozzá szövetség.</small></p>
+                        <a href="{{ url('/organization') }}" class="btn btn-dark mt-auto">Megnyítás</a>
                     </div>
                 </div>
                 <div class="card">
