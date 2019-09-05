@@ -20,12 +20,15 @@
     
                             <tbody>
                                 @foreach ($competitors as $competitor)
+                                    @php
+                                        $organization = $organizations->where('id', $competitor->organization_id)->first();
+                                    @endphp
                                     @include('components.competitor_row', [
                                         'comp_id' => $competitor->id,
                                         'name' => $competitor->name, 
                                         'age_group_id' => $competitor->age_group_id,
                                         'weight_cat_id' => $competitor->weight_cat_id,
-                                        'organization_id' => $competitor->organization_id
+                                        'organization_id' => ($organization->name ?? $competitor->organization_id)
                                         ])
                                 @endforeach
                             </tbody>

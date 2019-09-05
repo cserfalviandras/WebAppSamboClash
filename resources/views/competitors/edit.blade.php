@@ -153,7 +153,7 @@
                             @endphp
                             <select class="form-control" name="inputOrganization">
                                 @foreach ($organizations as $key => $value)
-                                    <option value="{{ $key }}" {{ $tempOrgId == $key ? 'selected' : ''}}> 
+                                    <option value="{{ $value->id }}" {{ $tempOrgId == $value->id ? 'selected' : ''}}> 
                                         {{ $value->name }}, {{ $value->leader_name }}
                                     </option>
                                 @endforeach    

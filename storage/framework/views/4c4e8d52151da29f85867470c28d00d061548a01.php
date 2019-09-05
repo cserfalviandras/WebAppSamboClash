@@ -18,12 +18,16 @@
     
                             <tbody>
                                 <?php $__currentLoopData = $competitors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $competitor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                        $organization = $organizations->where('id', $competitor->organization_id)->first();
+                                        //dd($organization->name);
+                                    ?>
                                     <?php echo $__env->make('components.competitor_row', [
                                         'comp_id' => $competitor->id,
                                         'name' => $competitor->name, 
                                         'age_group_id' => $competitor->age_group_id,
                                         'weight_cat_id' => $competitor->weight_cat_id,
-                                        'organization_id' => $competitor->organization_id
+                                        'organization_id' => ($organization->name ?? $competitor->organization_id)
                                         ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
