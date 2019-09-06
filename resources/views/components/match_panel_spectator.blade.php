@@ -1,5 +1,5 @@
 @php
-    $competitor_name = App\competitor::where('id', ($comp_id+1))->first()->name ?? '-';
+    $competitor_name = App\competitor::where('id', ($comp_id))->first()->name ?? '-';
 @endphp
 <div class="row">
     <div class="card w-100" style="min-height:300px;">

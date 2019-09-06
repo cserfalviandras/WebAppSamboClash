@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\competitor;
+use App\organization;
 
 class CompetitorsController extends Controller
 {
@@ -17,9 +18,12 @@ class CompetitorsController extends Controller
     {
         $competitors = competitor::all();
         $competitors = $competitors->sortBy('name');
+        $organizations = organization::all();
+        $organizations = $organizations->sortBy('name');
 
         return view('competitors.index', [
-            'competitors' => $competitors
+            'competitors' => $competitors,
+            'organizations' => $organizations
         ]);
     }
 
@@ -50,8 +54,12 @@ class CompetitorsController extends Controller
 
     public function edit($comp_id)
     {
+        $organizations = organization::all();
+        $organizations = $organizations->sortBy('name');
+
         return view('competitors.edit',[
             'comp' => competitor::where('id', $comp_id)->firstOrFail(),
+            'organizations' => $organizations
         ]);
     }
 

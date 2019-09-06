@@ -101,7 +101,7 @@
                                             @endphp
                                             <select class="form-control" name="inputCompetitor_1_id">
                                                 @foreach ($competitors as $key => $value)
-                                                    <option value="{{ $key }}" {{ $tempCompId == $key ? 'selected' : ''}}> 
+                                                    <option value="{{ $value->id }}" {{ $tempCompId == $value->id ? 'selected' : ''}}> 
                                                         {{ $value->name }}, {{ $value->birth_date }}
                                                     </option>
                                                 @endforeach    
@@ -127,7 +127,7 @@
                                             @endphp
                                             <select class="form-control" name="inputCompetitor_2_id">
                                                 @foreach ($competitors as $key => $value)
-                                                    <option value="{{ $key }}"  {{ $tempCompId == $key ? 'selected' : ''}}> 
+                                                    <option value="{{ $value->id }}"  {{ $tempCompId == $value->id ? 'selected' : ''}}> 
                                                         {{ $value->name }}, {{ $value->birth_date }}
                                                     </option>
                                                 @endforeach    

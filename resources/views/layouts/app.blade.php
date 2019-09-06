@@ -56,6 +56,9 @@
                                 <a class="nav-link" href="{{ url('/competitors') }}">Versenyzők</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/organization') }}">Szövetségek</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/clashes') }}">Mérkőzések</a>
                             </li>
                             <li class="nav-item">

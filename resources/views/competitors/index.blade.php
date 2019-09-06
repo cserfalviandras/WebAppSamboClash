@@ -20,12 +20,15 @@
     
                             <tbody>
                                 @foreach ($competitors as $competitor)
+                                    @php
+                                        $organization = $organizations->where('id', $competitor->organization_id)->first();
+                                    @endphp
                                     @include('components.competitor_row', [
                                         'comp_id' => $competitor->id,
                                         'name' => $competitor->name, 
                                         'age_group_id' => $competitor->age_group_id,
                                         'weight_cat_id' => $competitor->weight_cat_id,
-                                        'organization_id' => $competitor->organization_id
+                                        'organization_id' => ($organization->name ?? $competitor->organization_id)
                                         ])
                                 @endforeach
                             </tbody>
@@ -150,17 +153,16 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="inputOrganization">Szövetség</label>
-                            <input 
-                                id="inputOrganization" 
-                                type="text" 
-                                class="form-control"
-                                name="inputOrganization" 
-                                value="{{ old('inputOrganization') }}" 
-                                required
-                                autofocus>
+                            <select class="form-control" name="inputOrganization">
+                                @foreach ($organizations as $key => $value)
+                                    <option value="{{ $key }}"> 
+                                        {{ $value->name }}, {{ $value->leader_name }}
+                                    </option>
+                                @endforeach    
+                            </select>
 
                             @error('inputOrganization')
                                 <span class="invalid-feedback" role="alert">

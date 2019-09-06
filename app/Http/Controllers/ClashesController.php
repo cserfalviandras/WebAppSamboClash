@@ -68,7 +68,6 @@ class ClashesController extends Controller
 
     public function update()
     {
-        //dd(request()->all());
         try {
             clash::where('id', request('inputClashId'))->update([
                 'age_group_id' => request('inputAgeGroup'),
