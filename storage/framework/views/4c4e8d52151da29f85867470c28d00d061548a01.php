@@ -20,7 +20,6 @@
                                 <?php $__currentLoopData = $competitors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $competitor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
                                         $organization = $organizations->where('id', $competitor->organization_id)->first();
-                                        //dd($organization->name);
                                     ?>
                                     <?php echo $__env->make('components.competitor_row', [
                                         'comp_id' => $competitor->id,
