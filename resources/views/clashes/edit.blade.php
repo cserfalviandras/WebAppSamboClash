@@ -6,6 +6,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    <div class="row pb-2">
+                        <div class="col">
+                            <a href="{{url()->previous()}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
                     <h5 class="card-title">
                         Mérkőzés, {{ $clash->start_time }}
                         <div class="float-right">
@@ -101,7 +106,7 @@
                                             @endphp
                                             <select class="form-control" name="inputCompetitor_1_id">
                                                 @foreach ($competitors as $key => $value)
-                                                    <option value="{{ $key }}" {{ $tempCompId == $key ? 'selected' : ''}}> 
+                                                    <option value="{{ $value->id }}" {{ $tempCompId == $value->id ? 'selected' : ''}}> 
                                                         {{ $value->name }}, {{ $value->birth_date }}
                                                     </option>
                                                 @endforeach    
@@ -127,7 +132,7 @@
                                             @endphp
                                             <select class="form-control" name="inputCompetitor_2_id">
                                                 @foreach ($competitors as $key => $value)
-                                                    <option value="{{ $key }}"  {{ $tempCompId == $key ? 'selected' : ''}}> 
+                                                    <option value="{{ $value->id }}"  {{ $tempCompId == $value->id ? 'selected' : ''}}> 
                                                         {{ $value->name }}, {{ $value->birth_date }}
                                                     </option>
                                                 @endforeach    

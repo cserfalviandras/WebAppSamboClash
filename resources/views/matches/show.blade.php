@@ -15,18 +15,18 @@
                 </div>
                 <div class="col-5 my-auto" style="font-size: 3vw">
                     <div class="row">
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-5 text-warning font-weight-bold">
                             Katagória:
                         </div>
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-3 text-warning font-weight-bold">
                             {{$clash->weight_cat_id}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-5 text-warning font-weight-bold">
                             Súly:
                         </div>
-                        <div class="col-6 text-warning font-weight-bold">
+                        <div class="col-3 text-warning font-weight-bold">
                             {{$clash->age_group_id}}
                         </div>
                     </div>
@@ -37,13 +37,15 @@
                 'panel_id' => 0,
                 'clash_id' => $clash->id,
                 'comp_id' => $clashCompetitors->comp_id,
-                'dress_id' => $clashCompetitors->dress_id
+                'dress_id' => $clashCompetitors->dress_id,
+                'organization' => $organization
                 ])
             @include('components.match_panel_spectator', [
                 'panel_id' => 0,
                 'clash_id' => $clash->id,
                 'comp_id' => $clashCompetitors->comp_id_2,
-                'dress_id' => $clashCompetitors->dress_id_2
+                'dress_id' => $clashCompetitors->dress_id_2,
+                'organization' => $organization_2
                 ])
         </div>
     </div>

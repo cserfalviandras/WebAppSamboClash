@@ -1,6 +1,6 @@
 @php
     use App\competitor;
-    $competitor_name = competitor::where('id', ($comp_id+1))->first()->name;
+    $competitor_name = competitor::where('id', ($comp_id))->first()->name;
 @endphp
 <div class="card">
     <div class="card-body text-white <?php if($dress_id == 1){echo 'bg-primary'; } else { echo 'bg-danger'; } ?>">
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="inputStartTime">Feszítés</label>
             <div class="row">
                 <div class="col-sm">
@@ -53,6 +53,6 @@
                     <button id={{"btn-stopspan-".$panel_id}} class="btn btn-light  btn-block" disabled>Állj</button>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

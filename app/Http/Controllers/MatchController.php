@@ -7,6 +7,8 @@ use App\clashtiming;
 use App\point_table;
 use App\punishment;
 use App\clash_competitors;
+use App\competitor;
+use App\organization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,10 +26,35 @@ class MatchController extends Controller
 
     public function show($clash_id)
     {
+        $clash_competitors = clash_competitors::where('clash_id', $clash_id)->first();
+        if(!isset($clash_competitors->comp_id) or !isset($clash_competitors->comp_id_2)){
+            return view('matches.missingData');
+        }
+
+        $organization_id = $this->getOrganization($clash_competitors->comp_id);
+        $organization_2_id = $this->getOrganization($clash_competitors->comp_id_2);
+        
+        $organization = organization::where('id', $organization_id)->first()->name;
+        $organization_2 = organization::where('id', $organization_2_id)->first()->name;
+
         return view('matches.show',[
             'clash' => clash::where('id', $clash_id)->firstOrFail(),
-            'clashCompetitors' => clash_competitors::where('clash_id', $clash_id)->first()
+            'clashCompetitors' => $clash_competitors,
+            'organization' => $organization,
+            'organization_2' => $organization_2
         ]);
+    }
+
+    private function getOrganization($competitor_id)
+    {
+        $result = '';
+
+        $competitor = competitor::where('id', $competitor_id)->first();
+        if(isset($competitor)){
+            $result = $competitor->organization_id;
+        }
+
+        return $result;
     }
 
     public function addPoint(Request $request)

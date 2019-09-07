@@ -8,8 +8,8 @@
     <div class="row justify-content-center">
         @include('components.success_message', [
             'success' => 0,
-            'title' => 'Sikertelen mentés', 
-            'subTitle' => 'A kért módosítás mentése sikertelen volt'
+            'title' => 'A mérkőzés még nem választható ki', 
+            'subTitle' => 'Kérjük várja meg, amíg befejeződnek a konfigurálások.'
             ])
     </div>    
 </div>

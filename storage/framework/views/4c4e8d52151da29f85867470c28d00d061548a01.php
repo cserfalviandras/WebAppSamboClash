@@ -18,12 +18,15 @@
     
                             <tbody>
                                 <?php $__currentLoopData = $competitors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $competitor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                        $organization = $organizations->where('id', $competitor->organization_id)->first();
+                                    ?>
                                     <?php echo $__env->make('components.competitor_row', [
                                         'comp_id' => $competitor->id,
                                         'name' => $competitor->name, 
                                         'age_group_id' => $competitor->age_group_id,
                                         'weight_cat_id' => $competitor->weight_cat_id,
-                                        'organization_id' => $competitor->organization_id
+                                        'organization_id' => ($organization->name ?? $competitor->organization_id)
                                         ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
@@ -172,17 +175,17 @@ $message = $errors->first('inputAgeGroup'); ?>
 if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="inputOrganization">Szövetség</label>
-                            <input 
-                                id="inputOrganization" 
-                                type="text" 
-                                class="form-control"
-                                name="inputOrganization" 
-                                value="<?php echo e(old('inputOrganization')); ?>" 
-                                required
-                                autofocus>
+                            <select class="form-control" name="inputOrganization">
+                                <?php $__currentLoopData = $organizations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($key); ?>"> 
+                                        <?php echo e($value->name); ?>, <?php echo e($value->leader_name); ?>
+
+                                    </option>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
+                            </select>
 
                             <?php if ($errors->has('inputOrganization')) :
 if (isset($message)) { $messageCache = $message; }

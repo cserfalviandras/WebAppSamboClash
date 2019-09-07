@@ -6,6 +6,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    <div class="row pb-2">
+                        <div class="col">
+                            <a href="{{url()->previous()}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
                     <h5 class="card-title">
                         Versenyző
                         <div class="float-right">
@@ -145,17 +150,19 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="inputOrganization">Szövetség</label>
-                            <input 
-                                id="inputOrganization" 
-                                type="text" 
-                                class="form-control"
-                                name="inputOrganization" 
-                                value="{{ old('inputOrganization',$comp->organization_id) }}" 
-                                required
-                                autofocus>
+                            @php
+                                $tempOrgId = $comp->organization_id ?? null;
+                            @endphp
+                            <select class="form-control" name="inputOrganization">
+                                @foreach ($organizations as $key => $value)
+                                    <option value="{{ $value->id }}" {{ $tempOrgId == $value->id ? 'selected' : ''}}> 
+                                        {{ $value->name }}, {{ $value->leader_name }}
+                                    </option>
+                                @endforeach    
+                            </select>
 
                             @error('inputOrganization')
                                 <span class="invalid-feedback" role="alert">
