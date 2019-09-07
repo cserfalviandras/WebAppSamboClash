@@ -6,6 +6,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    <div class="row pb-2">
+                        <div class="col">
+                            <a href="{{url()->previous()}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
                     <h5 class="card-title">
                         Szövetség
                         <div class="float-right">
