@@ -325,6 +325,7 @@
 
     var startTime = 60 * currentMatchMinutes;
     var display = document.querySelector(timerElementId);
+    $('#match-time-selector').prop('disabled', false);
 
     $(document).ready(function(){
         resetTimer(timerElementId, currentMatchMinutes, currentMatchSeconds);
@@ -355,6 +356,7 @@
         resumeSubTimers();
         updateClashStatus(clash_id, 2);
         enablePanelButtons(true);
+        $('#match-time-selector').prop('disabled', true);
     });
 
     $(".btn-pause").click(function(e){
@@ -373,6 +375,7 @@
         resetSubTimers();
         updateClashStatus(clash_id, 1);
         enablePanelButtons(false);
+        $('#match-time-selector').prop('disabled', false);
     });
 
     $(".btn-end").click(function(e){
