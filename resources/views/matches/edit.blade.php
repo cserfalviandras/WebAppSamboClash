@@ -285,7 +285,7 @@
 
 
     // ------------------------------------------------------------
-    // Timer - only minutes and seconds
+    // Timer - Main match timer: only minutes and seconds
     // ------------------------------------------------------------
 
     var counter;
@@ -314,7 +314,7 @@
     }
 
     // ------------------------------------------------------------
-    // Timer
+    // Timer - functions
     // ------------------------------------------------------------
     var timerElementId = '#match-timer';
     var isPaused = false;
@@ -359,10 +359,7 @@
 
     $(".btn-pause").click(function(e){
         e.preventDefault();
-        clearInterval(counter);
-        isPaused = true;
-        startTime = 60 * currentMatchMinutes + currentMatchSeconds;
-        
+        resetTimer(timerElementId, currentMatchMinutes, currentMatchSeconds);
         pauseSubTimers();
         enablePanelButtons(false);
     });
@@ -371,8 +368,6 @@
         e.preventDefault();
         currentMatchMinutes = selectedMatchDuration;
         currentMatchSeconds = 0;
-        clearInterval(counter);
-        isPaused = true;
         resetTimer(timerElementId, selectedMatchDuration, currentMatchSeconds);
 
         resetSubTimers();
@@ -386,13 +381,17 @@
     });
 
     function resetTimer(timerid, currentMatchMinutes, currentMatchSeconds){
+        startTime = 60 * currentMatchMinutes + currentMatchSeconds;
+        clearInterval(counter);
+        isPaused = true;
+
         currentMatchMinutes = currentMatchMinutes < 10 ? "0" + currentMatchMinutes : currentMatchMinutes;
         currentMatchSeconds = currentMatchSeconds < 10 ? "0" + currentMatchSeconds : currentMatchSeconds;
         $(timerid).text( currentMatchMinutes  + ':' +  currentMatchSeconds);
     }
 
     // ------------------------------------------------------------
-    // Timer (secounds counter)
+    // Timer - forward counter: secounds counter
     // ------------------------------------------------------------
     var seconds = 0;
     var maxSqueezeTime = 20;
