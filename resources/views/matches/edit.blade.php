@@ -19,6 +19,7 @@
                                 <option value="5">5 perc</option>
                                 <option value="4">4 perc</option>
                                 <option value="3">3 perc</option>
+                                <option value="1">1 perc</option>
                             </select>                                   
                         </div>   
                         <div class="col-sm-2">
@@ -307,7 +308,10 @@
                 $('#match-timer').text(minutes + ":" + seconds);
 
                 if (--timer < 0) {
-                    timer = duration;
+                    isPaused = true;
+                    if (confirm('Lejárt az idő! Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
                 }
             }
         }, 1000);
@@ -469,10 +473,7 @@
         enableButtons(enable, buttonsIds);
     }
 
-    function clashEnd(clash_id){
-        var currenttime = $( "#match-timer" ).text();
-        resetTimer('match-timer', currenttime);
-        
+    function clashEnd(clash_id){        
         updateClashStatus(clash_id, 3);
         enablePanelButtons(false);
     }
