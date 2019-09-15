@@ -10,15 +10,15 @@
                         <div class="col-sm-6 text-right font-weight-bold h2">
                             Küzdelem idő
                         </div>
-                        <div class="col-sm-2 h2">
-                            <time id="match-timer" class="countdown" datetime="P5M">00:05:00</time>
+                        <div id="timer-container" class="col-sm-2 h2">
+                            <time id="match-timer"></time>
                         </div>  
                         <div class="col-sm-2">
                             <select id="match-time-selector" class="custom-select custom-select-sm">
                                 <option selected>Mérkőzés időhossza</option>
-                                <option value="00:05:00">5 perc</option>
-                                <option value="00:04:00">4 perc</option>
-                                <option value="00:03:00">3 perc</option>
+                                <option value="5">5 perc</option>
+                                <option value="4">4 perc</option>
+                                <option value="3">3 perc</option>
                             </select>                                   
                         </div>   
                         <div class="col-sm-2">
@@ -285,9 +285,49 @@
 
 
     // ------------------------------------------------------------
+    // Timer - only minutes and seconds
+    // ------------------------------------------------------------
+
+    var counter;
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+
+        counter = setInterval(function () {
+            if(!isPaused){
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                currentMatchMinutes = minutes;
+                currentMatchSeconds = seconds;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                $('#match-timer').text(minutes + ":" + seconds);
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }
+        }, 1000);
+    }
+
+    // ------------------------------------------------------------
     // Timer
     // ------------------------------------------------------------
-    var matchtime = "00:05:00";
+    var timerElementId = '#match-timer';
+    var isPaused = false;
+
+    var currentMatchMinutes = 5;
+    var currentMatchSeconds = 0;
+
+    var startTime = 60 * currentMatchMinutes;
+    var display = document.querySelector(timerElementId);
+
+    $(document).ready(function(){
+        resetTimer(timerElementId, currentMatchMinutes, currentMatchSeconds);
+    });
 
     $.ajaxSetup({
         headers: {
@@ -301,32 +341,34 @@
     }, 2000);
 
     $("#match-time-selector").on('change', function() {
-        matchtime = this.value;
-        resetTimer('match-timer', matchtime);
+        currentMatchSeconds = 0;
+        resetTimer('match-timer', this.value, currentMatchSeconds);
     });
 
     $(".btn-start").click(function(e){
-        e.preventDefault();
-        $('#match-timer').countDown({
-            with_labels: false
-        });
+        e.preventDefault();   
+        $(timerElementId).text('-');
+        isPaused = false;
+        startTimer(startTime, display);
 
-        startSubTimers();
+        resumeSubTimers();
         updateClashStatus(clash_id, 2);
         enablePanelButtons(true);
     });
 
     $(".btn-pause").click(function(e){
         e.preventDefault();
-        var currenttime = $( "#match-timer" ).text();
-        resetTimer('match-timer', currenttime);
+        clearInterval(counter);
+        isPaused = true;
+        startTime = 60 * currentMatchMinutes + currentMatchSeconds;
+        
         pauseSubTimers();
         enablePanelButtons(false);
     });
 
     $(".btn-reset").click(function(e){
         e.preventDefault();
-        resetTimer('match-timer', matchtime);
+        resetTimer('match-timer', currentMatchMinutes);
 
         resetSubTimers();
         updateClashStatus(clash_id, 1);
@@ -338,14 +380,10 @@
         clashEnd(clash_id);
     });
 
-    function resetTimer(timerid, startvalue){
-        var hashmarkedtimer = '#' + timerid;
-        var timevalue = $(timerid).text();
-
-        $(hashmarkedtimer).countDown('destroy').replaceWith('<time id="' + timerid + '"></time>');
-        var newCountdown = $(hashmarkedtimer);
-        newCountdown.attr('datetime', startvalue);
-        $(hashmarkedtimer).text( startvalue );
+    function resetTimer(timerid, currentMatchMinutes, currentMatchSeconds){
+        currentMatchMinutes = currentMatchMinutes < 10 ? "0" + currentMatchMinutes : currentMatchMinutes;
+        currentMatchSeconds = currentMatchSeconds < 10 ? "0" + currentMatchSeconds : currentMatchSeconds;
+        $(timerid).text( currentMatchMinutes  + ':' +  currentMatchSeconds);
     }
 
     // ------------------------------------------------------------
@@ -432,7 +470,7 @@
         enablePanelButtons(false);
     }
 
-    function startSubTimers(){
+    function resumeSubTimers(){
         resumeSqueeze();
     }
 
