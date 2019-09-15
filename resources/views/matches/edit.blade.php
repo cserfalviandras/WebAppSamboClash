@@ -319,7 +319,8 @@
     var timerElementId = '#match-timer';
     var isPaused = false;
 
-    var currentMatchMinutes = 5;
+    var selectedMatchDuration = 5;
+    var currentMatchMinutes = selectedMatchDuration;
     var currentMatchSeconds = 0;
 
     var startTime = 60 * currentMatchMinutes;
@@ -336,18 +337,18 @@
     });
 
     window.setInterval(function(){
-        var timevalue = $("#match-timer").text();
+        var timevalue = $(timerElementId).text();
         saveClashTime(clash_id, timevalue);
     }, 2000);
 
     $("#match-time-selector").on('change', function() {
+        selectedMatchDuration = this.value
         currentMatchSeconds = 0;
-        resetTimer('match-timer', this.value, currentMatchSeconds);
+        resetTimer(timerElementId, selectedMatchDuration, currentMatchSeconds);
     });
 
     $(".btn-start").click(function(e){
         e.preventDefault();   
-        $(timerElementId).text('-');
         isPaused = false;
         startTimer(startTime, display);
 
@@ -368,7 +369,11 @@
 
     $(".btn-reset").click(function(e){
         e.preventDefault();
-        resetTimer('match-timer', currentMatchMinutes);
+        currentMatchMinutes = selectedMatchDuration;
+        currentMatchSeconds = 0;
+        clearInterval(counter);
+        isPaused = true;
+        resetTimer(timerElementId, selectedMatchDuration, currentMatchSeconds);
 
         resetSubTimers();
         updateClashStatus(clash_id, 1);
