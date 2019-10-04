@@ -19,15 +19,15 @@
     </td>
     <td>
         @php
-            if (isset($competitors->where("id", ($competitors_in_clash["comp_id"] + 1))->first()->name)) {
-                echo $competitors->where("id", ($competitors_in_clash["comp_id"] + 1))->first()->name;
+            if (isset($competitors->where("id", ($competitors_in_clash["comp_id"] ))->first()->name)) {
+                echo $competitors->where("id", ($competitors_in_clash["comp_id"] ))->first()->name;
             }
         @endphp
     </td>
     <td>
         @php
-            if (isset($competitors->where("id", ($competitors_in_clash["comp_id_2"] + 1))->first()->name)) {
-                echo $competitors->where("id", ($competitors_in_clash["comp_id_2"] + 1))->first()->name;
+            if (isset($competitors->where("id", ($competitors_in_clash["comp_id_2"] ))->first()->name)) {
+                echo $competitors->where("id", ($competitors_in_clash["comp_id_2"] ))->first()->name;
             }
         @endphp
     </td>
