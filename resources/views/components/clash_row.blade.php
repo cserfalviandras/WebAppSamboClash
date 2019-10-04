@@ -9,9 +9,9 @@
             echo $weight_cat_id;
         @endphp
     </td>
-    <td>
+    <td style="min-width: 120px;">
         @php
-            echo $start_time;
+            echo date('Y-m-d', strtotime($start_time));
         @endphp
     </td>
     <td>
