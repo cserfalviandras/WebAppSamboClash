@@ -39,136 +39,137 @@
                                 >
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputCompetitorName">Név</label>
-                            <input 
-                                id="inputCompetitorName" 
-                                type="text" 
-                                class="form-control"
-                                name="inputCompetitorName" 
-                                value="{{ old('inputCompetitorName', $comp->name) }}" 
-                                required
-                                autofocus>
-    
-                            @error('inputCompetitorName')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-    
-                        <div class="form-group">
-                            <label for="inputBirthDate">Születési dátum</label>
-                            <input 
-                                id="inputBirthDate" 
-                                type="date" 
-                                min="1919-01-01"
-                                class="form-control"
-                                name="inputBirthDate" 
-                                value="{{ old('inputBirthDate', $comp->birth_date) }}" 
-                                required
-                                autofocus>
-
-                            @error('inputBirthDate')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputBirthPlace">Születési hely</label>
-                            <input 
-                                id="inputBirthPlace" 
-                                type="text" 
-                                class="form-control"
-                                name="inputBirthPlace" 
-                                value="{{ old('inputBirthPlace', $comp->birth_place) }}" 
-                                required
-                                autofocus>
-
-                            @error('inputBirthPlace')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputMothersMaidenName">Anyja születési neve</label>
-                            <input 
-                                id="inputMothersMaidenName" 
-                                type="text" 
-                                class="form-control"
-                                name="inputMothersMaidenName" 
-                                value="{{ old('inputMothersMaidenName', $comp->mother_maiden_name) }}" 
-                                required
-                                autofocus>
-
-                            @error('inputMothersMaidenName')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        @php
-                            //dd($comp);
-                        @endphp
-
-                        <div class="form-group">
-                            <label for="inputWeightCategory">Súlycsoport</label>
-                            <input 
-                                id="inputWeightCategory" 
-                                type="text" 
-                                class="form-control"
-                                name="inputWeightCategory" 
-                                value="{{ old('inputWeightCategory',$comp->weight_cat_id) }}" 
-                                required
-                                autofocus>
-
-                            @error('inputWeightCategory')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputAgeGroup">Korosztály</label>
-                            <input 
-                                id="inputAgeGroup" 
-                                type="text" 
-                                class="form-control"
-                                name="inputAgeGroup" 
-                                value="{{ old('inputAgeGroup',$comp->age_group_id) }}" 
-                                required
-                                autofocus>
-
-                            @error('inputAgeGroup')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputOrganization">Szövetség</label>
-                            @php
-                                $tempOrgId = $comp->organization_id ?? null;
-                            @endphp
-                            <select class="form-control" name="inputOrganization">
-                                @foreach ($organizations as $key => $value)
-                                    <option value="{{ $value->id }}" {{ $tempOrgId == $value->id ? 'selected' : ''}}> 
-                                        {{ $value->name }}, {{ $value->leader_name }}
-                                    </option>
-                                @endforeach    
-                            </select>
-
-                            @error('inputOrganization')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputCompetitorName">Név</label>
+                                    <input 
+                                        id="inputCompetitorName" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputCompetitorName" 
+                                        value="{{ old('inputCompetitorName', $comp->name) }}" 
+                                        required
+                                        autofocus>
+            
+                                    @error('inputCompetitorName')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputWeightCategory">Súlycsoport</label>
+                                    <input 
+                                        id="inputWeightCategory" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputWeightCategory" 
+                                        value="{{ old('inputWeightCategory',$comp->weight_cat_id) }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputWeightCategory')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="inputAgeGroup">Korosztály</label>
+                                    <input 
+                                        id="inputAgeGroup" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputAgeGroup" 
+                                        value="{{ old('inputAgeGroup',$comp->age_group_id) }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputAgeGroup')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="inputOrganization">Szövetség</label>
+                                    @php
+                                        $tempOrgId = $comp->organization_id ?? null;
+                                    @endphp
+                                    <select class="form-control" name="inputOrganization">
+                                        @foreach ($organizations as $key => $value)
+                                            <option value="{{ $value->id }}" {{ $tempOrgId == $value->id ? 'selected' : ''}}> 
+                                                {{ $value->name }}, {{ $value->leader_name }}
+                                            </option>
+                                        @endforeach    
+                                    </select>
+        
+                                    @error('inputOrganization')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputBirthDate">Születési dátum</label>
+                                    <input 
+                                        id="inputBirthDate" 
+                                        type="date" 
+                                        min="1919-01-01"
+                                        class="form-control"
+                                        name="inputBirthDate" 
+                                        value="{{ old('inputBirthDate', $comp->birth_date) }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputBirthDate')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="inputBirthPlace">Születési hely</label>
+                                    <input 
+                                        id="inputBirthPlace" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputBirthPlace" 
+                                        value="{{ old('inputBirthPlace', $comp->birth_place) }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputBirthPlace')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="inputMothersMaidenName">Anyja születési neve</label>
+                                    <input 
+                                        id="inputMothersMaidenName" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputMothersMaidenName" 
+                                        value="{{ old('inputMothersMaidenName', $comp->mother_maiden_name) }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputMothersMaidenName')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary"

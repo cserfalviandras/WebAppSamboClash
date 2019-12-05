@@ -10,15 +10,16 @@
                         <div class="col-sm-6 text-right font-weight-bold h2">
                             Küzdelem idő
                         </div>
-                        <div class="col-sm-2 h2">
-                            <time id="match-timer" class="countdown" datetime="P5M">00:05:00</time>
+                        <div id="timer-container" class="col-sm-2 h2">
+                            <time id="match-timer"></time>
                         </div>  
                         <div class="col-sm-2">
                             <select id="match-time-selector" class="custom-select custom-select-sm">
                                 <option selected>Mérkőzés időhossza</option>
-                                <option value="00:05:00">5 perc</option>
-                                <option value="00:04:00">4 perc</option>
-                                <option value="00:03:00">3 perc</option>
+                                <option value="5">5 perc</option>
+                                <option value="4">4 perc</option>
+                                <option value="3">3 perc</option>
+                                <option value="1">1 perc</option>
                             </select>                                   
                         </div>   
                         <div class="col-sm-2">
@@ -285,9 +286,54 @@
 
 
     // ------------------------------------------------------------
-    // Timer
+    // Timer - Main match timer: only minutes and seconds
     // ------------------------------------------------------------
-    var matchtime = "00:05:00";
+
+    var counter;
+
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+
+        counter = setInterval(function () {
+            if(!isPaused){
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                currentMatchMinutes = minutes;
+                currentMatchSeconds = seconds;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                $('#match-timer').text(minutes + ":" + seconds);
+
+                if (--timer < 0) {
+                    isPaused = true;
+                    if (confirm('Lejárt az idő! Lezárja a mérkőzést?')) {
+                        clashEnd(clash_id);
+                    }
+                }
+            }
+        }, 1000);
+    }
+
+    // ------------------------------------------------------------
+    // Timer - functions
+    // ------------------------------------------------------------
+    var timerElementId = '#match-timer';
+    var isPaused = false;
+
+    var selectedMatchDuration = 5;
+    var currentMatchMinutes = selectedMatchDuration;
+    var currentMatchSeconds = 0;
+
+    var startTime = 60 * currentMatchMinutes;
+    var display = document.querySelector(timerElementId);
+    $('#match-time-selector').prop('disabled', false);
+
+    $(document).ready(function(){
+        resetTimer(timerElementId, currentMatchMinutes, currentMatchSeconds);
+    });
 
     $.ajaxSetup({
         headers: {
@@ -296,41 +342,44 @@
     });
 
     window.setInterval(function(){
-        var timevalue = $("#match-timer").text();
+        var timevalue = $(timerElementId).text();
         saveClashTime(clash_id, timevalue);
     }, 2000);
 
     $("#match-time-selector").on('change', function() {
-        matchtime = this.value;
-        resetTimer('match-timer', matchtime);
+        selectedMatchDuration = this.value
+        currentMatchSeconds = 0;
+        resetTimer(timerElementId, selectedMatchDuration, currentMatchSeconds);
     });
 
     $(".btn-start").click(function(e){
-        e.preventDefault();
-        $('#match-timer').countDown({
-            with_labels: false
-        });
+        e.preventDefault();   
+        isPaused = false;
+        startTimer(startTime, display);
 
-        startSubTimers();
+        resumeSubTimers();
         updateClashStatus(clash_id, 2);
         enablePanelButtons(true);
+        $('#match-time-selector').prop('disabled', true);
     });
 
     $(".btn-pause").click(function(e){
         e.preventDefault();
-        var currenttime = $( "#match-timer" ).text();
-        resetTimer('match-timer', currenttime);
+        resetTimer(timerElementId, currentMatchMinutes, currentMatchSeconds);
         pauseSubTimers();
         enablePanelButtons(false);
     });
 
     $(".btn-reset").click(function(e){
         e.preventDefault();
-        resetTimer('match-timer', matchtime);
+        currentMatchMinutes = selectedMatchDuration;
+        currentMatchSeconds = 0;
+        resetTimer(timerElementId, selectedMatchDuration, currentMatchSeconds);
 
         resetSubTimers();
         updateClashStatus(clash_id, 1);
         enablePanelButtons(false);
+        $('#match-time-selector').prop('disabled', false);
     });
 
     $(".btn-end").click(function(e){
@@ -338,18 +387,18 @@
         clashEnd(clash_id);
     });
 
-    function resetTimer(timerid, startvalue){
-        var hashmarkedtimer = '#' + timerid;
-        var timevalue = $(timerid).text();
+    function resetTimer(timerid, currentMatchMinutes, currentMatchSeconds){
+        startTime = 60 * currentMatchMinutes + currentMatchSeconds;
+        clearInterval(counter);
+        isPaused = true;
 
-        $(hashmarkedtimer).countDown('destroy').replaceWith('<time id="' + timerid + '"></time>');
-        var newCountdown = $(hashmarkedtimer);
-        newCountdown.attr('datetime', startvalue);
-        $(hashmarkedtimer).text( startvalue );
+        currentMatchMinutes = currentMatchMinutes < 10 ? "0" + currentMatchMinutes : currentMatchMinutes;
+        currentMatchSeconds = currentMatchSeconds < 10 ? "0" + currentMatchSeconds : currentMatchSeconds;
+        $(timerid).text( currentMatchMinutes  + ':' +  currentMatchSeconds);
     }
 
     // ------------------------------------------------------------
-    // Timer (secounds counter)
+    // Timer - forward counter: secounds counter
     // ------------------------------------------------------------
     var seconds = 0;
     var maxSqueezeTime = 20;
@@ -424,15 +473,12 @@
         enableButtons(enable, buttonsIds);
     }
 
-    function clashEnd(clash_id){
-        var currenttime = $( "#match-timer" ).text();
-        resetTimer('match-timer', currenttime);
-        
+    function clashEnd(clash_id){        
         updateClashStatus(clash_id, 3);
         enablePanelButtons(false);
     }
 
-    function startSubTimers(){
+    function resumeSubTimers(){
         resumeSqueeze();
     }
 

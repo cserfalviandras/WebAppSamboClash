@@ -37,63 +37,67 @@
                                 required
                                 >
                         </div>
-
-                        <div class="form-group">
-                            <label for="inputAgeGroup">Korosztály</label>
-                            <input 
-                                id="inputAgeGroup" 
-                                type="text" 
-                                class="form-control"
-                                name="inputAgeGroup" 
-                                value="{{ old('inputAgeGroup', $clash->age_group_id) }}" 
-                                required
-                                autofocus>
-
-                            @error('inputAgeGroup')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="inputAgeGroup">Korosztály</label>
+                                    <input 
+                                        id="inputAgeGroup" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputAgeGroup" 
+                                        value="{{ old('inputAgeGroup', $clash->age_group_id) }}" 
+                                        required
+                                        autofocus>
+        
+                                    @error('inputAgeGroup')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="inputWeightCat">Súlycsoport</label>
+                                    <input 
+                                        id="inputWeightCat" 
+                                        type="text" 
+                                        class="form-control"
+                                        name="inputWeightCat" 
+                                        value="{{ old('inputWeightCat', $clash->weight_cat_id) }}" 
+                                        required
+                                        >
+        
+                                    @error('inputWeightCat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="inputStatus">Státusz</label>
+                                    @php
+                                        $tempStatusId = $clash->clash_status_id ? $clash->clash_status_id-1 : null;
+                                    @endphp
+                                    <select class="form-control" name="inputStatus">
+                                        @foreach ($clash_statuses as $key => $value)
+                                            <option value="{{ $key }}" {{ $tempStatusId == $key ? 'selected' : ''}}> 
+                                                {{ $value->name }}
+                                            </option>
+                                        @endforeach    
+                                    </select>
+        
+                                    @error('inputStatus')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="inputWeightCat">Súlycsoport</label>
-                            <input 
-                                id="inputWeightCat" 
-                                type="text" 
-                                class="form-control"
-                                name="inputWeightCat" 
-                                value="{{ old('inputWeightCat', $clash->weight_cat_id) }}" 
-                                required
-                                >
-
-                            @error('inputWeightCat')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputStatus">Státusz</label>
-                            @php
-                                $tempStatusId = $clash->clash_status_id ? $clash->clash_status_id-1 : null;
-                            @endphp
-                            <select class="form-control" name="inputStatus">
-                                @foreach ($clash_statuses as $key => $value)
-                                    <option value="{{ $key }}" {{ $tempStatusId == $key ? 'selected' : ''}}> 
-                                        {{ $value->name }}
-                                    </option>
-                                @endforeach    
-                            </select>
-
-                            @error('inputStatus')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
                         <div class="row">
                             <div class="col-sm">
                                 <div class="card">
